@@ -1,5 +1,7 @@
 # Linm F&B — App branding
 
+> **Phiên bản demo:** Web pitch, Demo UI và tài liệu trong repo này là **bản minh hoạ** (mẫu **Lẩu Gà Ngon**). Khi triển khai thực tế, Linm sẽ **thiết kế và bổ sung giao diện** theo **design + logo nhận diện** của quý khách (màu chủ đạo, typography, icon tenant, splash PWA, v.v.).
+
 ## Tên ứng dụng
 
 ```
@@ -51,3 +53,4 @@ Nền tối (workflow): thêm class `app-brand--dark`.
 - Shell / guest PWA: `document.title` = `LINM F&B — {branchName}`
 - Import logo: `import { linmLogo128 } from '@linm-soft/common-components'` (hoặc path assets tenant)
 - Không dùng emoji 🍲 làm app icon — dùng logo Linm + tên tenant
+- **Branding khách hàng:** thay logo/màu tenant, theme CSS theo brand book; giữ layout nghiệp vụ chuẩn Linm F&B

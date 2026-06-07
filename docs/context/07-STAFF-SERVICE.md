@@ -26,6 +26,7 @@ Nhân viên phục vụ và quản lý **bắt buộc đăng nhập**. Khách ch
 
 - Order từ Guest QR vào hàng đợi **chờ NV xác nhận** trước khi gửi bếp.
 - NV bấm **Xác nhận → Bếp** → event `FnB.OrderConfirmedByWaiter` → Kitchen ticket.
+- **Quota thuê Linm (mô hình A):** mỗi lần xác nhận đơn = **1 lượt quota** — xem `09-PRICING-PROPOSAL.md` §4 · `pricing.html#quota`.
 
 ### 2.3 Service requests (realtime)
 

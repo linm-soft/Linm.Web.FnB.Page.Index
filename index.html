@@ -86,8 +86,10 @@ section h2{font-size:1.75rem;color:var(--navy);margin-bottom:.5rem;text-align:ce
 .pricing-hero{background:linear-gradient(135deg,#ecfdf5 0%,#fff 100%);border:2px solid var(--green);border-radius:var(--radius);padding:2rem;text-align:center;margin-bottom:2rem}
 .pricing-hero .price-main{font-size:clamp(2rem,6vw,2.75rem);font-weight:800;color:var(--green);line-height:1.2}
 .pricing-hero .price-sub{color:var(--txt2);font-size:1rem;margin-top:.5rem}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin:0 auto 2rem;max-width:1080px;width:100%}
-@media (max-width:960px){.pricing-grid{grid-template-columns:1fr;max-width:400px}}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin:0 auto 2rem;max-width:1080px;width:100%}
+@media (max-width:560px){.pricing-grid{max-width:none}}
+.price-card.marketing{background:#f5f3ff;border-color:#c4b5fd}
+.price-card.marketing .amount{color:#6d28d9;font-size:1.1rem}
 .price-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;height:100%}
 .price-card.highlight{border-color:var(--green);background:var(--green-light)}
 .price-card.amber{background:#fffbeb;border-color:#fde68a}
@@ -146,6 +148,61 @@ section h2{font-size:1.75rem;color:var(--navy);margin-bottom:.5rem;text-align:ce
 /* Footer */
 footer{background:#060d18;color:#64748b;text-align:center;padding:2rem 1.5rem;font-size:.85rem}
 footer a{color:var(--green-mid)}
+
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.table-scroll .pricing-table{min-width:28rem;margin-top:0}
+
+@media (max-width:640px){
+  nav{padding:.65rem 1rem;align-items:stretch;gap:.6rem}
+  nav .app-brand{max-width:100%}
+  .nav-right{
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:flex-end;
+    gap:.45rem;
+  }
+  .nav-right .btn-primary{padding:.5rem .85rem;font-size:.85rem}
+
+  .hero{padding:3rem 1rem 2.5rem}
+  .hero h1{font-size:1.5rem}
+  .hero p,.hero-slogan{font-size:.95rem}
+  .hero-btns{gap:.65rem}
+  .hero-btns .btn{padding:.55rem 1rem;font-size:.88rem}
+  .hero-stats{gap:1.25rem}
+  .stat-num{font-size:1.5rem}
+
+  section{padding:2.5rem 1rem}
+  section h2{font-size:1.35rem}
+  .section-sub{font-size:.88rem;margin-bottom:1.5rem}
+
+  .pricing-grid{grid-template-columns:1fr;max-width:none}
+  .pricing-hero{padding:1.25rem 1rem}
+  .pricing-hero .price-main{font-size:1.35rem}
+  .price-card .amount{font-size:1.35rem}
+
+  .pricing-timeline{flex-direction:column}
+  .timeline-step{min-width:0;border-right:none;border-bottom:1px solid var(--border)}
+  .timeline-step:last-child{border-bottom:none}
+
+  .tier-grid{grid-template-columns:1fr}
+  .tier-card{padding:1.35rem}
+  .tier-price{font-size:1.65rem}
+
+  .pain-grid,.roadmap{grid-template-columns:1fr}
+  .journey-panel{padding:1.25rem}
+  .faq-q{font-size:.92rem;padding:.85rem 1rem}
+
+  #cta{padding:2.5rem 1rem}
+  .cta-btns{flex-direction:column;align-items:stretch;max-width:18rem;margin-left:auto;margin-right:auto}
+  .cta-btns .btn{width:100%;text-align:center}
+  .cta-stats{gap:1rem}
+  .cta-stat{padding:1rem 1.25rem;flex:1;min-width:7rem}
+
+  .table-scroll .pricing-table{font-size:.78rem}
+  .pricing-table th,.pricing-table td{padding:.5rem .55rem}
+}
 </style>
 </head>
 <body>
@@ -182,6 +239,10 @@ footer a{color:var(--green-mid)}
       <span class="vi">Hỗ trợ cá nhân / hộ kinh doanh — giảm gánh nặng và nỗi lo về thuế</span>
       <span class="en" style="display:none">For individuals &amp; household businesses — lighter load, less tax worry</span>
     </p>
+    <div class="demo-disclaimer">
+      <span class="vi">ℹ️ Đây là <strong>phiên bản demo</strong> (mẫu Lẩu Gà Ngon). Khi triển khai thực tế, Linm sẽ <strong>thiết kế và bổ sung giao diện</strong> theo <strong>design + logo nhận diện</strong> của quý khách.</span>
+      <span class="en" style="display:none">ℹ️ This is a <strong>demo version</strong> (Lau Ga Ngon sample). In production, Linm will <strong>design and customize the UI</strong> to your <strong>brand design and identity</strong>.</span>
+    </div>
     <div class="hero-btns">
       <a href="app-demo.html" class="btn btn-primary">
         <span class="vi">Xem Demo UI</span>
@@ -362,22 +423,22 @@ footer a{color:var(--green-mid)}
 
 <section id="pricing">
   <h2><span class="vi">Báo giá đề xuất</span><span class="en" style="display:none">Pricing proposal</span></h2>
-  <p class="section-sub"><span class="vi">Triển khai <strong>~20 triệu</strong> · miễn phí vận hành <strong>3 tháng</strong> · khai thuế theo kỳ <strong>500k – 1tr</strong></span><span class="en" style="display:none">Setup <strong>~20M</strong> · <strong>3 months free</strong> · tax filing <strong>500k–1M/period</strong></span></p>
+  <p class="section-sub"><span class="vi">Triển khai <strong>~20 triệu</strong> · miễn phí vận hành <strong>3 tháng</strong> · khai thuế theo kỳ <strong>500k – 1tr</strong> · landing &amp; quảng cáo <strong>theo yêu cầu</strong></span><span class="en" style="display:none">Setup <strong>~20M</strong> · <strong>3 months free</strong> · tax filing <strong>500k–1M/period</strong> · landing &amp; ads <strong>on request</strong></span></p>
 
   <div class="pricing-hero">
-    <div class="price-main"><span class="vi">F&amp;B · Hành chính · ERP</span><span class="en" style="display:none">F&amp;B · Admin · ERP</span></div>
-    <div class="price-sub"><span class="vi">Quản lý quán · hỗ trợ khai thuế · kế toán doanh nghiệp (chi tiết trên trang báo giá)</span><span class="en" style="display:none">Restaurant ops · tax filing · enterprise accounting — see pricing page</span></div>
+    <div class="price-main"><span class="vi">F&amp;B · Hành chính · Marketing · ERP</span><span class="en" style="display:none">F&amp;B · Admin · Marketing · ERP</span></div>
+    <div class="price-sub"><span class="vi">Quản lý quán · khai thuế · landing page &amp; QC thu khách · kế toán DN (chi tiết trên trang báo giá)</span><span class="en" style="display:none">Restaurant ops · tax · landing &amp; ads · enterprise accounting — see pricing page</span></div>
   </div>
 
   <div class="pricing-grid">
     <div class="price-card highlight">
       <h3><span class="vi">LINM F&amp;B</span><span class="en" style="display:none">LINM F&amp;B</span></h3>
-      <p class="amount">20 tr → 0đ → 500k–1tr</p>
+      <p class="amount">20 tr → 0đ → 680k–1,999k</p>
       <ul>
         <li><span class="vi">Triển khai ~20 triệu / CN đầu</span><span class="en" style="display:none">~20M setup first branch</span></li>
         <li><span class="vi">CN thêm cùng nghiệp vụ &amp; quy mô: <strong>giảm 30–50%</strong> (~10–14 triệu)</span><span class="en" style="display:none">Extra same-model branches: <strong>30–50% off</strong> (~10–14M)</span></li>
         <li><span class="vi">3 tháng vận hành miễn phí</span><span class="en" style="display:none">3 months free ops</span></li>
-        <li><span class="vi">Từ tháng 4: 500k–1tr/tháng/CN</span><span class="en" style="display:none">From month 4: 500k–1M/mo</span></li>
+        <li><span class="vi">Từ tháng 4: 680k–1,999k/tháng/CN</span><span class="en" style="display:none">From month 4: 680k–1,999k/mo</span></li>
       </ul>
     </div>
     <div class="price-card amber">
@@ -389,6 +450,19 @@ footer a{color:var(--green-mid)}
         <li><span class="vi">Linm tổng hợp số liệu + hỗ trợ nộp kỳ</span><span class="en" style="display:none">Data rollup + filing assist</span></li>
         <li><span class="vi">Ví dụ quán vừa ~800k/kỳ</span><span class="en" style="display:none">e.g. ~800k/period medium venue</span></li>
       </ul>
+    </div>
+    <div class="price-card marketing">
+      <h3><span class="vi">📣 Landing &amp; quảng cáo</span><span class="en" style="display:none">📣 Landing &amp; ads</span></h3>
+      <p class="amount"><span class="vi">Theo yêu cầu · theo chương trình</span><span class="en" style="display:none">By request · per program</span></p>
+      <p class="card-tag" style="color:#6d28d9"><span class="vi">Thu hút khách mới — tuỳ chọn, tách phí F&amp;B</span><span class="en" style="display:none">Acquire new guests — optional, separate from F&amp;B</span></p>
+      <ul>
+        <li><span class="vi">Landing page quán: menu, CTA Zalo/đặt bàn</span><span class="en" style="display:none">Venue landing: menu, Zalo/booking CTA</span></li>
+        <li><span class="vi">QC Meta/TikTok/Google — báo giá từng chương trình</span><span class="en" style="display:none">Meta/TikTok/Google ads — quoted per campaign</span></li>
+        <li><span class="vi">Ngân sách ads nền tảng tách minh bạch</span><span class="en" style="display:none">Platform ad budget reported separately</span></li>
+      </ul>
+      <div class="card-actions">
+        <a href="pricing.html#marketing" class="btn btn-outline" style="font-size:.88rem;padding:.45rem .9rem"><span class="vi">Chi tiết</span><span class="en" style="display:none">Details</span></a>
+      </div>
     </div>
     <div class="price-card erp">
       <h3><span class="vi">🏢 Linm ERP</span><span class="en" style="display:none">🏢 Linm ERP</span></h3>
@@ -425,35 +499,39 @@ footer a{color:var(--green-mid)}
 
 <section id="tiers">
   <h2><span class="vi">Gói tính năng</span><span class="en" style="display:none">Feature tiers</span></h2>
-  <p class="section-sub"><span class="vi">Chọn mức phí duy trì (từ tháng 4) — <a href="pricing.html">báo giá đầy đủ</a></span><span class="en" style="display:none">Monthly tiers (from month 4) — <a href="pricing.html">full pricing</a></span></p>
+  <p class="section-sub"><span class="vi">Chọn mức phí duy trì (từ tháng 4) — mỗi gói kèm <strong>quota order</strong> (khách order + quán xác nhận) · <a href="pricing.html#quota">chi tiết</a> · <a href="pricing.html">báo giá đầy đủ</a></span><span class="en" style="display:none">Monthly tiers (from month 4) — each includes an <strong>order quota</strong> (guest order + shop confirm) · <a href="pricing.html#quota">details</a> · <a href="pricing.html">full pricing</a></span></p>
   <div class="tier-grid">
     <div class="tier-card">
       <div class="tier-name"><span class="vi">Cơ bản</span><span class="en" style="display:none">Basic</span></div>
-      <div class="tier-price">500k/tháng</div>
+      <div class="tier-price">680k/tháng</div>
       <ul class="tier-list">
         <li><span class="vi">QR order + bếp + phục vụ</span><span class="en" style="display:none">QR order + kitchen + waiters</span></li>
         <li><span class="vi">Tiền mặt + 1 TK CK</span><span class="en" style="display:none">Cash + 1 bank account</span></li>
         <li><span class="vi">Bảng kê cơ bản</span><span class="en" style="display:none">Basic ledger</span></li>
-        <li><span class="vi">Phù hợp &lt;30 bàn</span><span class="en" style="display:none">Under 30 tables</span></li>
+        <li><span class="vi"><strong>1.200 lượt/tháng</strong> (~30 lượt/bàn/ngày)</span><span class="en" style="display:none"><strong>1,200 units/mo</strong> (~30 units/table/day)</span></li>
+        <li><span class="vi">Phù hợp &lt;10 bàn</span><span class="en" style="display:none">Under 10 tables</span></li>
       </ul>
     </div>
     <div class="tier-card featured">
       <div class="tier-name"><span class="vi">Tiêu chuẩn</span><span class="en" style="display:none">Standard</span></div>
-      <div class="tier-price">800k/tháng</div>
+      <div class="tier-price">999k/tháng</div>
       <ul class="tier-list">
         <li><span class="vi">Upload ảnh CK + xác nhận staff</span><span class="en" style="display:none">Proof upload + staff confirm</span></li>
         <li><span class="vi">Feedback NV + thống kê món</span><span class="en" style="display:none">Staff feedback + menu stats</span></li>
         <li><span class="vi">Combo &amp; addon đầy đủ</span><span class="en" style="display:none">Full combos &amp; addons</span></li>
-        <li><span class="vi">Đề xuất cho Lẩu Gà Ngon pilot</span><span class="en" style="display:none">Recommended for pilot</span></li>
+        <li><span class="vi"><strong>2.500 lượt/tháng</strong> (~80 lượt/bàn/ngày)</span><span class="en" style="display:none"><strong>2,500 units/mo</strong> (~80 units/table/day)</span></li>
+        <li><span class="vi">Phù hợp 10–20 bàn</span><span class="en" style="display:none">10–20 tables</span></li>
       </ul>
     </div>
     <div class="tier-card">
       <div class="tier-name"><span class="vi">Mở rộng</span><span class="en" style="display:none">Scale</span></div>
-      <div class="tier-price">1tr/tháng</div>
+      <div class="tier-price">1,999k/tháng</div>
       <ul class="tier-list">
         <li><span class="vi">Đa TK CK + Momo</span><span class="en" style="display:none">Multi-account + Momo</span></li>
         <li><span class="vi">Dashboard đa chi nhánh</span><span class="en" style="display:none">Multi-branch dashboard</span></li>
         <li><span class="vi">Ưu tiên hỗ trợ</span><span class="en" style="display:none">Priority support</span></li>
+        <li><span class="vi"><strong>5.000 lượt/tháng</strong> (~165 lượt/bàn/ngày)</span><span class="en" style="display:none"><strong>5,000 units/mo</strong> (~165 units/table/day)</span></li>
+        <li><span class="vi">20+ bàn · chuỗi</span><span class="en" style="display:none">20+ tables · chain</span></li>
       </ul>
     </div>
   </div>
@@ -487,6 +565,7 @@ footer a{color:var(--green-mid)}
 <section id="faq">
   <h2><span class="vi">Câu hỏi thường gặp</span><span class="en" style="display:none">FAQ</span></h2>
   <div style="max-width:700px;margin:2rem auto 0">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">Giao diện demo có phải bản chính thức?</span><span class="en" style="display:none">Is the demo UI the final product?</span></button><div class="faq-a"><span class="vi">Không — đây là <strong>phiên bản demo</strong> minh hoạ luồng nghiệp vụ (mẫu Lẩu Gà Ngon). Khi triển khai, Linm <strong>thiết kế lại UI/UX</strong>, áp dụng <strong>logo, màu sắc và nhận diện thương hiệu</strong> của quý khách, và bổ sung màn hình/tính năng theo khảo sát thực tế.</span><span class="en" style="display:none">No — this is a <strong>demo</strong> illustrating workflows (Lau Ga Ngon sample). At go-live, Linm <strong>redesigns the UI/UX</strong> with your <strong>logo, colors, and brand identity</strong>, plus features from your site survey.</span></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">Khách có cần cài app không?</span><span class="en" style="display:none">Do guests need an app?</span></button><div class="faq-a"><span class="vi">Không — PWA qua trình duyệt sau khi quét QR bàn.</span><span class="en" style="display:none">No — browser PWA after scanning table QR.</span></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">Nhiều khách cùng bàn order được không?</span><span class="en" style="display:none">Can multiple guests order at one table?</span></button><div class="faq-a"><span class="vi">Có — join cùng session hoặc tạo session mới tùy cấu hình bàn.</span><span class="en" style="display:none">Yes — join same session or start new per table config.</span></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">QR bàn và QR chuyển khoản khác nhau thế nào?</span><span class="en" style="display:none">Table QR vs transfer QR?</span></button><div class="faq-a"><span class="vi"><strong>QR bàn</strong> mở menu order trên điện thoại. <strong>QR chuyển khoản</strong> sinh khi thanh toán bill — có sẵn số tiền và nội dung; khách quét bằng app ngân hàng.</span><span class="en" style="display:none"><strong>Table QR</strong> opens the order menu. <strong>Transfer QR</strong> is generated at checkout with preset amount and reference for banking apps.</span></div></div>
@@ -495,9 +574,11 @@ footer a{color:var(--green-mid)}
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">Hệ thống tự tạo QR ngân hàng được không?</span><span class="en" style="display:none">Does Linm generate bank QR itself?</span></button><div class="faq-a"><span class="vi">Có — Linm tự sinh QR trên server theo chuẩn liên ngân hàng (NAPAS/EMV), không phụ thuộc dịch vụ QR bên thứ ba. Quản lý cấu hình BIN + số TK chi nhánh và xem preview trước go-live.</span><span class="en" style="display:none">Yes — Linm builds QR on the server using the national interbank standard (NAPAS/EMV), without third-party QR services. Managers configure branch accounts and preview before go-live.</span></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">Hệ thống dùng kiến trúc gì?</span><span class="en" style="display:none">What architecture is used?</span></button><div class="faq-a"><span class="vi">Microfrontend Linm (single-spa) + .NET 8 microservices — chuẩn hóa khi confirm demo.</span><span class="en" style="display:none">Linm MFE (single-spa) + .NET 8 microservices — standardized after demo confirm.</span></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">Chi nhánh thêm giảm bao nhiêu?</span><span class="en" style="display:none">Discount for additional branches?</span></button><div class="faq-a"><span class="vi">Các chi nhánh <strong>cùng nghiệp vụ và quy mô</strong> (vd. cùng mô hình lẩu, số bàn tương đương) được <strong>giảm 30–50%</strong> phí triển khai so với CN đầu (~20 triệu) — tức khoảng <strong>~10–14 triệu/CN</strong>. Mức giảm phụ thuộc <strong>quy mô chuỗi</strong> (số CN triển khai cùng đợt) và <strong>nhu cầu đào tạo</strong> (NV đã qua pilot thì rút ngắn, giảm sâu hơn).</span><span class="en" style="display:none">Branches with the <strong>same business model and size</strong> get <strong>30–50% off</strong> setup vs the first branch (~20M) — roughly <strong>~10–14M each</strong>. The rate depends on <strong>chain scale</strong> (batch rollout) and <strong>training needs</strong> (staff already trained at pilot → less onsite time, deeper discount).</span></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">20 triệu triển khai bao gồm những gì?</span><span class="en" style="display:none">What's included in 20M setup?</span></button><div class="faq-a"><span class="vi">Menu/bàn/QR, Guest order, bếp, NV phục vụ, thu ngân (QR CK + đối soát tay), training ca pilot và go-live 1–2 tuần. Không bao gồm máy in, tablet (quán tự chuẩn bị hoặc báo giá riêng).</span><span class="en" style="display:none">Menu/tables/QR, guest order, kitchen, waiters, cashier (transfer QR + manual reconcile), pilot training, 1–2 week go-live. Excludes printers/tablets unless quoted separately.</span></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">20 triệu triển khai bao gồm những gì?</span><span class="en" style="display:none">What's included in 20M setup?</span></button><div class="faq-a"><span class="vi">Menu/bàn/QR, Guest order, bếp, NV phục vụ, thu ngân (QR CK + đối soát tay), training ca pilot và go-live 1–2 tuần. Không bao gồm máy in, tablet, <strong>landing page</strong> hay <strong>quảng cáo</strong> (báo giá riêng — <a href="pricing.html#marketing">chi tiết</a>).</span><span class="en" style="display:none">Menu/tables/QR, guest order, kitchen, waiters, cashier (transfer QR + manual reconcile), pilot training, 1–2 week go-live. Excludes printers/tablets, <strong>landing pages</strong>, and <strong>ads</strong> (quoted separately — <a href="pricing.html#marketing">details</a>).</span></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">Linm có hỗ trợ landing page và quảng cáo không?</span><span class="en" style="display:none">Does Linm offer landing pages and ads?</span></button><div class="faq-a"><span class="vi">Có — dịch vụ <strong>tuỳ chọn</strong>, tách phí F&amp;B: Linm dựng <strong>landing page</strong> giới thiệu quán (menu, CTA Zalo/đặt bàn) và hỗ trợ <strong>chạy quảng cáo</strong> thu hút khách (Meta, TikTok, Google Maps…). Landing <strong>báo giá theo yêu cầu</strong>; quảng cáo <strong>báo giá theo chương trình</strong> — ngân sách ads nền tảng tách minh bạch. <a href="pricing.html#marketing">Chi tiết</a>.</span><span class="en" style="display:none">Yes — optional add-ons: Linm builds a <strong>venue landing page</strong> and runs <strong>acquisition ads</strong> (Meta, TikTok, Google Maps…). Landing quoted <strong>by scope</strong>; ads <strong>per campaign</strong> with platform media budget reported separately. <a href="pricing.html#marketing">Details</a>.</span></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">3 tháng miễn phí tính từ khi nào?</span><span class="en" style="display:none">When does the 3 free months start?</span></button><div class="faq-a"><span class="vi">Từ ngày go-live chính thức (ca pilot thành công). Trong 3 tháng: hosting, cập nhật, hỗ trợ Zalo — không thu phí duy trì.</span><span class="en" style="display:none">From official go-live (successful pilot shift). Includes hosting, updates, Zalo support — no monthly fee.</span></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">Sau 3 tháng trả bao nhiêu?</span><span class="en" style="display:none">What after 3 months?</span></button><div class="faq-a"><span class="vi"><strong>500.000 – 1.000.000đ/tháng/chi nhánh</strong> tùy gói: cơ bản (500k), tiêu chuẩn có feedback + thống kê món (800k), mở rộng đa CN + Momo (1tr). Thanh toán theo tháng, hợp đồng linh hoạt.</span><span class="en" style="display:none"><strong>500k–1M VND/month/branch</strong> by tier: basic 500k, standard 800k, scale 1M. Monthly billing, flexible contract.</span></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">Quota order là gì?</span><span class="en" style="display:none">What is order quota?</span></button><div class="faq-a"><span class="vi"><strong>1 lượt quota</strong> = khách <strong>order</strong> trên QR bàn và quán <strong>xác nhận đơn</strong> (NV xác nhận → gửi bếp) — không tính từng món, không tính riêng thanh toán. Tham chiếu quy mô: <strong>lượt/bàn/ngày</strong> (TB mỗi bàn mỗi ngày); quota tính <strong>tổng lượt/CN/tháng</strong>. Gói thuê Linm: Cơ bản <strong>1.200</strong> (~30 lượt/bàn/ngày, 680k, &lt;10 bàn), Tiêu chuẩn <strong>2.500</strong> (~80 lượt/bàn/ngày, 999k, 10–20 bàn), Mở rộng <strong>5.000</strong> (~165 lượt/bàn/ngày, 1,999k, 20+ bàn). <a href="pricing.html#quota">Chi tiết</a>.</span><span class="en" style="display:none"><strong>1 quota unit</strong> = guest <strong>orders</strong> via QR and staff <strong>confirms the order</strong> — not per line item or payment. Size reference: <strong>units/table/day</strong> (avg per table per day); billing quota is <strong>total units/branch/month</strong>. Hosted tiers: Basic <strong>1,200</strong> (~30 units/table/day, 680k), Standard <strong>2,500</strong> (~80, 999k), Scale <strong>5,000</strong> (~165, 1,999k). <a href="pricing.html#quota">Details</a>.</span></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">Sau 3 tháng trả bao nhiêu?</span><span class="en" style="display:none">What after 3 months?</span></button><div class="faq-a"><span class="vi"><strong>680.000 – 1.999.000đ/tháng/chi nhánh</strong> tùy gói: cơ bản (680k), tiêu chuẩn có feedback + thống kê món (999k), mở rộng đa CN + Momo (1,999k). Thanh toán theo tháng, hợp đồng linh hoạt.</span><span class="en" style="display:none"><strong>680k–1,999k VND/month/branch</strong> by tier: basic 680k, standard 999k, scale 1,999k. Monthly billing, flexible contract.</span></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">Go-live 1 chi nhánh mất bao lâu?</span><span class="en" style="display:none">How long to go-live one branch?</span></button><div class="faq-a"><span class="vi"><strong>1–2 tuần</strong> — cấu hình menu/bàn/QR, deploy MFE + API, training ca pilot (Lẩu Gà Ngon model).</span><span class="en" style="display:none"><strong>1–2 weeks</strong> — menu/tables/QR setup, MFE + API deploy, pilot shift training (Lau Ga Ngon model).</span></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="vi">Quản lý nhiều chi nhánh thế nào?</span><span class="en" style="display:none">How is multi-branch managed?</span></button><div class="faq-a"><span class="vi">Mỗi chi nhánh có menu, bàn, QR thanh toán riêng; owner xem tổng hợp trên dashboard.</span><span class="en" style="display:none">Each branch has own menu, tables, payment QR; owner sees rollup dashboard.</span></div></div>
   </div>

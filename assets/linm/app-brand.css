@@ -13,3 +13,25 @@
 .app-brand--phone .app-brand__text{align-items:center}
 .app-brand--dark .app-brand__tenant{color:#fff}
 .app-brand--dark .app-brand__platform{color:var(--primary,#00c9a7)}
+
+/* Demo / pilot disclaimer — shared across pitch pages */
+.demo-disclaimer{
+  max-width:44rem;
+  margin:0 auto 1rem;
+  padding:.75rem 1rem;
+  border-radius:10px;
+  font-size:.88rem;
+  line-height:1.55;
+  border:1px solid rgba(5,150,105,.28);
+  background:rgba(209,250,229,.5);
+  color:#065f46;
+  text-align:center;
+}
+.demo-disclaimer strong{color:#047857;font-weight:700}
+.demo-disclaimer--inline{max-width:none;text-align:left;margin:0 0 1rem}
+.demo-disclaimer--dark{
+  border-color:rgba(0,201,167,.35);
+  background:rgba(0,201,167,.1);
+  color:#cbd5e1;
+}
+.demo-disclaimer--dark strong{color:#5eead4}

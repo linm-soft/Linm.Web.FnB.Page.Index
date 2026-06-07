@@ -25,7 +25,8 @@ Guest path ưu tiên **SignalR** cho latency thấp; events dùng cho audit, ana
 | Event | Producer | Consumers | Side effect |
 |-------|----------|-----------|-------------|
 | `FnB.SessionStarted` | Order | Notification | Push guest UI "session active" |
-| `FnB.OrderLineAdded` | Order | Kitchen, Notification | Create/update kitchen ticket |
+| `FnB.OrderLineAdded` | Order | Kitchen, Notification | Guest gửi order — chờ NV xác nhận |
+| `FnB.OrderConfirmedByWaiter` | Order / Waiter | Kitchen, Notification, **Billing meter** | NV xác nhận → gửi bếp; **+1 lượt quota** (mô hình thuê A) |
 | `FnB.KitchenTicketConfirmed` | Kitchen | Notification | Guest sees "đang chế biến" |
 | `FnB.ServiceCallRequested` | Order | Notification | Waiter alert (khăn, nước, hoàn trả…) |
 | `FnB.PaymentRequested` | Order | Payment | Lock bill total, start payment window |

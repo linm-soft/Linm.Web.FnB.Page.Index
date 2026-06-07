@@ -3,13 +3,15 @@
 > **Slogan:** Hỗ trợ cá nhân / hộ kinh doanh — giảm gánh nặng và nỗi lo về thuế  
 > Liên hệ: Zalo **Linm-Soft** · **0775 909 978** · [zalo.me/0775909978](https://zalo.me/0775909978)
 
+> **Lưu ý demo:** Web pitch, Demo UI và tài liệu kỹ thuật hiện tại là **phiên bản demo** (mẫu Lẩu Gà Ngon). Khi triển khai thực tế, Linm sẽ **thiết kế và bổ sung giao diện** theo **design + logo nhận diện** của quý khách, cùng các màn hình/tính năng sau khảo sát onsite.
+
 ## 1. Tóm tắt (dành cho chủ quán)
 
 | Giai đoạn | Chi phí | Thời gian |
 |-----------|---------|-----------|
 | **Triển khai** | **~20.000.000đ** (CN đầu) · CN thêm cùng NG/quy mô **giảm 30–50%** (~10–14 triệu) | 1–2 tuần go-live |
 | **Vận hành** | **Miễn phí 3 tháng** | Từ ngày go-live |
-| **Duy trì** | **500.000 – 1.000.000đ/tháng/chi nhánh** | Từ tháng thứ 4 |
+| **Duy trì** | **680.000 – 1.999.000đ/tháng/chi nhánh** | Từ tháng thứ 4 |
 
 **Cam kết thử nghiệm:** Quý anh/chị vận hành **3 tháng không mất phí duy trì** — đủ thời gian đo giảm sai order, tốc độ đối soát CK và món bán chạy trước khi cam kết phí hàng tháng.
 
@@ -37,6 +39,7 @@
 - Máy in bill, tablet bếp/thu ngân (quán có sẵn hoặc mua thêm)
 - Phí cổng Momo / ngân hàng (nếu tích hợp sau)
 - Thiết kế logo/menu chuyên nghiệp
+- Landing page quảng bá & chạy quảng cáo thu hút khách (tuỳ chọn — **§10**)
 
 ### Thanh toán triển khai
 
@@ -79,17 +82,21 @@ Sau 3 tháng, chọn một trong các gói duy trì bên dưới. Có thể **n�
 
 ## 4. Phí duy trì từ tháng thứ 4
 
-Giá **theo chi nhánh / tháng** (VAT nếu có sẽ ghi rõ trên hóa đơn):
+Giá **theo chi nhánh / tháng** (VAT nếu có sẽ ghi rõ trên hóa đơn). Mô hình **A · Thuê Linm**: mỗi gói gồm **phí nền + quota order/tháng**.
 
-| Gói | Giá/tháng | Phù hợp |
-|-----|-----------|---------|
-| **Cơ bản** | **500.000đ** | Quán &lt;30 bàn · QR + bếp + phục vụ · 1 TK CK · bảng kê cơ bản |
-| **Tiêu chuẩn** ★ | **800.000đ** | Feedback NV · thống kê món ưa thích · upload CK · combo/addon đầy đủ |
-| **Mở rộng** | **1.000.000đ** | Đa TK CK · Momo · dashboard nhiều chi nhánh · ưu tiên hỗ trợ |
+**1 lượt quota** = khách **order** (QR bàn) + quán **xác nhận đơn** (NV xác nhận → gửi bếp). Không tính từng món; không tính riêng thanh toán/đóng bàn. Tham chiếu quy mô: **lượt/bàn/ngày** (TB mỗi bàn mỗi ngày); quota hóa đơn = **tổng lượt/CN/tháng**. Kỹ thuật: event `FnB.OrderConfirmedByWaiter` — `07-STAFF-SERVICE.md`.
 
-★ **Đề xuất cho pilot Lẩu Gà Ngon** — đủ tính năng đánh giá NV và món bán chạy.
+| Gói | Giá/tháng | Quota / CN / tháng | Phù hợp |
+|-----|-----------|-------------------|---------|
+| **Cơ bản** | **680.000đ** | **1.200 lượt** (~30 lượt/bàn/ngày) | Quán **&lt;10 bàn** · QR + bếp + phục vụ · 1 TK CK · bảng kê cơ bản |
+| **Tiêu chuẩn** ★ | **999.000đ** | **2.500 lượt** (~80 lượt/bàn/ngày) | Quán **10–20 bàn** · Feedback NV · thống kê món · upload CK · combo/addon |
+| **Mở rộng** | **1.999.000đ** | **5.000 lượt** (~165 lượt/bàn/ngày) | **20+ bàn** · Đa TK CK · Momo · dashboard nhiều chi nhánh · ưu tiên hỗ trợ |
 
-Thanh toán duy trì (mô hình A — thuê Linm): gói **tối thiểu 3 tháng** · thanh toán trước **12 tháng được tặng 1 tháng**. Chi tiết hình thức triển khai: **§4b**.
+★ **Đề xuất cho pilot Lẩu Gà Ngon** — chọn gói theo **số bàn thực tế** (10–20 bàn → Tiêu chuẩn 999k / 2.500 lượt).
+
+**Vượt quota:** Linm thông báo trên dashboard; đề xuất nâng gói hoặc phụ thu vượt mức theo hợp đồng. **Phí khai thuế** (§8) tính riêng theo chứng từ/kỳ — không trộn quota order F&B.
+
+Thanh toán duy trì (mô hình A — thuê Linm): gói **tối thiểu 3 tháng** · thanh toán trước **12 tháng được tặng 1 tháng**. Chi tiết hình thức triển khai: **§4b**. Trang web: `pricing.html#quota`
 
 ---
 
@@ -105,7 +112,7 @@ Triển khai **~20 triệu CN đầu** (§2). CN thêm cùng NG/quy mô giảm 3
 |----------|----------|
 | **Hạ tầng** | Server Linm — vận hành, bảo mật, sao lưu |
 | **Truy cập** | **Subdomain** theo đơn vị / chi nhánh (vd. `lau-ga-ngon.linm.vn`, `order.{tenant}.linm.vn`) |
-| **Phí duy trì** | 500k – 1tr/tháng/CN (gói §4) |
+| **Phí duy trì** | 680k – 1,999k/tháng/CN (gói §4 + **quota order** `pricing.html#quota`) |
 | **Thanh toán** | Gói **tối thiểu 3 tháng** |
 | **Ưu đãi** | Trả trước **12 tháng → miễn phí 1 tháng** (13 tháng sử dụng) |
 | **Pilot** | 3 tháng đầu miễn phí duy trì sau go-live |
@@ -146,7 +153,7 @@ Trang HTML: `pricing.html#deploy`
 ## 5. So sánh để dễ hình dung (VN)
 
 - **20 triệu triển khai** ≈ lương **1 NV phục vụ ~2 tháng** — một lần đầu tư, dùng nhiều năm.
-- **500k/tháng** ≈ **17.000đ/ngày** — thấp hơn **1 ly trà gừng** (35k) tại quán.
+- **680k/tháng** ≈ **22.700đ/ngày** — thấp hơn **1 ly trà gừng** (35k) tại quán.
 - **1 bàn order sai / thiếu topping** có thể mất **100–300k** doanh thu + trải nghiệm khách — hệ thống QR giảm rủi ro này mỗi ca.
 
 ---
@@ -209,11 +216,43 @@ Chuỗi quán có thể vận hành **Linm F&B** (bàn — bếp — thu ngân) 
 
 ---
 
+## 10. Marketing — Landing page & quảng cáo thu hút khách
+
+Dịch vụ **tuỳ chọn**, tách phí phần mềm F&B và phí khai thuế (§8). Linm hỗ trợ quán **có thêm khách mới** ngoài khách walk-in tại quán.
+
+### 10.1 Landing page quán
+
+| Hạng mục | Nội dung |
+|----------|----------|
+| **Mục tiêu** | Trang giới thiệu quán trên web — menu nổi bật, địa chỉ, giờ mở cửa, CTA (Zalo / gọi / đặt bàn / link order) |
+| **Linm hỗ trợ** | Khảo sát nội dung · dựng trang responsive · tích hợp CTA · hosting subdomain Linm hoặc domain khách |
+| **Báo giá** | **Theo yêu cầu** — scope trang (số section, ảnh, đa CN, đa ngôn ngữ) · báo trước khi triển khai |
+
+**Không bao gồm mặc định trong phí triển khai F&B (~20 triệu).**
+
+### 10.2 Quảng cáo thu hút khách
+
+| Hạng mục | Nội dung |
+|----------|----------|
+| **Mục tiêu** | Chiến dịch thu hút khách theo mùa / sự kiện / khai trương / combo mới |
+| **Linm hỗ trợ** | Tư vấn kênh (Facebook · Instagram · TikTok · Google Maps…) · setup chiến dịch · creative cơ bản · link/UTM tracking · báo cáo tóm tắt |
+| **Báo giá** | **Theo chương trình** — kênh + thời gian chạy + phạm vi creative + **ngân sách media** (tách minh bạch phí vận hành Linm và tiền chạy ads) |
+
+**Lưu ý:**
+
+- Ngân sách quảng cáo trên nền tảng (Meta, Google, TikTok…) **không** nằm trong phí duy trì F&B hàng tháng.  
+- Linm báo **dự trù chương trình** trước khi chạy; chỉnh scope hoặc dừng theo thỏa thuận.  
+- Kết quả phụ thuộc khu vực, mùa, offer — Linm cam kết minh bạch số liệu chi tiêu & reach, không cam kết doanh thu cố định.
+
+Trang web: `pricing.html#marketing`
+
+---
+
 ## 7. Bước tiếp theo
 
 1. Xem demo UI + trao đổi quy mô bàn / menu  
 2. Xác nhận báo giá & ký thỏa thuận triển khai  
 3. Tuần 1: setup · Tuần 2: ca pilot · **3 tháng miễn phí vận hành**  
-4. Tháng 4: chọn gói duy trì 500k / 800k / 1tr  
+4. Tháng 4: chọn gói duy trì 680k / 999k / 1,999k  
 
 **Zalo Linm-Soft · 0775 909 978**

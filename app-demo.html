@@ -55,8 +55,11 @@ header{background:#fff;border-bottom:1px solid var(--border);padding:.75rem 1.25
 
 /* Device frames */
 .device-wrap{position:relative;max-width:100%;flex:1 1 320px;display:flex;flex-direction:column;align-items:center;min-width:0}
+/* Device frames — phone width locked to design spec */
+.device-wrap.is-phone{width:var(--phone-w);max-width:var(--phone-w);flex:0 0 auto}
+#device-mount.is-phone{width:var(--phone-w);max-width:var(--phone-w);flex-shrink:0}
 .device-label{text-align:center;font-size:.75rem;color:var(--txt2);margin-bottom:.5rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
-.phone-frame{width:min(var(--phone-w),100%);height:var(--phone-h);max-width:100%;background:#111;border-radius:36px;padding:10px;box-shadow:0 25px 60px rgba(0,0,0,.25),inset 0 0 0 2px #333}
+.phone-frame{width:var(--phone-w);max-width:var(--phone-w);height:var(--phone-h);flex-shrink:0;box-sizing:border-box;background:#111;border-radius:36px;padding:10px;box-shadow:0 25px 60px rgba(0,0,0,.25),inset 0 0 0 2px #333}
 .phone-notch{width:100px;height:22px;background:#111;border-radius:0 0 14px 14px;margin:0 auto -12px;position:relative;z-index:2}
 .phone-screen{width:100%;height:100%;background:#fff;border-radius:28px;overflow:hidden;display:flex;flex-direction:column;position:relative}
 .tablet-frame{width:min(480px,100%);max-width:100%;height:min(680px,78vh);background:#1a1a1a;border-radius:20px;padding:12px;box-shadow:0 25px 60px rgba(0,0,0,.25);box-sizing:border-box}
@@ -251,18 +254,90 @@ header{background:#fff;border-bottom:1px solid var(--border);padding:.75rem 1.25
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:.65rem 1.25rem;border-radius:999px;font-size:.85rem;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none}
 .toast.show{opacity:1}
 
+/* Mobile nav — flex bottom bar (mobile viewport only, width = phone mockup) */
+.nav-fab-bar{
+  display:none;
+  position:fixed;
+  z-index:120;
+  gap:.5rem;
+  align-items:stretch;
+  justify-content:center;
+  pointer-events:none;
+}
+.nav-fab-bar .nav-fab{pointer-events:auto}
+.nav-fab{
+  flex:1;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.35rem;
+  min-height:2.75rem;
+  padding:.55rem .75rem;
+  border:none;
+  border-radius:999px;
+  font-weight:700;
+  font-size:.85rem;
+  cursor:pointer;
+  box-shadow:0 4px 14px rgba(10,22,40,.12);
+  transition:transform .15s,box-shadow .15s,opacity .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.nav-fab:active:not(:disabled){transform:scale(.97)}
+.nav-fab-prev{background:#fff;color:var(--navy);border:2px solid var(--border)}
+.nav-fab-next{background:var(--green);color:#fff;border:2px solid var(--green)}
+.nav-fab:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+
+@media(min-width:901px){
+  .nav-fab-bar{display:none!important}
+  body.in-app-nav .demo-wrap{padding-bottom:3rem}
+}
+
+@media(max-width:900px){
+  body.in-app-nav .nav-fab-bar{
+    display:flex;
+    left:50%;
+    right:auto;
+    transform:translateX(-50%);
+    bottom:calc(.65rem + env(safe-area-inset-bottom,0px));
+    width:var(--phone-w);
+    max-width:calc(100% - 1.5rem);
+    padding:.45rem .5rem;
+    background:rgba(255,255,255,.97);
+    backdrop-filter:blur(10px);
+    border:1px solid var(--border);
+    border-radius:14px;
+    box-shadow:0 8px 28px rgba(10,22,40,.14);
+    pointer-events:auto;
+  }
+  .stage{flex-direction:column;align-items:center}
+  .controls{flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;width:100%;max-width:var(--phone-w);order:-1}
+  .controls .ctrl-btn{display:none}
+  .screen-info{max-width:100%;width:100%}
+  .device-wrap{order:0}
+  .device-wrap.is-phone{width:var(--phone-w);max-width:var(--phone-w);margin-left:auto;margin-right:auto}
+  .phone-frame{width:var(--phone-w);max-width:var(--phone-w)}
+  body.in-app-nav .demo-wrap{padding-bottom:calc(4.25rem + env(safe-area-inset-bottom,0px))}
+  body.in-app-nav .toast{bottom:calc(4rem + env(safe-area-inset-bottom,0px))}
+  .device-wrap.is-tablet{width:100%;max-width:min(480px,100%)}
+  body.in-app-nav .nav-fab-bar.nav-fab-bar--tablet{
+    width:min(480px,calc(100% - 1.5rem));
+    max-width:min(480px,calc(100% - 1.5rem));
+  }
+}
+
 /* Hidden screens */
 .screen-view{display:none;flex-direction:column;height:100%;width:100%;min-width:0;min-height:0;overflow:hidden}
 .screen-view.active{display:flex}
 
-@media(max-width:900px){
-  .stage{flex-direction:column;align-items:center}
-  .controls{flex-direction:row;flex-wrap:wrap;justify-content:center;width:100%}
-  .screen-info{max-width:100%;width:100%}
-}
 @media(max-width:700px){
   .tablet-frame{height:min(620px,72vh)}
   .k-body{grid-template-columns:1fr}
+  header{padding:.65rem 1rem}
+  .hdr-links{flex-wrap:wrap;gap:.45rem .65rem;font-size:.8rem}
+  .persona-bar{gap:.4rem}
+  .persona-btn{padding:.5rem .75rem;font-size:.82rem}
+  .demo-title h1{font-size:1.25rem}
+  .demo-title p{font-size:.85rem}
 }
 </style>
 </head>
@@ -289,7 +364,11 @@ header{background:#fff;border-bottom:1px solid var(--border);padding:.75rem 1.25
 <div class="demo-wrap">
   <div class="demo-title">
     <h1><span class="vi">Giao diện ứng dụng</span><span class="en" style="display:none">Application UI</span></h1>
-    <p><span class="vi">Click trong app hoặc dùng Trước / Tiếp để chuyển màn hình</span><span class="en" style="display:none">Click inside the app or use Prev / Next to navigate</span></p>
+    <p><span class="vi">Desktop: nút Trước/Tiếp bên trái · Mobile (≤900px): chạm khung thiết bị → thanh nhỏ <strong>320px</strong> cố định cuối màn hình</span><span class="en" style="display:none">Desktop: Prev/Next on the left · Mobile (≤900px): tap device → compact <strong>320px</strong> bar at bottom</span></p>
+    <div class="demo-disclaimer demo-disclaimer--inline">
+      <span class="vi">ℹ️ <strong>Phiên bản demo</strong> — giao diện mẫu Lẩu Gà Ngon. Triển khai thực tế: Linm tùy chỉnh <strong>design + logo nhận diện</strong> và bổ sung theo yêu cầu quý khách.</span>
+      <span class="en" style="display:none">ℹ️ <strong>Demo version</strong> — Lau Ga Ngon sample UI. Production: Linm customizes <strong>design + brand identity</strong> and adds features per your requirements.</span>
+    </div>
   </div>
 
   <div class="persona-bar">
@@ -310,14 +389,25 @@ header{background:#fff;border-bottom:1px solid var(--border);padding:.75rem 1.25
       <div class="screen-info" id="screen-info"></div>
     </div>
 
-    <div class="device-wrap">
+    <div class="device-wrap" id="device-wrap">
       <div class="device-label" id="device-label">Mobile · Guest PWA</div>
       <div id="device-mount"></div>
-      <p class="tap-hint"><span class="vi">👆 Chạm nút / tab / món trong khung thiết bị</span><span class="en" style="display:none">👆 Tap buttons / tabs / items inside the device</span></p>
+      <p class="tap-hint"><span class="vi">👆 Chạm trong khung thiết bị — thanh <strong>Trước / Tiếp</strong> hiện ở cuối màn hình</span><span class="en" style="display:none">👆 Tap inside the device — <strong>Prev / Next</strong> bar appears at the bottom</span></p>
     </div>
   </div>
 </div>
 <div class="toast" id="toast"></div>
+
+<nav class="nav-fab-bar" aria-label="Demo navigation">
+  <button type="button" class="nav-fab nav-fab-prev" id="fab-prev" onclick="prevScreen()">
+    <span aria-hidden="true">←</span>
+    <span class="vi">Trước</span><span class="en" style="display:none">Prev</span>
+  </button>
+  <button type="button" class="nav-fab nav-fab-next" id="fab-next" onclick="nextScreen()">
+    <span class="vi">Tiếp</span><span class="en" style="display:none">Next</span>
+    <span aria-hidden="true">→</span>
+  </button>
+</nav>
 
 <script>
 const APP_TENANT = 'Lẩu Gà Ngon';
@@ -1019,6 +1109,12 @@ function updateChrome() {
     `<strong>${lang === 'vi' ? s.labelVi : s.labelEn}</strong>${lang === 'vi' ? s.infoVi : s.infoEn}`;
   document.getElementById('btn-prev').disabled = screenIdx === 0;
   document.getElementById('btn-next').disabled = screenIdx === p.screens.length - 1;
+  const fabPrev = document.getElementById('fab-prev');
+  const fabNext = document.getElementById('fab-next');
+  if (fabPrev) fabPrev.disabled = screenIdx === 0;
+  if (fabNext) fabNext.disabled = screenIdx === p.screens.length - 1;
+  const fabBar = document.querySelector('.nav-fab-bar');
+  if (fabBar) fabBar.classList.toggle('nav-fab-bar--tablet', p.device !== 'phone');
   buildDots();
 }
 
@@ -1033,6 +1129,7 @@ function showToast(msg) {
 function wireInAppClicks() {
   const mount = document.getElementById('device-mount');
   mount.onclick = (e) => {
+    enableInAppNav();
     const goP = e.target.closest('[data-go-persona]');
     const go = e.target.closest('[data-go]');
     const toastEl = e.target.closest('[data-toast-vi]');
@@ -1149,9 +1246,18 @@ function renderScreen() {
   const p = PERSONAS[persona];
   const s = p.screens[screenIdx];
   const mount = document.getElementById('device-mount');
+  const wrap = document.getElementById('device-wrap');
   const inner = s.html();
+  const isPhone = p.device === 'phone';
 
-  if (p.device === 'phone') {
+  if (wrap) {
+    wrap.classList.toggle('is-phone', isPhone);
+    wrap.classList.toggle('is-tablet', !isPhone);
+  }
+  mount.classList.toggle('is-phone', isPhone);
+  mount.classList.toggle('is-tablet', !isPhone);
+
+  if (isPhone) {
     mount.innerHTML = `<div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen">${inner}</div></div>`;
   } else {
     mount.innerHTML = `<div class="tablet-frame"><div class="tablet-screen">${inner}</div></div>`;
@@ -1159,6 +1265,32 @@ function renderScreen() {
   applyLang();
   wireInAppClicks();
   updateChrome();
+}
+
+function isMobileDemoView() {
+  return window.matchMedia('(max-width:900px)').matches;
+}
+
+function enableInAppNav() {
+  if (!isMobileDemoView()) return;
+  document.body.classList.add('in-app-nav');
+}
+
+function syncInAppNavMode() {
+  if (!isMobileDemoView()) document.body.classList.remove('in-app-nav');
+}
+
+function bindInAppNavReveal() {
+  const wrap = document.getElementById('device-wrap');
+  if (!wrap || wrap.dataset.navBound === '1') return;
+  wrap.dataset.navBound = '1';
+  const reveal = (e) => {
+    if (e.target.closest('.nav-fab-bar')) return;
+    enableInAppNav();
+  };
+  wrap.addEventListener('click', reveal);
+  wrap.addEventListener('touchstart', reveal, { passive: true });
+  window.addEventListener('resize', syncInAppNavMode);
 }
 
 function goScreen(i) {
@@ -1171,6 +1303,7 @@ function nextScreen() { goScreen(screenIdx + 1); }
 function prevScreen() { goScreen(screenIdx - 1); }
 
 buildDots();
+bindInAppNavReveal();
 renderScreen();
 </script>
 </body>

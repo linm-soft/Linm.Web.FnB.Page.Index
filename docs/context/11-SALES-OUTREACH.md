@@ -27,11 +27,12 @@ Anh/chị ơi, Linm giới thiệu LINM F&B — phần mềm quản lý quán l�
 · Khách quét QR bàn gọi món (combo, topping lẩu)
 · Bếp nhận ticket realtime · NV phục vụ xác nhận · Thu ngân QR chuyển khoản + đối soát
 · Báo cáo món bán chạy, hỗ trợ khai thuế theo kỳ cho hộ kinh doanh
+· (Tuỳ chọn) Landing page quán + quảng cáo thu hút khách — báo giá theo yêu cầu / chương trình
 
 Go-live 1 chi nhánh: ~1–2 tuần · triển khai ~20 triệu · miễn phí vận hành 3 tháng đầu
 
 Xem demo: {BASE_URL}
-(Bấm "Demo UI" để thử màn hình khách / bếp / thu ngân)
+(Bấm "Demo UI" để thử màn hình khách / bếp / thu ngân — đây là bản demo; go-live sẽ tùy chỉnh giao diện theo logo & nhận diện quán anh/chị)
 Báo giá: {BASE_URL}/pricing.html
 
 Zalo Linm-Soft · 0775 909 978 — em tư vấn quy mô bàn/menu nhé ạ.
@@ -51,8 +52,9 @@ Linm-Soft xin giới thiệu LINM F&B — giải pháp vận hành quán lẩu /
 Khách tại quán: quét QR bàn → gọi món, combo, topping — không cần cài app.
 Nội bộ: màn bếp · app NV phục vụ · thu ngân (QR CK preset số tiền, upload biên lai) · báo cáo doanh thu & món bán chạy.
 Hành chính (tuỳ chọn): Linm hỗ trợ tổng hợp số liệu & khai thuế theo kỳ.
+Marketing (tuỳ chọn): landing page giới thiệu quán + chiến dịch quảng cáo thu khách — báo giá theo yêu cầu / theo chương trình (pricing.html#marketing).
 
-Tham khảo nhanh: triển khai CN đầu ~20 triệu · 3 tháng miễn phí duy trì · từ tháng 4: 500k–1tr/tháng/CN (tùy quy mô).
+Tham khảo nhanh: triển khai CN đầu ~20 triệu · 3 tháng miễn phí duy trì · từ tháng 4: **680k–1,999k/tháng/CN** (680 / 999 / 1,999 · tùy quy mô bàn).
 CN thêm cùng mô hình: giảm 30–50% phí triển khai.
 
 Xem bản demo:
@@ -82,11 +84,11 @@ Demo: {BASE_URL} · Zalo 0775 909 978
 | Chủ đề | Nội dung |
 |--------|----------|
 | **Vấn đề** | Order sai/thiếu topping · đối soát CK chậm · sổ sách thuế cho HKD |
-| **Giải pháp** | QR bàn · bếp realtime · NV + thu ngân · báo cáo · hỗ trợ khai thuế theo kỳ |
+| **Giải pháp** | QR bàn · bếp realtime · NV + thu ngân · báo cáo · khai thuế · landing & QC thu khách (tuỳ chọn) |
 | **Thời gian** | Go-live pilot **1–2 tuần** / 1 chi nhánh |
-| **Chi phí** | Triển khai **~20 triệu** · **3 tháng miễn phí** · duy trì **500k–1tr/th/tháng/CN** (min 3 tháng, trả 12 tặng 1) |
+| **Chi phí** | Triển khai **~20 triệu** · **3 tháng miễn phí** · duy trì **680k–1,999k/tháng/CN** (680 / 999 / 1,999 · min 3 tháng, trả 12 tặng 1) |
 | **Triển khai** | **A** Thuê Linm ~20tr/CN · **B** Trọn gói **từ 50tr** — liên hệ báo giá · `pricing.html#deploy` |
-| **Mở rộng** | Chuỗi quán · đồng bộ ERP kế toán khi có nhà đầu tư — xem `pricing.html#erp` |
+| **Mở rộng** | Chuỗi quán · landing + QC thu khách · đồng bộ ERP khi có NĐT — `pricing.html#marketing` · `#erp` |
 | **Demo** | `app-demo.html` — thử flow khách → bếp → thu ngân |
 
 Chi tiết kỹ thuật & báo giá: `01-PLATFORM-OVERVIEW.md` · `09-PRICING-PROPOSAL.md` · `08-QR-PAYMENT.md`
@@ -96,6 +98,6 @@ Chi tiết kỹ thuật & báo giá: `01-PLATFORM-OVERVIEW.md` · `09-PRICING-PR
 ## 5. CTA sau khi khách xem demo
 
 1. Hỏi quy mô: số bàn, ca, menu lẩu/combo, số chi nhánh.  
-2. Gửi `pricing.html` nếu quan tâm chi phí / khai thuế.  
+2. Gửi `pricing.html` nếu quan tâm chi phí / khai thuế / landing & quảng cáo.  
 3. Hẹn khảo sát nhanh tại quán hoặc call 15 phút.  
 4. Nếu DN / có NĐT → giới thiệu **Linm ERP** (mục báo giá §3).

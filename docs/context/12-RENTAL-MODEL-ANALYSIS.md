@@ -11,11 +11,11 @@
 | Câu hỏi | Kết luận |
 |---------|----------|
 | Mô hình thuê có khả thi? | **Có** — nhờ phí triển khai + MRR; tốt nhất từ **5+ CN** trên cùng nền |
-| Gói nên ưu tiên? | **Tiêu chuẩn 800k/CN/tháng** — gói 500k biên recurring mỏng |
+| Gói nên ưu tiên? | **Tiêu chuẩn 999k/CN/tháng** — gói 680k cho quán &lt;10 bàn |
 | Rủi ro lớn nhất? | **Churn sau 3 tháng miễn phí** · giá flat khi quán quá lớn |
 | Rủi ro storage ảnh CK? | **Đã giảm** — cap 30 ngày + lưu `bank_transaction_ref` vĩnh viễn |
-| Break-even nền tảng (chỉ MRR)? | ~**8–10 CN** @ 800k (ước lượng chi nền ~4–5 triệu/tháng) |
-| **Thuê theo CN hay theo chứng từ?** | **Hybrid:** phí nền **/CN/tháng** + **quota bill** + phụ thu vượt mức (§11) |
+| Break-even nền tảng (chỉ MRR)? | ~**6–8 CN** @ 999k (ước lượng chi nền ~4–5 triệu/tháng) |
+| **Thuê theo CN hay theo chứng từ?** | **Hybrid:** phí nền **/CN/tháng** + **quota order** + phụ thu vượt mức (§11) |
 
 ---
 
@@ -29,7 +29,7 @@ flowchart LR
   end
   subgraph recurring [Định kỳ]
     F[3 tháng miễn phí]
-    M[500k–1tr/CN/tháng]
+    M[680k–1,999k/CN/tháng]
     T[Thuế admin 500k–1tr/kỳ]
   end
   S --> F --> M
@@ -41,7 +41,7 @@ flowchart LR
 |----------|---------|---------|
 | Triển khai CN đầu | ~20 triệu | 50% ký — 50% go-live |
 | CN thêm (cùng NG/quy mô) | ~10–14 triệu | Giảm 30–50% |
-| Duy trì (từ tháng 4) | 500k / 800k / 1tr / CN / tháng | Min 3 tháng; trả 12 → dùng 13 |
+| Duy trì (từ tháng 4) | 680k / 999k / 1,999k / CN / tháng | Min 3 tháng; trả 12 → dùng 13 |
 | Pilot | 3 tháng hosting + support miễn phí | Chi phí Linm trước recurring |
 | Upsell | Khai thuế 500k–1tr/kỳ | Tách phí F&B |
 | Upsell dài hạn | Linm ERP | Báo giá riêng — `09-PRICING-PROPOSAL.md` §9 |
@@ -92,33 +92,33 @@ Sau 3 tháng miễn phí; giả định khách ở lại ≥12 tháng.
 
 | Gói | Thu/CN/tháng | Chi biến đổi (TB) | Biên gộp recurring/CN | Biên % |
 |-----|--------------|-------------------|------------------------|--------|
-| Cơ bản | 500k | ~350k | **~150k** | ~30% |
-| Tiêu chuẩn ★ | 800k | ~300k | **~500k** | ~62% |
-| Mở rộng | 1tr | ~350k | **~650k** | ~65% |
+| Cơ bản | 680k | ~350k | **~330k** | ~49% |
+| Tiêu chuẩn ★ | 999k | ~350k | **~649k** | ~65% |
+| Mở rộng | 1,999k | ~400k | **~1.599k** | ~80% |
 
 Phân bổ chi nền (~4M/tháng ÷ số CN):
 
 | Gói | Sau nền @ 10 CN | Sau nền @ 20 CN |
 |-----|-----------------|-----------------|
-| 500k | **−250k** (lỗ recurring) | **−150k** |
-| 800k | **+100k** | **+200k** |
-| 1tr | **+250k** | **+350k** |
+| 680k | **~−70k** (gần hòa) | **+30k** |
+| 999k | **+350k** | **+450k** |
+| 1,999k | **+1.350k** | **+1.450k** |
 
-**Gói 500k** chỉ bền vững khi scale CN (chia nền) hoặc setup fee bù. **800k** = điểm cân bằng pilot Lẩu Gà Ngon.
+**Gói 680k** cần scale CN hoặc setup fee bù nền tảng. **999k** = điểm cân bằng pilot Lẩu Gà Ngon (10–20 bàn).
 
 ---
 
 ## 5. P&L kịch bản 12 tháng
 
-### 5.1 Một CN — gói 800k, retention tốt
+### 5.1 Một CN — gói 999k, retention tốt
 
 | Khoản | Số tiền |
 |-------|--------|
 | Doanh thu setup | 20,0 triệu |
-| Recurring (9 tháng trả phí) | 7,2 triệu |
-| **Tổng thu năm 1** | **27,2 triệu** |
+| Recurring (9 tháng trả phí) | 9,0 triệu |
+| **Tổng thu năm 1** | **29,0 triệu** |
 | COGS setup + vận hành 12 th + support | −18,4 triệu |
-| **Lợi nhuận gộp năm 1** | **~8,8 triệu (~32%)** |
+| **Lợi nhuận gộp năm 1** | **~10,6 triệu (~37%)** |
 
 ### 5.2 Churn sau 3 tháng miễn phí
 
@@ -147,8 +147,8 @@ Phân bổ chi nền (~4M/tháng ÷ số CN):
 
 | Rủi ro | Mức | Giảm thiểu |
 |--------|-----|------------|
-| Churn sau pilot 3 tháng | **Cao** | Min 3 tháng trả phí; KPI go/no-go tháng 4; default gói 800k |
-| Gói 500k kéo margin | TB | Giới hạn tính năng; upsell |
+| Churn sau pilot 3 tháng | **Cao** | Min 3 tháng trả phí; KPI go/no-go tháng 4; default gói 999k |
+| Gói 680k kéo margin | TB | Giới hạn tính năng; upsell 999k |
 | Custom ngoài HĐ | TB | §4b phí phát sinh — báo giá trước |
 | Trả 12 tặng 1 | Thấp | Cash flow; giảm churn |
 | Cạnh tranh POS rẻ | TB | Đối soát CK + thống kê món + HKD/thuế |
@@ -184,10 +184,11 @@ Phân bổ chi nền (~4M/tháng ÷ số CN):
 
 | Yếu tố | Lợi ích |
 |--------|---------|
-| MRR tái lặp | 5 CN × 800k ≈ 4M/tháng (~48M/năm) sau ramp |
+| MRR tái lặp | 5 CN × 999k ≈ 5M/tháng (~60M/năm) sau ramp |
 | Setup cao | Cash + biên ngay; CN thêm margin setup tốt |
 | Multi-tenant | Chi/CN giảm khi scale |
 | Upsell thuế | ~2–3M/năm/CN (4 kỳ) — margin dịch vụ cao |
+| Upsell marketing | Landing + QC theo chương trình — không trong MRR F&B · `09-PRICING-PROPOSAL.md` §10 |
 | Cross-sell ERP | Chuỗi có NĐT |
 | Prepay 12+1 | Tiền trước · churn thấp hơn |
 | Chính sách data ảnh | Chi hosting không phình theo thời gian |
@@ -198,7 +199,7 @@ Phân bổ chi nền (~4M/tháng ÷ số CN):
 
 | Quy mô | Đánh giá |
 |--------|----------|
-| 1–3 CN | Khả thi nhờ setup; recurring chủ yếu bù hosting — **800k+** |
+| 1–3 CN | Khả thi nhờ setup; recurring chủ yếu bù hosting — **999k+** |
 | 5–10 CN | Khỏe — nền amortize |
 | 10–20 CN | Tốt — cân nhắc fair-use / CN lớn tách resource |
 | 1 CN quá lớn (50+ bàn) | Rủi ro margin — gói Mở rộng hoặc phụ thu |
@@ -209,11 +210,11 @@ Phân bổ chi nền (~4M/tháng ÷ số CN):
 
 ### 9.1 Bảo vệ lợi nhuận
 
-1. Pilot **mặc định gói Tiêu chuẩn 800k** — 500k cho quán &lt;20 bàn, support tối thiểu.  
+1. Pilot **mặc định gói Tiêu chuẩn 999k** — 680k cho quán &lt;10 bàn, support tối thiểu.  
 2. **Checklist go/no-go** trước tháng 4 (sau 3 tháng free).  
 3. **Fair use HĐ** (đề xuất chưa có trong báo giá công khai): ≤40 bàn/CN hoặc ≤X đơn/ngày; vượt → nâng gói/phụ thu.  
 4. Giữ **ảnh 30 ngày + mã GD vĩnh viễn**.  
-5. Pitch **thuế admin** song song F&B.  
+5. Pitch **thuế admin** và **marketing** (landing + QC) song song F&B.  
 6. Ưu tiên bán **3+ CN/đợt** (setup CN thêm 10–14M).
 
 ### 9.2 Chỉ số theo dõi (KPI nội bộ)
@@ -255,7 +256,7 @@ Mọi đơn vị trên **cùng cluster** Linm → chi phí gồm:
 | **Cố định** | Nền tảng, Auth, Notification, gateway | Chia đều — cần **tối thiểu MRR/CN** |
 | **Biến đổi** | `order_lines`, session đóng, event, SignalR, metadata CK | **Quán cao điểm** — cần **đồng bộ với volume** |
 
-**Đơn vị đo billing đề xuất (F&B):** **1 bill đã đóng** = 1 session `PaymentConfirmed` (tiền mặt / CK / Momo) — *không* tính từng dòng món (khách sợ “phí theo từng món”).
+**Đơn vị đo billing (F&B):** **1 lượt quota** = khách **order** (QR bàn) + quán **xác nhận đơn** (`FnB.OrderConfirmedByWaiter` — NV xác nhận → gửi bếp). *Không* tính từng dòng món; *không* tính riêng `PaymentConfirmed`. Tham chiếu quy mô gói: **lượt/bàn/ngày** (TB mỗi bàn mỗi ngày); hóa đơn quota = **tổng lượt/CN/tháng**.
 
 Tách riêng: **dịch vụ khai thuế** đã theo chứng từ/kỳ (`09-PRICING-PROPOSAL.md` §8) — không trộn vào phí hosting F&B.
 
@@ -270,36 +271,36 @@ Tách riêng: **dịch vụ khai thuế** đã theo chứng từ/kỳ (`09-PRICI
 | Dự báo cho khách | ★★★ | ★ | ★★ |
 | **Lợi nhuận Linm dài hạn** | TB nếu không fair-use | Cao nếu volume lớn | **Cao nhất ổn định** |
 
-**Kết luận:** **Không** chuyển hẳn sang thuần theo chứng từ (khó chốt sales F&B). **Không** giữ flat vô hạn (CN 50 bàn Tết lỗ margin). → **C · Hybrid** = giữ cách nói “**X triệu/tháng/chi nhánh**” + **quota bill** trong HĐ + phụ thu mềm khi vượt.
+**Kết luận:** **Không** chuyển hẳn sang thuần theo chứng từ (khó chốt sales F&B). **Không** giữ flat vô hạn (CN 50 bàn Tết lỗ margin). → **C · Hybrid** = giữ cách nói “**X triệu/tháng/chi nhánh**” + **quota order** trong HĐ + phụ thu mềm khi vượt.
 
 ### 11.3 Cấu trúc hybrid đề xuất (thay thế dần bảng §4 công khai)
 
 **Công thức:**
 
 ```
-Phí tháng/CN = Phí nền gói + max(0, (Bill_tháng − Quota_gói) × Đơn_giá_vượt)
+Phí tháng/CN = Phí nền gói + max(0, (Lượt_order_xác_nhận − Quota_gói) × Đơn_giá_vượt)
 ```
 
-| Gói (tên khách) | Phí nền/CN/tháng | Quota bill/CN/tháng | Phụ thu vượt | Quy mô tham chiếu |
-|-----------------|------------------|---------------------|--------------|-------------------|
-| **Cơ bản** | **500.000đ** | **2.500 bill** (~80/ngày) | **60đ/bill** | &lt;30 bàn |
-| **Tiêu chuẩn** ★ | **800.000đ** | **5.000 bill** (~165/ngày) | **50đ/bill** | ~30–40 bàn |
-| **Mở rộng** | **1.000.000đ** | **10.000 bill** (~330/ngày) | **40đ/bill** | 40+ bàn · đa TK · chuỗi |
+| Gói (tên khách) | Phí nền/CN/tháng | Quota / CN / tháng | Phụ thu vượt | Quy mô tham chiếu |
+|-----------------|------------------|-------------------|--------------|-------------------|
+| **Cơ bản** | **680.000đ** | **1.200 lượt** (~30 lượt/bàn/ngày) | **60đ/lượt** | **&lt;10 bàn** |
+| **Tiêu chuẩn** ★ | **999.000đ** | **2.500 lượt** (~80 lượt/bàn/ngày) | **50đ/lượt** | **10–20 bàn** |
+| **Mở rộng** | **1.999.000đ** | **5.000 lượt** (~165 lượt/bàn/ngày) | **40đ/lượt** | **20+ bàn** · đa TK · chuỗi |
 
-★ Pilot Lẩu Gà Ngon: ~200 session/ngày cao điểm × 30 ≈ **6.000 bill/tháng** → nằm trong Tiêu chuẩn + ~1.000 vượt × 50đ ≈ **+50k** (hoặc khuyến khích lên Mở rộng).
+★ Pilot Lẩu Gà Ngon: chọn gói theo số bàn thực tế (10–20 → Tiêu chuẩn 2.500 bill; &lt;10 → Cơ bản 1.200 bill).
 
-**Ước lượng bill/tháng theo quy mô:**
+**Ước lượng lượt order xác nhận/tháng theo quy mô:**
 
-| Quy mô | Bill/ngày (TB) | Bill/tháng | Gói fit |
-|--------|----------------|------------|---------|
-| Quán nhỏ 15 bàn | 40–60 | 1.200–1.800 | Cơ bản |
-| Lẩu ~30 bàn | 80–120 | 2.400–3.600 | Cơ bản / Tiêu chuẩn |
-| Lẩu ~40 bàn cao điểm | 150–200 | 4.500–6.000 | Tiêu chuẩn / Mở rộng |
-| 50+ bàn / 2 ca | 250+ | 7.500+ | Mở rộng + phụ thu hoặc báo giá CN |
+| Quy mô | Lượt/bàn/ngày (TB) | Lượt/tháng | Gói fit |
+|--------|---------------------|------------|---------|
+| Quán nhỏ &lt;10 bàn | ~30 lượt/bàn/ngày | ~1.200 | Cơ bản 680k |
+| Quán 10–15 bàn | ~50–80 lượt/bàn/ngày | 1.500–2.400 | Tiêu chuẩn 999k |
+| Quán 16–20 bàn | ~80–100 lượt/bàn/ngày | 2.400–3.000 | Tiêu chuẩn / cân nhắc Mở rộng |
+| 20+ bàn / 2 ca | ~120+ lượt/bàn/ngày | 3.600+ | Mở rộng 1,999k |
 
 ### 11.4 Tăng phí “phù hợp” — thang leo (không đột ngột)
 
-1. **Theo gói tính năng** (đã có): 500 → 800 → 1tr — map thêm quota bill như bảng trên.  
+1. **Theo gói tính năng** (đã có): 680k → 999k → 1,999k — map thêm quota order như bảng trên.  
 2. **Theo số bàn lúc ký HĐ** (band, không đo realtime):
 
    | Bàn/CN | Điều chỉnh nền |
@@ -316,26 +317,25 @@ Phí tháng/CN = Phí nền gói + max(0, (Bill_tháng − Quota_gói) × Đơn_
 
 ### 11.5 Cách nói với khách (sales)
 
-- **Nói:** “**800k/tháng/chi nhánh**, gói Tiêu chuẩn — **bao gồm ~5.000 bill/tháng** (~160 bill/ngày), đủ quán 30–40 bàn.”  
+- **Nói:** “**999k/tháng/chi nhánh**, gói Tiêu chuẩn — **bao gồm 2.500 lượt order xác nhận/tháng**, phù hợp quán **10–20 bàn**.”  
 - **Không nói:** “tính từng chứng từ” làm headline — chỉ ghi **điều khoản fair use** phụ lục HĐ.  
 - **Tách:** phí **khai thuế** vẫn **/kỳ theo chứng từ HĐĐT** (§8) — khách HKD quen mô hình đó ở dịch vụ thuế.
 
 ### 11.6 Lợi nhuận: hybrid vs flat thuần
 
-Giả sử CN 40 bàn, **6.000 bill/tháng**, chi biến đổi ~350k:
+Giả sử CN **18 bàn**, **2.800 lượt order xác nhận/tháng**, chi biến đổi ~350k:
 
 | Mô hình | Thu/CN | Biên ước tính |
 |---------|--------|---------------|
-| Flat 800k | 800k | ~450k (55%) — **mỏng nếu support nặng** |
-| Thuần 6.000 × 150đ | 900k | ~550k — khó bán |
-| **Hybrid 800k + 1.000×50đ** | **850k** | **~500k** — cân bằng |
+| Flat 999k | 999k | ~649k |
+| Hybrid 999k + 300×50đ | **1.014k** | **~664k** |
 
-Giả sử CN nhỏ **1.500 bill**, flat 500k vs hybrid 500k (dưới quota):
+Giả sử CN nhỏ **900 lượt**, hybrid 680k (dưới quota 1.200):
 
 | Mô hình | Thu | Ghi chú |
 |---------|-----|---------|
-| Flat 500k | 500k | OK |
-| Hybrid 500k | 500k | **Giống flat** — khách nhỏ không phạt |
+| Flat 680k | 680k | OK |
+| Hybrid 680k | 680k | **Giống flat** — khách nhỏ không phạt |
 
 → Hybrid **không tệ hơn flat** với quán nhỏ; **tốt hơn** với quán đông trên cùng platform.
 
@@ -343,10 +343,10 @@ Giả sử CN nhỏ **1.500 bill**, flat 500k vs hybrid 500k (dưới quota):
 
 | Meter | Nguồn | Chu kỳ |
 |-------|-------|--------|
-| `bills_closed_count` | Event `FnB.PaymentConfirmed` · filter `branchId` | Calendar month |
+| `orders_confirmed_count` | Event `FnB.OrderConfirmedByWaiter` · filter `branchId` | Calendar month |
 | Quota | Config theo gói + `branchId` | HĐ |
 | Dashboard | Admin Linm + email 80%/100% quota | — |
-| Hóa đơn phụ thu | Cuối tháng · line item “Vượt quota bill” | — |
+| Hóa đơn phụ thu | Cuối tháng · line item “Vượt quota order” | — |
 
 Phase 1 pilot: có thể **chỉ ghi HĐ + đếm tay** 3 tháng đầu; bật auto billing khi ≥5 CN.
 
@@ -359,6 +359,8 @@ Phase 1 pilot: có thể **chỉ ghi HĐ + đếm tay** 3 tháng đầu; bật a
 | Tăng phí thế nào? | Gói + band số bàn + quota + phụ thu vượt; CN siêu lớn → báo giá riêng |
 
 **Bước tiếp:** cập nhật `09-PRICING-PROPOSAL.md` §4 (công khai quota) khi sales chốt wording — hiện chỉ ghi nội bộ §11.
+
+**Web (2026-06-07):** `pricing.html#quota` · `index.html` gói tính năng + FAQ · `09-PRICING-PROPOSAL.md` §4.
 
 ---
 
