@@ -46,4 +46,5 @@ Branding app (logo Linm, tên `LINM F&B — {tenant}`): `docs/context/10-APP-BRA
 **Tuần 1 (typical):** tenant + menu seed · sơ đồ bàn + QR print · deploy BFF/Order/Kitchen/Payment · UAT nội bộ.  
 **Tuần 2:** ca pilot · hotfix · bàn giao vận hành.
 
-Demo pitch: `index.html` § Lộ trình triển khai.
+Demo pitch: `index.html` § Lộ trình triển khai.  
+Mẫu chào hàng gửi khách: `11-SALES-OUTREACH.md`

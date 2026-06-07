@@ -43,7 +43,11 @@ section h2{font-size:1.5rem;color:var(--navy);margin-bottom:.35rem}
 .section-block{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:2rem}
 .section-block.admin{border-top:4px solid var(--amber)}
 .section-block.fnb{border-top:4px solid var(--green)}
+.section-block.deploy{border-top:4px solid #6366f1}
 .section-block.erp{border-top:4px solid var(--navy)}
+.deploy-badge{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:.2rem .55rem;border-radius:999px;margin-bottom:.5rem}
+.deploy-badge.saas{background:#eef2ff;color:#4338ca}
+.deploy-badge.buyout{background:#f0fdf4;color:#047857}
 
 .feature-modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.25rem}
 .feature-module{border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.1rem;background:#fafafa}
@@ -122,6 +126,7 @@ footer a{color:var(--green-mid)}
   <p class="page-slogan"><span class="vi">Hỗ trợ cá nhân / hộ kinh doanh — giảm gánh nặng và nỗi lo về thuế</span><span class="en" style="display:none">For individuals &amp; household businesses — lighter load, less tax worry</span></p>
   <div class="tab-nav">
     <a href="#fnb" class="active"><span class="vi">Phần mềm F&amp;B</span><span class="en" style="display:none">F&amp;B software</span></a>
+    <a href="#deploy"><span class="vi">Hình thức triển khai</span><span class="en" style="display:none">Deployment models</span></a>
     <a href="#admin"><span class="vi">Hành chính · Khai thuế</span><span class="en" style="display:none">Admin · Tax filing</span></a>
     <a href="#erp"><span class="vi">Linm ERP · Kế toán</span><span class="en" style="display:none">Linm ERP · Accounting</span></a>
   </div>
@@ -196,6 +201,74 @@ footer a{color:var(--green-mid)}
       <span class="vi">💡 20 triệu ≈ lương 1 NV ~2 tháng · 500k/tháng ≈ 17.000đ/ngày (rẻ hơn 1 ly trà gừng 35k).</span>
       <span class="en" style="display:none">💡 20M ≈ 2 months waiter wage · 500k/mo ≈ 17k/day.</span>
     </div>
+  </div>
+</section>
+
+<!-- Deployment models -->
+<section id="deploy">
+  <div class="section-block deploy">
+    <h2><span class="vi">Hình thức triển khai &amp; sở hữu hệ thống</span><span class="en" style="display:none">Deployment &amp; ownership models</span></h2>
+    <p class="section-sub"><span class="vi">Chọn mô hình phù hợp quy mô và năng lực vận hành CNTT của quán / chuỗi. Phí triển khai (~20 triệu CN đầu) áp dụng cho <strong>cả hai</strong> hình thức trừ khi có thỏa thuận riêng.</span><span class="en" style="display:none">Pick the model that fits your scale and IT ops capacity. Setup fee (~20M first branch) applies to <strong>both</strong> unless agreed otherwise.</span></p>
+
+    <div class="pricing-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+      <div class="price-card highlight" style="background:#eef2ff;border-color:#a5b4fc">
+        <span class="deploy-badge saas"><span class="vi">Mô hình A · Thuê</span><span class="en" style="display:none">Model A · Subscription</span></span>
+        <h3><span class="vi">Triển khai + thuê theo tháng</span><span class="en" style="display:none">Setup + monthly subscription</span></h3>
+        <ul>
+          <li><span class="vi"><strong>Server Linm</strong> — Linm vận hành hạ tầng, bảo mật, sao lưu</span><span class="en" style="display:none"><strong>Linm-hosted</strong> — infra, security, backups</span></li>
+          <li><span class="vi"><strong>Subdomain</strong> theo đơn vị / chi nhánh (vd. <code>lau-ga-ngon.linm.vn</code>, <code>order.{tenant}.linm.vn</code>)</span><span class="en" style="display:none"><strong>Subdomain</strong> per unit/branch (e.g. <code>lau-ga-ngon.linm.vn</code>)</span></li>
+          <li><span class="vi">Phí duy trì: <strong>500k – 1tr/tháng/CN</strong> (gói tính năng §1)</span><span class="en" style="display:none">Ops fee: <strong>500k–1M/month/branch</strong></span></li>
+          <li><span class="vi">Gói thanh toán <strong>tối thiểu 3 tháng</strong></span><span class="en" style="display:none"><strong>Minimum 3-month</strong> billing cycle</span></li>
+          <li><span class="vi">Thanh toán trước <strong>12 tháng → tặng 1 tháng</strong> (13 tháng sử dụng)</span><span class="en" style="display:none">Prepay <strong>12 months → 1 month free</strong> (13 months of service)</span></li>
+          <li><span class="vi"><strong>3 tháng đầu miễn phí</strong> duy trì sau go-live (pilot)</span><span class="en" style="display:none"><strong>First 3 months free</strong> after go-live (pilot)</span></li>
+        </ul>
+      </div>
+      <div class="price-card" style="background:#f0fdf4;border-color:#86efac">
+        <span class="deploy-badge buyout"><span class="vi">Mô hình B · Trọn gói</span><span class="en" style="display:none">Model B · Buyout</span></span>
+        <h3><span class="vi">Triển khai + mua trọn gói ứng dụng</span><span class="en" style="display:none">Setup + perpetual app license</span></h3>
+        <ul>
+          <li><span class="vi"><strong>Server &amp; dữ liệu</strong> do khách tự quản lý (on-prem / cloud riêng)</span><span class="en" style="display:none"><strong>Server &amp; data</strong> managed by customer</span></li>
+          <li><span class="vi"><strong>Domain</strong> do khách cung cấp &amp; trỏ DNS</span><span class="en" style="display:none"><strong>Domain</strong> supplied by customer</span></li>
+          <li><span class="vi">Giá <strong>thiết lập ứng dụng một lần</strong> (~20 triệu CN đầu — như mục 1)</span><span class="en" style="display:none"><strong>One-time app setup</strong> (~20M first branch — see §1)</span></li>
+          <li><span class="vi">Không bao gồm phí hosting / server hàng tháng tại Linm</span><span class="en" style="display:none">No Linm monthly hosting fee</span></li>
+          <li><span class="vi">Hỗ trợ bảo trì &amp; nâng cấp: báo giá riêng theo gói (tuỳ chọn)</span><span class="en" style="display:none">Maintenance &amp; upgrades: optional separate quote</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pricing-note">
+      <span class="vi">⚙️ <strong>Phí phát sinh (cả hai mô hình):</strong> Đổi domain, đổi tên thương hiệu/tenant, bổ sung nghiệp vụ hoặc tích hợp ngoài phạm vi hợp đồng ban đầu — Linm báo giá tại thời điểm yêu cầu, trước khi thực hiện.</span>
+      <span class="en" style="display:none">⚙️ <strong>Extra fees (both models):</strong> Domain change, rebrand/tenant rename, extra business features or integrations beyond the original scope — quoted at time of request, before work starts.</span>
+    </div>
+
+    <table class="pricing-table" style="margin-top:1.25rem;background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+      <thead><tr>
+        <th><span class="vi">Tiêu chí</span><span class="en" style="display:none">Criteria</span></th>
+        <th><span class="vi">A · Thuê Linm</span><span class="en" style="display:none">A · Linm hosted</span></th>
+        <th><span class="vi">B · Trọn gói</span><span class="en" style="display:none">B · Buyout</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="vi">Hạ tầng</span><span class="en" style="display:none">Infrastructure</span></td>
+          <td>Linm</td>
+          <td><span class="vi">Khách hàng</span><span class="en" style="display:none">Customer</span></td>
+        </tr>
+        <tr>
+          <td><span class="vi">Tên miền</span><span class="en" style="display:none">Domain</span></td>
+          <td><span class="vi">Subdomain Linm</span><span class="en" style="display:none">Linm subdomain</span></td>
+          <td><span class="vi">Domain khách</span><span class="en" style="display:none">Customer domain</span></td>
+        </tr>
+        <tr>
+          <td><span class="vi">Phí hàng tháng</span><span class="en" style="display:none">Monthly fee</span></td>
+          <td>500k–1tr/CN · min 3 tháng · trả 12 tặng 1</td>
+          <td><span class="vi">Không (hosting khách)</span><span class="en" style="display:none">None (customer hosts)</span></td>
+        </tr>
+        <tr>
+          <td><span class="vi">Phí triển khai</span><span class="en" style="display:none">Setup</span></td>
+          <td colspan="2"><strong>~20 triệu</strong> <span class="vi">CN đầu · CN thêm giảm 30–50%</span><span class="en" style="display:none">first branch · extras 30–50% off</span></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -374,7 +447,8 @@ footer a{color:var(--green-mid)}
       <tr><td>Linm F&amp;B — triển khai</td><td><strong>~20.000.000đ</strong></td><td><span class="vi">Một lần · CN đầu</span><span class="en" style="display:none">One-time · first branch</span></td></tr>
       <tr><td>Linm F&amp;B — triển khai CN thêm</td><td><strong>~10–14 triệu</strong> <span class="vi">(giảm 30–50%)</span><span class="en" style="display:none">(30–50% off)</span></td><td><span class="vi">Cùng NG &amp; quy mô · tùy đào tạo</span><span class="en" style="display:none">Same model · by training</span></td></tr>
       <tr><td>Linm F&amp;B — vận hành</td><td><strong>Miễn phí</strong></td><td><span class="vi">3 tháng đầu</span><span class="en" style="display:none">First 3 months</span></td></tr>
-      <tr><td>Linm F&amp;B — duy trì</td><td><strong>500.000 – 1.000.000đ</strong></td><td><span class="vi">/ tháng / CN</span><span class="en" style="display:none">/ month / branch</span></td></tr>
+      <tr><td>Linm F&amp;B — duy trì (mô hình A)</td><td><strong>500.000 – 1.000.000đ</strong></td><td><span class="vi">/ tháng / CN · min <strong>3 tháng</strong> · trả 12 tặng 1</span><span class="en" style="display:none">/ month / branch · min <strong>3 mo</strong> · 12 prepay +1 free</span></td></tr>
+      <tr><td><span class="vi">Triển khai — hình thức</span><span class="en" style="display:none">Deployment</span></td><td colspan="2"><a href="#deploy"><span class="vi">A Thuê Linm (subdomain) · B Trọn gói (domain khách)</span><span class="en" style="display:none">A Hosted · B Buyout</span></a></td></tr>
       <tr><td>Hành chính — khai thuế</td><td><strong>500.000 – 1.000.000đ</strong></td><td><span class="vi">/ kỳ · theo CT &amp; HĐ đầu vào</span><span class="en" style="display:none">/ period · by document volume</span></td></tr>
       <tr><td>Linm ERP — kế toán &amp; bán lẻ</td><td><strong><span class="vi">Liên hệ báo giá</span><span class="en" style="display:none">Contact for quote</span></strong></td><td><span class="vi">DN / HKD góp vốn NĐT · <a href="#erp">tính năng</a></span><span class="en" style="display:none">Company / HKD with investors · <a href="#erp">features</a></span></td></tr>
     </tbody>

@@ -89,7 +89,40 @@ Giá **theo chi nhánh / tháng** (VAT nếu có sẽ ghi rõ trên hóa đơn):
 
 ★ **Đề xuất cho pilot Lẩu Gà Ngon** — đủ tính năng đánh giá NV và món bán chạy.
 
-Thanh toán: **theo tháng**, hợp đồng tối thiểu 6 tháng (có thể thương lượng).
+Thanh toán duy trì (mô hình A — thuê Linm): gói **tối thiểu 3 tháng** · thanh toán trước **12 tháng được tặng 1 tháng**. Chi tiết hình thức triển khai: **§4b**.
+
+---
+
+## 4b. Hình thức triển khai & sở hữu
+
+Phí triển khai (~20 triệu CN đầu) áp dụng cho **cả hai** mô hình trừ thỏa thuận riêng.
+
+### Mô hình A — Triển khai + thuê theo tháng (Linm hosting)
+
+| Hạng mục | Nội dung |
+|----------|----------|
+| **Hạ tầng** | Server Linm — vận hành, bảo mật, sao lưu |
+| **Truy cập** | **Subdomain** theo đơn vị / chi nhánh (vd. `lau-ga-ngon.linm.vn`, `order.{tenant}.linm.vn`) |
+| **Phí duy trì** | 500k – 1tr/tháng/CN (gói §4) |
+| **Thanh toán** | Gói **tối thiểu 3 tháng** |
+| **Ưu đãi** | Trả trước **12 tháng → miễn phí 1 tháng** (13 tháng sử dụng) |
+| **Pilot** | 3 tháng đầu miễn phí duy trì sau go-live |
+
+### Mô hình B — Triển khai + mua trọn gói ứng dụng
+
+| Hạng mục | Nội dung |
+|----------|----------|
+| **Hạ tầng & dữ liệu** | Khách tự quản lý (server on-prem hoặc cloud riêng) |
+| **Domain** | Khách cung cấp và trỏ DNS |
+| **Phí ứng dụng** | **Thiết lập một lần** (~20 triệu CN đầu — như §2) |
+| **Hosting Linm** | Không thu phí hàng tháng tại Linm |
+| **Bảo trì / nâng cấp** | Báo giá riêng theo gói (tuỳ chọn) |
+
+### Phí phát sinh (cả hai mô hình)
+
+Đổi domain, đổi thông tin tenant/thương hiệu, bổ sung nghiệp vụ hoặc tích hợp ngoài phạm vi hợp đồng ban đầu — **báo giá tại thời điểm yêu cầu**, trước khi thực hiện.
+
+Trang HTML: `pricing.html#deploy`
 
 ---
 
@@ -133,7 +166,8 @@ Linm hỗ trợ khai báo thuế theo kỳ (tháng/quý), tách biệt phí ph�
 | Quán lớn | ~150+ | ~1.000.000đ |
 | Lẩu Gà Ngon (mẫu) | ~172 | ~800.000đ |
 
-Trang báo giá đầy đủ: `pricing.html` · ERP kế toán: `pricing.html#erp`
+Trang báo giá đầy đủ: `pricing.html` · ERP kế toán: `pricing.html#erp`  
+Mẫu chào hàng: `docs/context/11-SALES-OUTREACH.md`
 
 ---
 

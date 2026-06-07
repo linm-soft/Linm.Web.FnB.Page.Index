@@ -86,11 +86,20 @@ section h2{font-size:1.75rem;color:var(--navy);margin-bottom:.5rem;text-align:ce
 .pricing-hero{background:linear-gradient(135deg,#ecfdf5 0%,#fff 100%);border:2px solid var(--green);border-radius:var(--radius);padding:2rem;text-align:center;margin-bottom:2rem}
 .pricing-hero .price-main{font-size:clamp(2rem,6vw,2.75rem);font-weight:800;color:var(--green);line-height:1.2}
 .pricing-hero .price-sub{color:var(--txt2);font-size:1rem;margin-top:.5rem}
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-bottom:2rem}
-.price-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin:0 auto 2rem;max-width:1080px;width:100%}
+@media (max-width:960px){.pricing-grid{grid-template-columns:1fr;max-width:400px}}
+.price-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;height:100%}
 .price-card.highlight{border-color:var(--green);background:var(--green-light)}
+.price-card.amber{background:#fffbeb;border-color:#fde68a}
+.price-card.erp{background:#eff6ff;border-color:#93c5fd}
 .price-card h3{font-size:1rem;color:var(--navy);margin-bottom:.75rem}
-.price-card .amount{font-size:1.75rem;font-weight:800;color:var(--green);margin:.5rem 0}
+.price-card .amount{font-size:1.75rem;font-weight:800;color:var(--green);margin:.5rem 0;line-height:1.25}
+.price-card.amber .amount{color:var(--amber)}
+.price-card.erp .amount{color:var(--navy);font-size:1.1rem}
+.price-card .card-tag{font-size:.88rem;font-weight:600;margin:.35rem 0 .75rem;line-height:1.45}
+.price-card.amber .card-tag{color:var(--amber)}
+.price-card.erp .card-desc{font-size:.88rem;color:var(--txt2);margin:.35rem 0 .75rem;line-height:1.45;flex:1}
+.price-card .card-actions{margin-top:auto;padding-top:.75rem;display:flex;flex-wrap:wrap;gap:.35rem}
 .price-card p,.price-card li{font-size:.9rem;color:var(--txt2)}
 .price-card ul{list-style:none;margin-top:.75rem}
 .price-card li{padding:.3rem 0;padding-left:1.1rem;position:relative}
@@ -356,8 +365,8 @@ footer a{color:var(--green-mid)}
   <p class="section-sub"><span class="vi">Triển khai <strong>~20 triệu</strong> · miễn phí vận hành <strong>3 tháng</strong> · khai thuế theo kỳ <strong>500k – 1tr</strong></span><span class="en" style="display:none">Setup <strong>~20M</strong> · <strong>3 months free</strong> · tax filing <strong>500k–1M/period</strong></span></p>
 
   <div class="pricing-hero">
-    <div class="price-main"><span class="vi">F&amp;B + Hành chính</span><span class="en" style="display:none">F&amp;B + Admin</span></div>
-    <div class="price-sub"><span class="vi">Phần mềm quán + Linm hỗ trợ khai thuế theo kỳ (chi tiết trên trang báo giá)</span><span class="en" style="display:none">Restaurant software + periodic tax filing support — see pricing page</span></div>
+    <div class="price-main"><span class="vi">F&amp;B · Hành chính · ERP</span><span class="en" style="display:none">F&amp;B · Admin · ERP</span></div>
+    <div class="price-sub"><span class="vi">Quản lý quán · hỗ trợ khai thuế · kế toán doanh nghiệp (chi tiết trên trang báo giá)</span><span class="en" style="display:none">Restaurant ops · tax filing · enterprise accounting — see pricing page</span></div>
   </div>
 
   <div class="pricing-grid">
@@ -371,28 +380,45 @@ footer a{color:var(--green-mid)}
         <li><span class="vi">Từ tháng 4: 500k–1tr/tháng/CN</span><span class="en" style="display:none">From month 4: 500k–1M/mo</span></li>
       </ul>
     </div>
-    <div class="price-card" style="background:#fffbeb;border-color:#fde68a">
+    <div class="price-card amber">
       <h3><span class="vi">📋 Khai thuế theo kỳ</span><span class="en" style="display:none">📋 Periodic tax filing</span></h3>
-      <p class="amount" style="color:var(--amber)">500k – 1tr/kỳ</p>
-      <p style="font-size:.88rem;color:var(--amber);font-weight:600;margin:.5rem 0 .75rem;line-height:1.45"><span class="vi">Hộ kinh doanh &amp; cá nhân — bớt lo thuế, tập trung bán hàng</span><span class="en" style="display:none">Household businesses — focus on sales, not tax stress</span></p>
+      <p class="amount">500k – 1tr/kỳ</p>
+      <p class="card-tag"><span class="vi">Hộ kinh doanh &amp; cá nhân — bớt lo thuế, tập trung bán hàng</span><span class="en" style="display:none">Household businesses — focus on sales, not tax stress</span></p>
       <ul>
         <li><span class="vi">Tùy số chứng từ &amp; HĐ đầu vào hợp lệ</span><span class="en" style="display:none">By valid voucher/invoice volume</span></li>
         <li><span class="vi">Linm tổng hợp số liệu + hỗ trợ nộp kỳ</span><span class="en" style="display:none">Data rollup + filing assist</span></li>
         <li><span class="vi">Ví dụ quán vừa ~800k/kỳ</span><span class="en" style="display:none">e.g. ~800k/period medium venue</span></li>
       </ul>
     </div>
-    <div class="price-card" style="background:#eff6ff;border-color:#93c5fd;grid-column:1/-1">
-      <h3><span class="vi">🏢 Linm ERP — Kế toán &amp; bán lẻ</span><span class="en" style="display:none">🏢 Linm ERP — Accounting &amp; retail</span></h3>
-      <p class="amount" style="color:var(--navy);font-size:1.15rem"><span class="vi">Doanh nghiệp / HKD góp vốn nhà đầu tư</span><span class="en" style="display:none">Companies / HKD with investor capital</span></p>
-      <p style="font-size:.88rem;color:var(--txt2);margin:.5rem 0 .75rem;line-height:1.45"><span class="vi">Phân hệ MFE-ERP riêng: chứng từ kế toán, kho, mua — bán, báo cáo tài chính, đa chi nhánh. <strong>Báo giá theo quy mô</strong> — xem <a href="pricing.html#erp">danh sách tính năng</a>.</span><span class="en" style="display:none">Separate MFE-ERP suite: accounting vouchers, inventory, purchase–sales, financial reports, multi-branch. <strong>Quote by scale</strong> — see <a href="pricing.html#erp">feature list</a>.</span></p>
-      <p style="margin-top:.75rem"><a href="pricing.html#erp" class="btn btn-outline" style="font-size:.88rem;padding:.45rem .9rem"><span class="vi">Tính năng ERP</span><span class="en" style="display:none">ERP features</span></a> <a href="https://zalo.me/0775909978" class="btn btn-primary" style="font-size:.88rem;padding:.45rem .9rem;margin-left:.35rem" target="_blank" rel="noopener noreferrer"><span class="vi">Quan tâm — Zalo</span><span class="en" style="display:none">Interested — Zalo</span></a></p>
+    <div class="price-card erp">
+      <h3><span class="vi">🏢 Linm ERP</span><span class="en" style="display:none">🏢 Linm ERP</span></h3>
+      <p class="amount"><span class="vi">Kế toán &amp; bán lẻ</span><span class="en" style="display:none">Accounting &amp; retail</span></p>
+      <p class="card-tag" style="color:var(--navy)"><span class="vi">DN / HKD góp vốn NĐT</span><span class="en" style="display:none">Co. / HKD with investors</span></p>
+      <p class="card-desc"><span class="vi">Chứng từ KT, kho, mua — bán, báo cáo TC, đa CN. <strong>Báo giá theo quy mô.</strong></span><span class="en" style="display:none">GL, inventory, P&amp;S, reports, multi-branch. <strong>Quote by scale.</strong></span></p>
+      <div class="card-actions">
+        <a href="pricing.html#erp" class="btn btn-outline" style="font-size:.88rem;padding:.45rem .9rem"><span class="vi">Tính năng</span><span class="en" style="display:none">Features</span></a>
+        <a href="https://zalo.me/0775909978" class="btn btn-primary" style="font-size:.88rem;padding:.45rem .9rem" target="_blank" rel="noopener noreferrer"><span class="vi">Zalo</span><span class="en" style="display:none">Zalo</span></a>
+      </div>
     </div>
   </div>
 
   <p style="text-align:center;margin-top:1.5rem">
     <a href="pricing.html" class="btn btn-primary"><span class="vi">Xem báo giá đầy đủ</span><span class="en" style="display:none">Full pricing page</span></a>
-    <a href="https://zalo.me/0775909978" class="btn btn-outline" style="margin-left:.5rem" target="_blank" rel="noopener noreferrer">💬 Zalo Linm-Soft</a>
+    <a href="pricing.html#deploy" class="btn btn-outline" style="margin-left:.35rem"><span class="vi">Hình thức triển khai</span><span class="en" style="display:none">Deployment models</span></a>
+    <a href="https://zalo.me/0775909978" class="btn btn-outline" style="margin-left:.35rem" target="_blank" rel="noopener noreferrer">💬 Zalo Linm-Soft</a>
   </p>
+
+  <div class="pricing-grid" style="margin-top:2rem;max-width:720px;margin-left:auto;margin-right:auto">
+    <div class="price-card" style="background:#eef2ff;border-color:#a5b4fc;padding:1.15rem">
+      <h3 style="font-size:.95rem"><span class="vi">☁️ A · Thuê Linm</span><span class="en" style="display:none">☁️ A · Linm hosted</span></h3>
+      <p style="font-size:.88rem;color:var(--txt2);margin-top:.35rem;line-height:1.45"><span class="vi">Server Linm · subdomain/CN · min <strong>3 tháng</strong> · trả 12 <strong>tặng 1</strong></span><span class="en" style="display:none">Linm server · subdomain/branch · min <strong>3 mo</strong> · 12 prepay <strong>+1 free</strong></span></p>
+    </div>
+    <div class="price-card" style="background:#f0fdf4;border-color:#86efac;padding:1.15rem">
+      <h3 style="font-size:.95rem"><span class="vi">📦 B · Trọn gói</span><span class="en" style="display:none">📦 B · Buyout</span></h3>
+      <p style="font-size:.88rem;color:var(--txt2);margin-top:.35rem;line-height:1.45"><span class="vi">Server + data khách · domain khách · phí thiết lập <strong>một lần</strong></span><span class="en" style="display:none">Customer server/data · customer domain · <strong>one-time</strong> setup</span></p>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:.85rem;color:var(--txt2);margin-top:.75rem"><span class="vi">Đổi domain / thêm nghiệp vụ → báo giá phát sinh tại thời điểm · <a href="pricing.html#deploy">chi tiết</a></span><span class="en" style="display:none">Domain change / extra scope → quoted when requested · <a href="pricing.html#deploy">details</a></span></p>
 </section>
 
 <section id="tiers">
