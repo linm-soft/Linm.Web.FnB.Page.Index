@@ -122,7 +122,7 @@ Quản lý / Thu ngân: danh sách "Chờ xác nhận CK"
 
 `pending` → `proof_uploaded` → `confirmed` | `rejected` | `expired`
 
-Lưu: `expected_amount`, `transfer_content`, `qr_payload`, ảnh proof, `confirmed_by_staff_id`.
+Lưu: `expected_amount`, `transfer_content`, `qr_payload`, ảnh proof (tạm thời), `confirmed_by_staff_id`, **`bank_transaction_ref`** (sau xác nhận).
 
 **Không có phase 1:** webhook sao kê, API ngân hàng, đối soát tự động.
 
@@ -131,6 +131,30 @@ Lưu: `expected_amount`, `transfer_content`, `qr_payload`, ảnh proof, `confirm
 Cột: bàn · số tiền · nội dung CK · TK (mask) · ảnh biên lai · thời gian · NV phục vụ.
 
 Checklist UI: (1) đúng số tiền (2) nội dung khớp (3) đúng TK chi nhánh (4) ảnh hợp lý.
+
+### 6.3 Ảnh biên lai — retention 30 ngày · mã giao dịch vĩnh viễn
+
+| Dữ liệu | Thời gian lưu | Ghi chú |
+|---------|---------------|---------|
+| **File ảnh biên lai** (`transfer_proofs`) | **Tối đa 30 ngày** kể từ upload | Phục vụ đối soát / tranh chấp ngắn hạn; job purge xóa file + URL |
+| **Mã giao dịch ngân hàng** (`bank_transaction_ref`) | **Vĩnh viễn** (metadata) | Trích khi staff **Xác nhận** — không cần giữ ảnh lâu dài |
+| Metadata thanh toán | Vĩnh viễn | Số tiền, nội dung CK, phương thức, `confirmed_at`, staff |
+
+**Luồng khi xác nhận:**
+
+```
+Staff bấm Xác nhận
+  → App tự động trích mã giao dịch từ ảnh biên lai (OCR / parse màn hình app NH)
+  → Ghi bank_transaction_ref vào payment_requests / settlements
+  → Audit log lưu ref + staffId (không phụ thuộc ảnh sau purge)
+  → Ảnh vẫn giữ tối đa 30 ngày rồi job xóa (kể cả đã confirmed)
+```
+
+- Trích mã **best-effort**: nếu OCR không đọc được, staff có thể **nhập tay** trước khi confirm (UI optional).
+- Báo cáo / bảng kê CK tra cứu theo **`bank_transaction_ref`** + nội dung bill — không cần mở lại ảnh sau khi đã xác nhận.
+- Giảm rủi ro storage khi data tăng: disk chỉ giữ ảnh “chờ duyệt” + cửa sổ 30 ngày, không tích lũy ảnh theo năm.
+
+Bảng gợi ý `transfer_proofs`: `payment_request_id`, `storage_url`, `uploaded_at`, `purge_after` (= uploaded_at + 30d), `ocr_transaction_ref` (nullable, điền lúc confirm).
 
 ---
 
@@ -143,6 +167,7 @@ POST /api/v1/fnb/payment-requests
 POST /api/v1/fnb/payment-requests/{id}/proof
 GET  /api/v1/fnb/payment-requests?status=pending
 POST /api/v1/fnb/payment-requests/{id}/confirm
+  body optional: { bankTransactionRef }  — nếu OCR thiếu, staff bổ sung tay
 POST /api/v1/fnb/payment-requests/{id}/reject
 
 POST /api/v1/fnb/payment-accounts          — cấu hình TK chi nhánh
@@ -177,7 +202,9 @@ Logo ngân hàng trên ảnh: tuỳ chọn UI — **không** ảnh hưởng kh�
 
 ## 10. Phase 2 (tương lai)
 
-Webhook đối soát (Casso/Sepay) · OCR assist biên lai · CK nhiều lần một bill · deeplink app NH.
+Webhook đối soát (Casso/Sepay) · tinh chỉnh OCR mã FT/ref đa ngân hàng · CK nhiều lần một bill · deeplink app NH.
+
+*(Phase 1 đã có OCR trích `bank_transaction_ref` lúc xác nhận — xem §6.3.)*
 
 ---
 

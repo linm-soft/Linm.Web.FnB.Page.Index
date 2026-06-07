@@ -85,7 +85,7 @@ Demo: {BASE_URL} · Zalo 0775 909 978
 | **Giải pháp** | QR bàn · bếp realtime · NV + thu ngân · báo cáo · hỗ trợ khai thuế theo kỳ |
 | **Thời gian** | Go-live pilot **1–2 tuần** / 1 chi nhánh |
 | **Chi phí** | Triển khai **~20 triệu** · **3 tháng miễn phí** · duy trì **500k–1tr/th/tháng/CN** (min 3 tháng, trả 12 tặng 1) |
-| **Triển khai** | **A** Thuê Linm (subdomain) · **B** Trọn gói (domain khách) — `pricing.html#deploy` |
+| **Triển khai** | **A** Thuê Linm ~20tr/CN · **B** Trọn gói **từ 50tr** — liên hệ báo giá · `pricing.html#deploy` |
 | **Mở rộng** | Chuỗi quán · đồng bộ ERP kế toán khi có nhà đầu tư — xem `pricing.html#erp` |
 | **Demo** | `app-demo.html` — thử flow khách → bếp → thu ngân |
 

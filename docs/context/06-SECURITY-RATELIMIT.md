@@ -41,7 +41,8 @@ Guest **không** có JWT — chỉ `X-Guest-Session` + signed table token từ Q
 ## 4. Payment Security
 
 - QR CK: số tiền + nội dung **server-generated** — client không tự sửa
-- Upload proof: max 5MB, JPEG/PNG, optional OCR assist (phase 2)
+- Upload proof: max 5MB, JPEG/PNG; **ảnh lưu tối đa 30 ngày** (§6.3 `08-QR-PAYMENT.md`)
+- Lúc **Xác nhận**: app trích **mã giao dịch ngân hàng** (`bank_transaction_ref`) từ ảnh — lưu metadata vĩnh viễn, ảnh purge sau 30 ngày
 - Staff confirm requires role `cashier` or `manager`
 - Multi-account: mỗi chi nhánh map N tài khoản; guest chọn 1 account → QR tương ứng
 
@@ -54,8 +55,13 @@ Guest **không** có JWT — chỉ `X-Guest-Session` + signed table token từ Q
 | QR template change | adminId, accountId, preview hash |
 | Kitchen override | kitchenId, ticketId, reason |
 
-## 6. PII
+## 6. PII & retention
 
-- Guest phone optional — masked in reports (`***1234`)
-- Retention: session PII purge 90 days post payment
-- Export Excel: manager role only
+| Loại | Chính sách |
+|------|------------|
+| Guest phone (optional) | Mask trong báo cáo (`***1234`); purge PII session **90 ngày** sau thanh toán |
+| **Ảnh biên lai CK** | **Tối đa 30 ngày** — job purge file; mục đích đối soát ngắn hạn |
+| **Mã giao dịch CK** | Lưu vĩnh viễn khi xác nhận (OCR + nhập tay fallback) — xem `08-QR-PAYMENT.md` §6.3 |
+| Export Excel | Chỉ role manager |
+
+Job nền: `ProofImagePurgeJob` — xóa object storage + null `proofUrl` khi `purge_after < now`.

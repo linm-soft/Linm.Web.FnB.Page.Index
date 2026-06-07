@@ -50,7 +50,7 @@
 |----------|------|
 | `fnb_order` | `tables`, `table_qr_tokens`, `sessions`, `order_lines`, `addons` |
 | `fnb_kitchen` | `kitchen_tickets`, `ticket_lines`, prep timestamps |
-| `fnb_payment` | `payment_requests`, `payment_accounts`, `transfer_proofs`, `settlements` |
+| `fnb_payment` | `payment_requests`, `payment_accounts`, `transfer_proofs` (ảnh ≤30d), `settlements` + `bank_transaction_ref` |
 | `fnb_admin` | `branches`, `menu_items`, `combos`, `categories`, `payment_qr_templates` |
 
 Cross-service reads via BFF aggregation or domain events — không join cross-DB.

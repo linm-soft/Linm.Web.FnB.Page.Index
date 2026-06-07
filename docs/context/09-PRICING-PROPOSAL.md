@@ -95,9 +95,11 @@ Thanh toán duy trì (mô hình A — thuê Linm): gói **tối thiểu 3 tháng
 
 ## 4b. Hình thức triển khai & sở hữu
 
-Phí triển khai (~20 triệu CN đầu) áp dụng cho **cả hai** mô hình trừ thỏa thuận riêng.
+Phí triển khai **mô hình A** (~20 triệu CN đầu) — xem **§2**. **Mô hình B** (trọn gói) — **từ 50 triệu**, liên hệ báo giá.
 
 ### Mô hình A — Triển khai + thuê theo tháng (Linm hosting)
+
+Triển khai **~20 triệu CN đầu** (§2). CN thêm cùng NG/quy mô giảm 30–50%.
 
 | Hạng mục | Nội dung |
 |----------|----------|
@@ -112,15 +114,30 @@ Phí triển khai (~20 triệu CN đầu) áp dụng cho **cả hai** mô hình 
 
 | Hạng mục | Nội dung |
 |----------|----------|
+| **Giá** | **Từ 50.000.000đ** — **liên hệ báo giá** theo quy mô, số CN, hạ tầng &amp; phạm vi bàn giao |
 | **Hạ tầng & dữ liệu** | Khách tự quản lý (server on-prem hoặc cloud riêng) |
 | **Domain** | Khách cung cấp và trỏ DNS |
-| **Phí ứng dụng** | **Thiết lập một lần** (~20 triệu CN đầu — như §2) |
+| **Phí ứng dụng** | **Mua trọn gói một lần** — triển khai, cấu hình, bàn giao mã nguồn / package theo thỏa thuận |
 | **Hosting Linm** | Không thu phí hàng tháng tại Linm |
 | **Bảo trì / nâng cấp** | Báo giá riêng theo gói (tuỳ chọn) |
+
+**Liên hệ:** Zalo Linm-Soft · 0775 909 978
 
 ### Phí phát sinh (cả hai mô hình)
 
 Đổi domain, đổi thông tin tenant/thương hiệu, bổ sung nghiệp vụ hoặc tích hợp ngoài phạm vi hợp đồng ban đầu — **báo giá tại thời điểm yêu cầu**, trước khi thực hiện.
+
+### Dữ liệu & lưu trữ (cam kết vận hành)
+
+| Hạng mục | Chính sách |
+|----------|------------|
+| Ảnh biên lai chuyển khoản | **Tối đa 30 ngày** — phục vụ đối soát; tự động xóa sau hạn |
+| Mã giao dịch ngân hàng | Lưu khi quản lý/thu ngân **xác nhận** (app tự trích từ ảnh + nhập tay nếu cần) |
+| Đơn hàng / báo cáo doanh thu | Metadata giao dịch lưu lâu dài theo nhu cầu kế toán quán |
+
+Giúp hạ tầng ổn định khi quán vận hành lâu dài — chi tiết kỹ thuật: `08-QR-PAYMENT.md` §6.3.
+
+Phân tích rủi ro & lợi nhuận mô hình thuê (nội bộ): `12-RENTAL-MODEL-ANALYSIS.md`
 
 Trang HTML: `pricing.html#deploy`
 

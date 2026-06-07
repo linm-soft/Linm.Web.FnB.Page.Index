@@ -126,6 +126,7 @@ footer a{color:var(--green-mid)}
   <p class="page-slogan"><span class="vi">Hỗ trợ cá nhân / hộ kinh doanh — giảm gánh nặng và nỗi lo về thuế</span><span class="en" style="display:none">For individuals &amp; household businesses — lighter load, less tax worry</span></p>
   <div class="tab-nav">
     <a href="#fnb" class="active"><span class="vi">Phần mềm F&amp;B</span><span class="en" style="display:none">F&amp;B software</span></a>
+    <a href="#quota"><span class="vi">Quota bill</span><span class="en" style="display:none">Bill quota</span></a>
     <a href="#deploy"><span class="vi">Hình thức triển khai</span><span class="en" style="display:none">Deployment models</span></a>
     <a href="#admin"><span class="vi">Hành chính · Khai thuế</span><span class="en" style="display:none">Admin · Tax filing</span></a>
     <a href="#erp"><span class="vi">Linm ERP · Kế toán</span><span class="en" style="display:none">Linm ERP · Accounting</span></a>
@@ -176,10 +177,11 @@ footer a{color:var(--green-mid)}
         <h3><span class="vi">Gói duy trì (từ T4)</span><span class="en" style="display:none">Monthly tiers (from M4)</span></h3>
         <p class="amount">500k – 1tr</p>
         <ul>
-          <li><strong>500k</strong> — <span class="vi">cơ bản &lt;30 bàn</span><span class="en" style="display:none">basic</span></li>
-          <li><strong>800k</strong> ★ — <span class="vi">feedback NV + thống kê món</span><span class="en" style="display:none">feedback + stats</span></li>
-          <li><strong>1tr</strong> — <span class="vi">đa CN, Momo, đa TK</span><span class="en" style="display:none">multi-branch</span></li>
+          <li><strong>500k</strong> — <span class="vi">cơ bản · <strong>2.500 bill/tháng</strong></span><span class="en" style="display:none">basic · <strong>2,500 bills/mo</strong></span></li>
+          <li><strong>800k</strong> ★ — <span class="vi">feedback + thống kê · <strong>5.000 bill/tháng</strong></span><span class="en" style="display:none">feedback + stats · <strong>5,000 bills/mo</strong></span></li>
+          <li><strong>1tr</strong> — <span class="vi">đa CN, Momo · <strong>10.000 bill/tháng</strong></span><span class="en" style="display:none">multi-branch · <strong>10,000 bills/mo</strong></span></li>
         </ul>
+        <p style="font-size:.8rem;color:var(--txt2);margin-top:.65rem"><a href="#quota"><span class="vi">Bill là gì? →</span><span class="en" style="display:none">What is a bill? →</span></a></p>
       </div>
       <div class="price-card">
         <h3><span class="vi">Thanh toán triển khai</span><span class="en" style="display:none">Setup payment</span></h3>
@@ -208,12 +210,13 @@ footer a{color:var(--green-mid)}
 <section id="deploy">
   <div class="section-block deploy">
     <h2><span class="vi">Hình thức triển khai &amp; sở hữu hệ thống</span><span class="en" style="display:none">Deployment &amp; ownership models</span></h2>
-    <p class="section-sub"><span class="vi">Chọn mô hình phù hợp quy mô và năng lực vận hành CNTT của quán / chuỗi. Phí triển khai (~20 triệu CN đầu) áp dụng cho <strong>cả hai</strong> hình thức trừ khi có thỏa thuận riêng.</span><span class="en" style="display:none">Pick the model that fits your scale and IT ops capacity. Setup fee (~20M first branch) applies to <strong>both</strong> unless agreed otherwise.</span></p>
+    <p class="section-sub"><span class="vi">Chọn mô hình phù hợp quy mô và năng lực vận hành CNTT. <strong>A · Thuê Linm:</strong> triển khai ~20 triệu/CN đầu (mục 1). <strong>B · Trọn gói:</strong> mua ứng dụng + triển khai trên hạ tầng khách — <strong>từ 50 triệu</strong>, liên hệ báo giá.</span><span class="en" style="display:none">Choose the model that fits your scale and IT capacity. <strong>A · Hosted:</strong> ~20M setup first branch (§1). <strong>B · Buyout:</strong> on your infra — <strong>from 50M</strong>, contact for quote.</span></p>
 
     <div class="pricing-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
       <div class="price-card highlight" style="background:#eef2ff;border-color:#a5b4fc">
         <span class="deploy-badge saas"><span class="vi">Mô hình A · Thuê</span><span class="en" style="display:none">Model A · Subscription</span></span>
         <h3><span class="vi">Triển khai + thuê theo tháng</span><span class="en" style="display:none">Setup + monthly subscription</span></h3>
+        <p class="amount" style="font-size:1.35rem;margin:.25rem 0 .75rem">~20 triệu <span style="font-size:.85rem;font-weight:600;color:var(--txt2)"><span class="vi">triển khai CN đầu</span><span class="en" style="display:none">setup · first branch</span></span></p>
         <ul>
           <li><span class="vi"><strong>Server Linm</strong> — Linm vận hành hạ tầng, bảo mật, sao lưu</span><span class="en" style="display:none"><strong>Linm-hosted</strong> — infra, security, backups</span></li>
           <li><span class="vi"><strong>Subdomain</strong> theo đơn vị / chi nhánh (vd. <code>lau-ga-ngon.linm.vn</code>, <code>order.{tenant}.linm.vn</code>)</span><span class="en" style="display:none"><strong>Subdomain</strong> per unit/branch (e.g. <code>lau-ga-ngon.linm.vn</code>)</span></li>
@@ -226,13 +229,16 @@ footer a{color:var(--green-mid)}
       <div class="price-card" style="background:#f0fdf4;border-color:#86efac">
         <span class="deploy-badge buyout"><span class="vi">Mô hình B · Trọn gói</span><span class="en" style="display:none">Model B · Buyout</span></span>
         <h3><span class="vi">Triển khai + mua trọn gói ứng dụng</span><span class="en" style="display:none">Setup + perpetual app license</span></h3>
+        <p class="amount" style="font-size:1.5rem;color:#047857;margin:.25rem 0 .15rem"><span class="vi">Từ 50 triệu</span><span class="en" style="display:none">From 50M VND</span></p>
+        <p style="font-size:.88rem;font-weight:600;color:var(--navy);margin-bottom:.75rem"><span class="vi">Liên hệ báo giá theo quy mô &amp; hạ tầng</span><span class="en" style="display:none">Contact us for a tailored quote</span></p>
         <ul>
           <li><span class="vi"><strong>Server &amp; dữ liệu</strong> do khách tự quản lý (on-prem / cloud riêng)</span><span class="en" style="display:none"><strong>Server &amp; data</strong> managed by customer</span></li>
           <li><span class="vi"><strong>Domain</strong> do khách cung cấp &amp; trỏ DNS</span><span class="en" style="display:none"><strong>Domain</strong> supplied by customer</span></li>
-          <li><span class="vi">Giá <strong>thiết lập ứng dụng một lần</strong> (~20 triệu CN đầu — như mục 1)</span><span class="en" style="display:none"><strong>One-time app setup</strong> (~20M first branch — see §1)</span></li>
+          <li><span class="vi">Bản quyền / thiết lập ứng dụng <strong>một lần</strong> (triển khai + bàn giao)</span><span class="en" style="display:none"><strong>One-time</strong> app license + deployment handover</span></li>
           <li><span class="vi">Không bao gồm phí hosting / server hàng tháng tại Linm</span><span class="en" style="display:none">No Linm monthly hosting fee</span></li>
           <li><span class="vi">Hỗ trợ bảo trì &amp; nâng cấp: báo giá riêng theo gói (tuỳ chọn)</span><span class="en" style="display:none">Maintenance &amp; upgrades: optional separate quote</span></li>
         </ul>
+        <p style="margin-top:1rem"><a href="https://zalo.me/0775909978" class="btn btn-primary" style="font-size:.88rem;padding:.5rem 1rem;width:100%;text-align:center" target="_blank" rel="noopener noreferrer"><span class="vi">💬 Liên hệ báo giá — Zalo</span><span class="en" style="display:none">💬 Get a quote — Zalo</span></a></p>
       </div>
     </div>
 
@@ -264,8 +270,13 @@ footer a{color:var(--green-mid)}
           <td><span class="vi">Không (hosting khách)</span><span class="en" style="display:none">None (customer hosts)</span></td>
         </tr>
         <tr>
-          <td><span class="vi">Phí triển khai</span><span class="en" style="display:none">Setup</span></td>
-          <td colspan="2"><strong>~20 triệu</strong> <span class="vi">CN đầu · CN thêm giảm 30–50%</span><span class="en" style="display:none">first branch · extras 30–50% off</span></td>
+          <td><span class="vi">Phí triển khai / mua app</span><span class="en" style="display:none">Setup / license</span></td>
+          <td><strong>~20 triệu</strong> <span class="vi">CN đầu · CN thêm giảm 30–50%</span><span class="en" style="display:none">first branch · 30–50% off extras</span></td>
+          <td><strong><span class="vi">Từ 50 triệu</span><span class="en" style="display:none">From 50M</span></strong> · <span class="vi">liên hệ báo giá</span><span class="en" style="display:none">contact for quote</span></td>
+        </tr>
+        <tr>
+          <td><span class="vi">Ảnh biên lai CK</span><span class="en" style="display:none">Transfer proof photos</span></td>
+          <td colspan="2"><span class="vi">Lưu <strong>tối đa 30 ngày</strong> · khi xác nhận app <strong>tự trích mã giao dịch</strong> lưu lâu dài</span><span class="en" style="display:none">Stored <strong>up to 30 days</strong> · on confirm app <strong>extracts transaction ref</strong> for permanent lookup</span></td>
         </tr>
       </tbody>
     </table>
@@ -444,7 +455,8 @@ footer a{color:var(--green-mid)}
       <th><span class="vi">Chu kỳ</span><span class="en" style="display:none">Cycle</span></th>
     </tr></thead>
     <tbody>
-      <tr><td>Linm F&amp;B — triển khai</td><td><strong>~20.000.000đ</strong></td><td><span class="vi">Một lần · CN đầu</span><span class="en" style="display:none">One-time · first branch</span></td></tr>
+      <tr><td>Linm F&amp;B — triển khai (A · thuê)</td><td><strong>~20.000.000đ</strong></td><td><span class="vi">Một lần · CN đầu</span><span class="en" style="display:none">One-time · first branch</span></td></tr>
+      <tr><td>Linm F&amp;B — trọn gói (B · mua app)</td><td><strong><span class="vi">Từ 50.000.000đ</span><span class="en" style="display:none">From 50M VND</span></strong></td><td><span class="vi">Liên hệ báo giá · domain &amp; server khách</span><span class="en" style="display:none">Contact quote · customer domain/server</span></td></tr>
       <tr><td>Linm F&amp;B — triển khai CN thêm</td><td><strong>~10–14 triệu</strong> <span class="vi">(giảm 30–50%)</span><span class="en" style="display:none">(30–50% off)</span></td><td><span class="vi">Cùng NG &amp; quy mô · tùy đào tạo</span><span class="en" style="display:none">Same model · by training</span></td></tr>
       <tr><td>Linm F&amp;B — vận hành</td><td><strong>Miễn phí</strong></td><td><span class="vi">3 tháng đầu</span><span class="en" style="display:none">First 3 months</span></td></tr>
       <tr><td>Linm F&amp;B — duy trì (mô hình A)</td><td><strong>500.000 – 1.000.000đ</strong></td><td><span class="vi">/ tháng / CN · min <strong>3 tháng</strong> · trả 12 tặng 1</span><span class="en" style="display:none">/ month / branch · min <strong>3 mo</strong> · 12 prepay +1 free</span></td></tr>
