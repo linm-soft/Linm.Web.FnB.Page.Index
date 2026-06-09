@@ -1,0 +1,37 @@
+/* Linm F&B app brand — assets from @linm-soft/common-components / Linm.Web.Root */
+.app-brand{display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;color:inherit;max-width:100%}
+.app-brand:hover{text-decoration:none;opacity:.92}
+.app-brand__icon{width:32px;height:32px;flex-shrink:0;border-radius:8px;object-fit:contain;display:block}
+.app-brand__icon--sm{width:24px;height:24px;border-radius:6px}
+.app-brand__icon--lg{width:56px;height:56px;border-radius:14px}
+.app-brand__icon--xl{width:72px;height:72px;border-radius:16px}
+.app-brand__text{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.app-brand__platform{font-weight:700;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--green,#059669)}
+.app-brand__tenant{font-weight:800;font-size:1rem;color:var(--navy,#0a1628);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app-brand--nav .app-brand__tenant{font-size:1.02rem}
+.app-brand--phone{text-align:center;flex-direction:column;gap:.35rem}
+.app-brand--phone .app-brand__text{align-items:center}
+.app-brand--dark .app-brand__tenant{color:#fff}
+.app-brand--dark .app-brand__platform{color:var(--primary,#00c9a7)}
+
+/* Demo / pilot disclaimer — shared across pitch pages */
+.demo-disclaimer{
+  max-width:44rem;
+  margin:0 auto 1rem;
+  padding:.75rem 1rem;
+  border-radius:10px;
+  font-size:.88rem;
+  line-height:1.55;
+  border:1px solid rgba(5,150,105,.28);
+  background:rgba(209,250,229,.5);
+  color:#065f46;
+  text-align:center;
+}
+.demo-disclaimer strong{color:#047857;font-weight:700}
+.demo-disclaimer--inline{max-width:none;text-align:left;margin:0 0 1rem}
+.demo-disclaimer--dark{
+  border-color:rgba(0,201,167,.35);
+  background:rgba(0,201,167,.1);
+  color:#cbd5e1;
+}
+.demo-disclaimer--dark strong{color:#5eead4}

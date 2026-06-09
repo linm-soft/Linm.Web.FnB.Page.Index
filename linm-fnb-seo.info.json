@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0-dev.7",
+  "timebuild": "2026-06-09T18:20:31.190Z",
+  "routes": [
+    "pricing"
+  ],
+  "default": true
+}

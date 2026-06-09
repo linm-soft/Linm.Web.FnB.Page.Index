@@ -1,12 +1,22 @@
 {
-  "timestamp": "2026-06-09T17:39:39.260Z",
+  "timestamp": "2026-06-09T18:20:31.190Z",
   "publicUrl": "",
   "microfrontends": {
     "@linm/root-config": {
       "url": "/linm-root-config.js",
       "filename": "linm-root-config.js",
       "version": "1.0.30-dev.4",
-      "timebuild": "2026-06-09T17:39:39.261Z"
+      "timebuild": "2026-06-09T17:39:39.260Z"
+    },
+    "@linm/fnb-seo": {
+      "url": "/linm-fnb-seo.547475fd.js",
+      "filename": "linm-fnb-seo.547475fd.js",
+      "version": "1.0.0-dev.7",
+      "timebuild": "2026-06-09T18:20:31.191Z",
+      "routes": [
+        "pricing"
+      ],
+      "default": true
     }
   }
 }

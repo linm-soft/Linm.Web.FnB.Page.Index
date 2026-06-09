@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Allow: /pricing
+Disallow: /dev
+Disallow: /demo/
+
+Sitemap: https://fnb-linm.com/sitemap.xml
