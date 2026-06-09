@@ -1,0 +1,20 @@
+/_manifest.json
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/icons/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: no-cache, must-revalidate
+
+/*.js.map
+  Cache-Control: no-cache, must-revalidate
+
+/*.*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.*.js.map
+  Cache-Control: public, max-age=31536000, immutable

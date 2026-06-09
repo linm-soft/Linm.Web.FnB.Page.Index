@@ -1,0 +1,87 @@
+<!doctype html><html lang="vi"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><meta name="robots" content="index,follow"/><title>Phần mềm quản lý F&B — QR order, khối bán hàng · Linm Soft</title><meta name="description" content="Linm Soft: hệ thống vận hành cho quán ăn, nhà hàng, cafe, trà sữa — khách order QR tại bàn, bếp đồng bộ, QR thanh toán chuyển khoản, báo cáo món bán chạy."/><link rel="canonical" href="https://fnb-linm.com/"/><meta property="og:type" content="website"/><meta property="og:locale" content="vi_VN"/><meta property="og:site_name" content="Linm Soft"/><meta property="og:title" content="Phần mềm quản lý F&B — QR order, khối bán hàng · Linm Soft"/><meta property="og:description" content="Linm Soft: hệ thống vận hành cho quán ăn, nhà hàng, cafe, trà sữa — khách order QR tại bàn, bếp đồng bộ, QR thanh toán chuyển khoản, báo cáo món bán chạy."/><meta property="og:url" content="https://fnb-linm.com/"/><meta property="og:image" content="https://fnb-linm.com/assets/linm/og-share.png"/><meta property="og:image:width" content="512"/><meta property="og:image:height" content="512"/><meta property="og:image:alt" content="Linm Soft — Phần mềm quản lý F&B, khối bán hàng"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Phần mềm quản lý F&B — QR order, khối bán hàng · Linm Soft"/><meta name="twitter:description" content="Linm Soft: hệ thống vận hành cho quán ăn, nhà hàng, cafe, trà sữa — khách order QR tại bàn, bếp đồng bộ, QR thanh toán chuyển khoản, báo cáo món bán chạy."/><meta name="twitter:image" content="https://fnb-linm.com/assets/linm/og-share.png"/><link rel="icon" type="image/svg+xml" href="/icons/logo.svg"/><link rel="icon" type="image/png" sizes="32x32" href="/icons/logo.png"/><link rel="icon" type="image/png" sizes="128x128" href="/icons/logo-128.png"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#4facfe"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="default"/><meta name="apple-mobile-web-app-title" content="Linm-Soft | Quản trị doanh nghiệp"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512.png"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"/><meta name="importmap-type" content="systemjs-importmap"/><meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate"/><meta http-equiv="Pragma" content="no-cache"/><script>(function () {
+    var base = "https://bff.fnb-linm.com/web-bff/api/v1";
+    Object.defineProperty(window, '__LINM_AUTH_BFF_BASE__', {
+      value: base,
+      writable: false,
+      configurable: false,
+      enumerable: true,
+    });
+  })();</script><link rel="preload" href="/system.min.js" as="script" crossorigin="anonymous"/><link rel="preload" href="/single-spa.min.js" as="script" crossorigin="anonymous"/><link rel="preload" href="/named-register.js" as="script" crossorigin="anonymous"/><link rel="preload" href="/react.18.2.0.production.min.js" as="script" crossorigin="anonymous"/><link rel="preload" href="/react-dom.18.2.0.production.min.js" as="script" crossorigin="anonymous"/><script type="systemjs-importmap">{
+    "imports": {
+      "single-spa":  "/single-spa.min.js",
+      "react":       "/react.18.2.0.production.min.js",
+      "react-dom":   "/react-dom.18.2.0.production.min.js"
+    }
+  }</script><script type="systemjs-importmap" id="base-importmap">{
+    "imports": {
+      "@linm/root-config":        "/linm-root-config.js"
+    }
+  }</script><script src="/system.min.js"></script><script src="/named-register.js"></script><script src="/import-map-overrides.js"></script><script>// import-map-overrides-full chỉ hiện khi localStorage[key] === 'true' (không phải 'show')
+    if (localStorage.getItem('overrides-ui') === 'show') {
+      localStorage.setItem('overrides-ui', 'true');
+    }</script><script>(async function() {
+      try {
+        const manifestUrl = '/_manifest.json';
+        console.log('[Manifest Loader] Fetching:', manifestUrl);
+        
+        const response = await fetch(manifestUrl, {
+          cache: 'no-store',
+          headers: { 'Pragma': 'no-cache' }
+        });
+        
+        if (!response.ok) {
+          console.warn('[Manifest Loader] Failed to fetch manifest:', response.status);
+          return;
+        }
+        
+        const manifest = await response.json();
+        console.log('[Manifest Loader] Loaded manifest:', manifest);
+        window.__LINM_MF_MANIFEST__ = manifest;
+        
+        // Wait for System to be available
+        if (typeof System === 'undefined') {
+          console.warn('[Manifest Loader] SystemJS not yet loaded, retrying...');
+          await new Promise(resolve => setTimeout(resolve, 100));
+          return;
+        }
+        
+        // Register all microfrontends into the SystemJS import map
+        if (manifest.microfrontends) {
+          const imports = {};
+          Object.entries(manifest.microfrontends).forEach(([name, info]) => {
+            imports[name] = info.url;
+          });
+
+          // import-map-overrides localStorage — merge AFTER manifest (addImportMap ghi đè DOM overrides)
+          if (window.importMapOverrides) {
+            const overrideMap = window.importMapOverrides.getOverrideMap();
+            Object.entries(overrideMap.imports || {}).forEach(([name, url]) => {
+              console.log(`[Manifest Loader] Override ${name} → ${url}`);
+              imports[name] = url;
+            });
+          }
+
+          Object.entries(imports).forEach(([name, url]) => {
+            console.log(`  ✓ ${name} → ${url}`);
+          });
+          System.addImportMap({ imports });
+          console.log('[Manifest Loader] Import map updated:', Object.keys(imports).length, 'entries');
+        }
+      } catch (err) {
+        console.error('[Manifest Loader] Error:', err);
+      } finally {
+        // Pre-load shared deps sequentially so react-dom always finds window.React.
+        // SystemJS core has no AMD support, so both files fall through to UMD global
+        // mode. Without sequential loading, concurrent network fetches (e.g. DevTools
+        // "Disable cache") can execute react-dom before react sets window.React.
+        try { await System.import('react'); } catch(e) { console.error('[Manifest Loader] react preload failed:', e); }
+        try { await System.import('react-dom'); } catch(e) { console.error('[Manifest Loader] react-dom preload failed:', e); }
+        System.import('@linm/root-config');
+      }
+    })();</script></head><body><div id="navigation"></div><div class="root-loader"><div class="root-loader__spinner"></div></div><import-map-overrides-full show-when-local-storage="overrides-ui"></import-map-overrides-full><script>if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').catch(function(err) {
+          console.warn('[PWA] Service worker registration failed:', err);
+        });
+      });
+    }</script></body></html>

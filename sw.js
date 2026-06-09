@@ -1,0 +1,1 @@
+self.addEventListener("install",()=>{self.skipWaiting()}),self.addEventListener("activate",e=>{e.waitUntil(self.clients.claim())}),self.addEventListener("fetch",e=>{try{if(new URL(e.request.url).origin!==self.location.origin)return}catch{return}e.respondWith(fetch(e.request))});
