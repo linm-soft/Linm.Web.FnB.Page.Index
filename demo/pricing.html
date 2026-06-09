@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="assets/linm/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/linm/icon-192.png">
+<link rel="stylesheet" href="assets/linm/app-brand.css">
+<title>Báo giá — LINM F&amp;B · Lẩu Gà Ngon</title>
+<style>
+:root {
+  --navy:#0a1628; --green:#059669; --green-mid:#34d399;
+  --green-light:#d1fae5; --slate:#f8fafc; --border:#e2e8f0;
+  --txt:#1e293b; --txt2:#64748b; --amber:#d97706; --radius:12px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--txt);background:var(--slate);line-height:1.6}
+a{color:var(--green);text-decoration:none}
+a:hover{text-decoration:underline}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.nav-links{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.lang-btn{background:none;border:1px solid var(--border);padding:.25rem .6rem;border-radius:6px;cursor:pointer;font-size:.85rem;color:var(--txt2)}
+.lang-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn{display:inline-block;padding:.65rem 1.25rem;border-radius:var(--radius);font-weight:600;font-size:.95rem;text-decoration:none;border:none;cursor:pointer}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:#047857;text-decoration:none}
+.btn-outline{background:#fff;color:var(--navy);border:2px solid var(--border)}
+.btn-outline:hover{border-color:var(--green);text-decoration:none}
+
+.page-hero{background:linear-gradient(135deg,var(--navy) 0%,#1e3a5f 100%);color:#fff;padding:3.5rem 1.5rem 3rem;text-align:center}
+.page-hero h1{font-size:clamp(1.6rem,4vw,2.25rem);margin-bottom:.75rem}
+.page-hero p{color:#cbd5e1;max-width:640px;margin:0 auto 1rem;font-size:1.05rem}
+.page-slogan{color:var(--green-mid);font-weight:600;font-size:1.05rem;max-width:640px;margin:0 auto 1.5rem;line-height:1.5}
+.tab-nav{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
+.tab-nav a{padding:.5rem 1rem;border-radius:999px;font-size:.9rem;font-weight:600;color:#cbd5e1;border:1px solid rgba(255,255,255,.25);text-decoration:none}
+.tab-nav a:hover,.tab-nav a.active{background:var(--green);color:#fff;border-color:var(--green);text-decoration:none}
+
+section{padding:3rem 1.5rem;max-width:960px;margin:0 auto}
+section h2{font-size:1.5rem;color:var(--navy);margin-bottom:.35rem}
+.section-sub{color:var(--txt2);margin-bottom:2rem;font-size:.95rem}
+.section-block{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:2rem}
+.section-block.admin{border-top:4px solid var(--amber)}
+.section-block.fnb{border-top:4px solid var(--green)}
+.section-block.deploy{border-top:4px solid #6366f1}
+.section-block.erp{border-top:4px solid var(--navy)}
+.section-block.marketing{border-top:4px solid #7c3aed}
+.price-card.marketing-hl{background:#f5f3ff;border-color:#c4b5fd}
+.price-card.marketing-hl .amount{color:#6d28d9}
+.pricing-hero.violet{background:linear-gradient(135deg,#f5f3ff 0%,#fff 100%);border-color:#c4b5fd}
+.pricing-hero.violet .price-main{color:#6d28d9}
+.deploy-badge{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:.2rem .55rem;border-radius:999px;margin-bottom:.5rem}
+.deploy-badge.saas{background:#eef2ff;color:#4338ca}
+.deploy-badge.buyout{background:#f0fdf4;color:#047857}
+
+.feature-modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.25rem}
+.feature-module{border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.1rem;background:#fafafa}
+.feature-module h4{font-size:.88rem;color:var(--navy);margin-bottom:.5rem;display:flex;align-items:center;gap:.35rem}
+.feature-module ul{list-style:none;font-size:.82rem;color:var(--txt2)}
+.feature-module li{padding:.2rem 0;padding-left:.95rem;position:relative}
+.feature-module li::before{content:'✓';position:absolute;left:0;color:var(--green);font-size:.75rem;font-weight:700}
+.erp-audience{background:linear-gradient(135deg,#eff6ff 0%,#fff 100%);border:1px solid #bfdbfe;border-radius:var(--radius);padding:1rem 1.15rem;font-size:.9rem;color:#1e3a5f;margin-bottom:1.25rem}
+
+.pricing-hero{background:linear-gradient(135deg,#ecfdf5 0%,#fff 100%);border:2px solid var(--green);border-radius:var(--radius);padding:1.75rem;text-align:center;margin-bottom:1.5rem}
+.pricing-hero .price-main{font-size:clamp(1.75rem,5vw,2.5rem);font-weight:800;color:var(--green)}
+.pricing-hero .price-sub{color:var(--txt2);font-size:.95rem;margin-top:.35rem}
+.pricing-hero.amber{background:linear-gradient(135deg,#fffbeb 0%,#fff 100%);border-color:var(--amber)}
+.pricing-hero.amber .price-main{color:var(--amber)}
+
+.pricing-timeline{display:flex;flex-wrap:wrap;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);margin-bottom:1.5rem}
+.timeline-step{flex:1;min-width:130px;padding:1rem;background:#fff;text-align:center;border-right:1px solid var(--border)}
+.timeline-step:last-child{border-right:none}
+.timeline-step.free{background:var(--green-light)}
+.timeline-step .tl-label{font-size:.65rem;font-weight:700;text-transform:uppercase;color:var(--green);letter-spacing:.04em}
+.timeline-step .tl-price{font-size:1.2rem;font-weight:800;color:var(--navy);margin:.25rem 0}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-bottom:1.5rem}
+.price-card{border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;background:#fafafa}
+.price-card.highlight{background:var(--green-light);border-color:var(--green)}
+.price-card.amber-hl{background:#fffbeb;border-color:#fde68a}
+.price-card h3{font-size:.95rem;color:var(--navy);margin-bottom:.5rem}
+.price-card .amount{font-size:1.5rem;font-weight:800;color:var(--green);margin:.35rem 0}
+.price-card.amber-hl .amount{color:var(--amber)}
+.price-card ul{list-style:none;font-size:.88rem;color:var(--txt2)}
+.price-card li{padding:.25rem 0;padding-left:1rem;position:relative}
+.price-card li::before{content:'•';position:absolute;left:0;color:var(--green)}
+
+.pricing-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:1rem}
+.pricing-table th,.pricing-table td{padding:.65rem .85rem;text-align:left;border-bottom:1px solid var(--border)}
+.pricing-table th{background:#f8fafc;color:var(--txt2);font-weight:600}
+.pricing-table tr:last-child td{border-bottom:none}
+
+.pricing-note{background:#fffbeb;border:1px solid #fde68a;border-radius:var(--radius);padding:1rem 1.15rem;font-size:.88rem;color:#92400e;margin-top:1rem}
+.pricing-note.green{background:var(--green-light);border-color:rgba(5,150,105,.25);color:#065f46}
+
+.calc-box{background:#f8fafc;border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-top:1rem}
+.calc-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px dashed var(--border);font-size:.9rem}
+.calc-row:last-child{border-bottom:none;font-weight:700;color:var(--navy);font-size:1rem;padding-top:.75rem}
+
+.cta-bar{text-align:center;padding:2.5rem 1.5rem;background:var(--navy);color:#fff;margin-top:2rem}
+.cta-bar p{color:#94a3b8;margin-bottom:1rem}
+.cta-bar .btn{margin:.25rem}
+
+footer{background:#060d18;color:#64748b;text-align:center;padding:1.75rem 1.5rem;font-size:.85rem}
+footer a{color:var(--green-mid)}
+
+/* Table horizontal scroll (mobile) */
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1rem;max-width:100%}
+.table-scroll .pricing-table{min-width:32rem;margin-top:0}
+
+/* —— Mobile / narrow viewport —— */
+@media (max-width:640px){
+  nav{padding:.65rem 1rem;align-items:stretch;gap:.6rem}
+  nav .app-brand{max-width:100%}
+  .nav-links{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:.45rem .65rem;
+    align-items:center;
+  }
+  .nav-links>a:not(.btn){font-size:.85rem;padding:.35rem 0;min-height:2.25rem;display:inline-flex;align-items:center}
+  .nav-lang{display:flex;gap:.35rem;align-items:center}
+  .nav-links .btn-primary{justify-self:end;padding:.5rem .85rem;font-size:.85rem;white-space:nowrap}
+  .nav-links .nav-zalo{grid-column:2}
+
+  .page-hero{padding:2rem 1rem 1.75rem}
+  .page-hero h1{font-size:1.35rem;line-height:1.3}
+  .page-hero p,.page-slogan{font-size:.9rem;line-height:1.55}
+  .page-slogan{margin-bottom:1rem}
+
+  .tab-nav{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:.4rem;
+    margin-top:.75rem;
+    justify-items:stretch;
+  }
+  .tab-nav a{
+    font-size:.78rem;
+    padding:.55rem .5rem;
+    line-height:1.25;
+    text-align:center;
+    min-height:2.75rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  section{padding:2rem 1rem}
+  section h2{font-size:1.25rem}
+  .section-sub{font-size:.88rem;margin-bottom:1.25rem}
+  .section-block{padding:1.15rem 1rem;margin-bottom:1.25rem}
+
+  .pricing-hero{padding:1.25rem 1rem}
+  .pricing-hero .price-main{font-size:1.5rem;line-height:1.25}
+  .pricing-hero .price-sub{font-size:.85rem}
+
+  .pricing-timeline{flex-direction:column}
+  .timeline-step{min-width:0;border-right:none;border-bottom:1px solid var(--border);padding:.85rem}
+  .timeline-step:last-child{border-bottom:none}
+  .timeline-step .tl-price{font-size:1.05rem}
+
+  .pricing-grid{grid-template-columns:1fr}
+  .price-card .amount{font-size:1.25rem;line-height:1.3}
+
+  .table-scroll{margin-left:-.15rem;margin-right:-.15rem}
+  .table-scroll .pricing-table{font-size:.78rem;min-width:34rem}
+  .pricing-table th,.pricing-table td{padding:.5rem .55rem}
+
+  .calc-row{flex-direction:column;align-items:flex-start;gap:.2rem;font-size:.85rem}
+  .calc-row:last-child{font-size:.92rem}
+
+  .feature-modules{grid-template-columns:1fr}
+  .cta-bar{padding:2rem 1rem}
+  .cta-bar .btn{display:inline-block;width:100%;max-width:18rem;margin:.35rem auto}
+  footer{padding:1.25rem 1rem;font-size:.8rem}
+}
+
+@media (max-width:380px){
+  .tab-nav{grid-template-columns:1fr}
+  .tab-nav a{font-size:.82rem;padding:.6rem .75rem}
+  .nav-links{grid-template-columns:1fr}
+  .nav-links .nav-zalo{grid-column:1;justify-self:stretch;text-align:center}
+}
+
+.seo-banner{background:linear-gradient(90deg,#ecfdf5,#d1fae5);border-bottom:1px solid #a7f3d0;padding:.65rem 1.25rem;font-size:.88rem;color:#065f46;text-align:center;line-height:1.5}
+.seo-banner a{color:#047857;font-weight:700;text-decoration:none}
+.seo-banner a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<script src="assets/linm/seo-links.js"></script>
+
+<div class="seo-banner" role="note">
+  <span class="vi">Báo giá đầy đủ trên MFE <code>@linm/fnb-seo</code>: <a data-seo-href="/pricing" href="/pricing">/pricing</a>.
+  Trang này giữ bảng giá chi tiết legacy + tài liệu sales.</span>
+  <span class="en" style="display:none">Full pricing on <code>@linm/fnb-seo</code>: <a data-seo-href="/pricing" href="/pricing">/pricing</a>.
+  This page keeps legacy detailed pricing.</span>
+</div>
+
+<nav>
+  <a data-seo-href="/" href="/" class="app-brand app-brand--nav">
+    <img src="assets/linm/logo-128.png" alt="Linm" class="app-brand__icon" width="32" height="32">
+    <span class="app-brand__text">
+      <span class="app-brand__platform">LINM F&amp;B</span>
+      <span class="app-brand__tenant">Lẩu Gà Ngon</span>
+    </span>
+  </a>
+  <div class="nav-links">
+    <a data-seo-href="/" href="/">← Landing SEO</a>
+    <a href="app-demo.html">Demo UI</a>
+    <span class="nav-lang">
+      <button class="lang-btn active" onclick="setLang('vi')">VI</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </span>
+    <a href="https://zalo.me/0775909978" class="btn btn-primary nav-zalo" target="_blank" rel="noopener noreferrer">Zalo</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <h1><span class="vi">Báo giá Linm — F&amp;B &amp; Hành chính</span><span class="en" style="display:none">Linm Pricing — F&amp;B &amp; Admin</span></h1>
+  <p><span class="vi">Triển khai quán lẩu <strong>~20 triệu</strong> · vận hành <strong>miễn phí 3 tháng</strong> · khai thuế theo kỳ <strong>500k – 1tr</strong></span><span class="en" style="display:none">Hot pot setup <strong>~20M</strong> · <strong>3 months free</strong> · tax filing <strong>500k–1M/period</strong></span></p>
+  <p class="page-slogan"><span class="vi">Hỗ trợ cá nhân / hộ kinh doanh — giảm gánh nặng và nỗi lo về thuế</span><span class="en" style="display:none">For individuals &amp; household businesses — lighter load, less tax worry</span></p>
+  <div class="demo-disclaimer" style="margin-bottom:1.25rem">
+    <span class="vi">ℹ️ Web &amp; Demo UI là <strong>phiên bản demo</strong>. Go-live: Linm <strong>thiết kế giao diện</strong> theo <strong>logo + nhận diện</strong> quý khách.</span>
+    <span class="en" style="display:none">ℹ️ This site &amp; UI demo are a <strong>demo version</strong>. At go-live, Linm <strong>designs the UI</strong> to your <strong>logo and brand identity</strong>.</span>
+  </div>
+  <div class="tab-nav">
+    <a href="#fnb" class="active"><span class="vi">Phần mềm F&amp;B</span><span class="en" style="display:none">F&amp;B software</span></a>
+    <a href="#quota"><span class="vi">Quota order</span><span class="en" style="display:none">Order quota</span></a>
+    <a href="#deploy"><span class="vi">Hình thức triển khai</span><span class="en" style="display:none">Deployment models</span></a>
+    <a href="#admin"><span class="vi">Hành chính · Khai thuế</span><span class="en" style="display:none">Admin · Tax filing</span></a>
+    <a href="#marketing"><span class="vi">Landing · Quảng cáo</span><span class="en" style="display:none">Landing · Ads</span></a>
+    <a href="#erp"><span class="vi">Linm ERP · Kế toán</span><span class="en" style="display:none">Linm ERP · Accounting</span></a>
+  </div>
+</header>
+
+<!-- F&B -->
+<section id="fnb">
+  <div class="section-block fnb">
+    <h2><span class="vi">1. Phần mềm quản lý quán (Linm F&amp;B)</span><span class="en" style="display:none">1. Restaurant software (Linm F&amp;B)</span></h2>
+    <p class="section-sub"><span class="vi">QR order · bếp · phục vụ · thu ngân · báo cáo — pilot Lẩu Gà Ngon</span><span class="en" style="display:none">QR order · kitchen · waiters · cashier · reports</span></p>
+
+    <div class="pricing-hero">
+      <div class="price-main">~20.000.000đ</div>
+      <div class="price-sub"><span class="vi">Triển khai · 1 chi nhánh đầu · go-live 1–2 tuần</span><span class="en" style="display:none">Setup · first branch · 1–2 weeks</span></div>
+    </div>
+
+    <div class="pricing-timeline">
+      <div class="timeline-step">
+        <div class="tl-label"><span class="vi">Triển khai</span><span class="en" style="display:none">Setup</span></div>
+        <div class="tl-price">20 tr</div>
+        <div style="font-size:.8rem;color:var(--txt2)"><span class="vi">Một lần</span><span class="en" style="display:none">One-time</span></div>
+      </div>
+      <div class="timeline-step free">
+        <div class="tl-label"><span class="vi">Tháng 1→3</span><span class="en" style="display:none">Mo 1–3</span></div>
+        <div class="tl-price"><span class="vi">Miễn phí</span><span class="en" style="display:none">Free</span></div>
+        <div style="font-size:.8rem;color:var(--txt2)"><span class="vi">Vận hành</span><span class="en" style="display:none">Operations</span></div>
+      </div>
+      <div class="timeline-step">
+        <div class="tl-label"><span class="vi">Từ tháng 4</span><span class="en" style="display:none">Month 4+</span></div>
+        <div class="tl-price">680k–1,999k</div>
+        <div style="font-size:.8rem;color:var(--txt2)"><span class="vi">/ tháng / CN</span><span class="en" style="display:none">/ mo / branch</span></div>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card highlight">
+        <h3><span class="vi">Triển khai bao gồm</span><span class="en" style="display:none">Setup includes</span></h3>
+        <ul>
+          <li><span class="vi">Menu, combo, topping lẩu</span><span class="en" style="display:none">Menu, combos, addons</span></li>
+          <li><span class="vi">Bàn + QR in dán</span><span class="en" style="display:none">Tables + QR print</span></li>
+          <li><span class="vi">Guest QR, bếp, NV, thu ngân</span><span class="en" style="display:none">Guest, kitchen, staff, cashier</span></li>
+          <li><span class="vi">QR CK preset số tiền + upload biên lai</span><span class="en" style="display:none">Preset transfer QR + proof upload</span></li>
+          <li><span class="vi">Training ca pilot</span><span class="en" style="display:none">Pilot training</span></li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3><span class="vi">Gói duy trì (từ T4)</span><span class="en" style="display:none">Monthly tiers (from M4)</span></h3>
+        <p class="amount">680k – 1,999k</p>
+        <ul>
+          <li><strong>680k</strong> — <span class="vi">&lt;10 bàn · ~30 lượt/bàn/ngày · <strong>1.200 lượt/tháng</strong></span><span class="en" style="display:none">&lt;10 tables · ~30 units/table/day · <strong>1,200 orders/mo</strong></span></li>
+          <li><strong>999k</strong> ★ — <span class="vi">10–20 bàn · ~80 lượt/bàn/ngày · <strong>2.500 lượt/tháng</strong></span><span class="en" style="display:none">10–20 tables · ~80 units/table/day · <strong>2,500 orders/mo</strong></span></li>
+          <li><strong>1,999k</strong> — <span class="vi">20+ bàn · ~165 lượt/bàn/ngày · đa CN, Momo · <strong>5.000 lượt/tháng</strong></span><span class="en" style="display:none">20+ tables · ~165 units/table/day · multi-branch · <strong>5,000 orders/mo</strong></span></li>
+        </ul>
+        <p style="font-size:.8rem;color:var(--txt2);margin-top:.65rem"><a href="#quota"><span class="vi">1 lượt = order + quán xác nhận →</span><span class="en" style="display:none">1 unit = guest order + shop confirm →</span></a></p>
+      </div>
+      <div class="price-card">
+        <h3><span class="vi">Thanh toán triển khai</span><span class="en" style="display:none">Setup payment</span></h3>
+        <ul>
+          <li><span class="vi">50% khi ký thỏa thuận</span><span class="en" style="display:none">50% on sign</span></li>
+          <li><span class="vi">50% khi go-live</span><span class="en" style="display:none">50% at go-live</span></li>
+          <li><span class="vi">CN thêm (cùng NG &amp; quy mô): <strong>giảm 30–50%</strong></span><span class="en" style="display:none">Extra branch (same model): <strong>30–50% off</strong></span></li>
+          <li><span class="vi">Thực tế ~10–14 triệu/CN · tùy số CN &amp; đào tạo</span><span class="en" style="display:none">Typically ~10–14M/branch · by scale &amp; training</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pricing-note green">
+      <span class="vi">🏪 <strong>Chi nhánh thêm:</strong> Cùng nghiệp vụ (menu, quy trình) và cùng quy mô (số bàn, ca) → phí triển khai <strong>giảm 30–50%</strong> so với CN đầu. Giảm sâu hơn khi triển khai nhiều CN một đợt và NV đã được đào tạo tại CN pilot.</span>
+      <span class="en" style="display:none">🏪 <strong>Extra branches:</strong> Same business model and size → setup fee <strong>30–50% lower</strong> than the first branch. Deeper discount for batch rollout and when staff are already trained at the pilot site.</span>
+    </div>
+
+    <div class="pricing-note green">
+      <span class="vi">💡 20 triệu ≈ lương 1 NV ~2 tháng · 680k/tháng ≈ 22.700đ/ngày (rẻ hơn 1 ly trà gừng 35k).</span>
+      <span class="en" style="display:none">💡 20M ≈ 2 months waiter wage · 680k/mo ≈ 22.7k/day.</span>
+    </div>
+  </div>
+</section>
+
+<!-- Bill quota (mô hình thuê) -->
+<section id="quota">
+  <div class="section-block fnb" style="border-top-color:#6366f1">
+    <h2><span class="vi">Quota order — lượt xác nhận đơn (mô hình thuê A)</span><span class="en" style="display:none">Order quota — confirmed orders (Model A)</span></h2>
+    <p class="section-sub"><span class="vi">Phí duy trì tính <strong>theo chi nhánh / tháng</strong>, mỗi gói <strong>bao gồm số lượt order</strong> phù hợp quy mô bàn. Tất cả chi nhánh vận hành trên <strong>cùng nền tảng Linm</strong>.</span><span class="en" style="display:none">Monthly fee is <strong>per branch</strong>; each tier <strong>includes confirmed-order units</strong> matched to table count. All branches run on the <strong>shared Linm platform</strong>.</span></p>
+
+    <div class="pricing-note green" style="margin-top:0;margin-bottom:1.25rem">
+      <span class="vi"><strong>1 lượt quota</strong> = khách <strong>order</strong> trên QR bàn và quán <strong>xác nhận đơn</strong> (NV xác nhận → gửi bếp). Một lần xác nhận — dù đơn có nhiều món — <em>không</em> tính từng món; <em>không</em> tính riêng bước thanh toán hay đóng bàn. Tham chiếu quy mô ghi <strong>lượt/bàn/ngày</strong> (trung bình mỗi bàn mỗi ngày); quota hóa đơn tính <strong>tổng lượt/CN/tháng</strong>.</span>
+      <span class="en" style="display:none"><strong>1 quota unit</strong> = guest <strong>places an order</strong> via table QR and the venue <strong>confirms the order</strong> (staff confirm → kitchen). One confirmation per submission — <em>not</em> per line item; <em>not</em> a separate payment or table-close step. Size reference uses <strong>units/table/day</strong> (average per table per day); billing quota is <strong>total units/branch/month</strong>.</span>
+    </div>
+
+    <div class="table-scroll">
+    <table class="pricing-table" style="background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+      <thead><tr>
+        <th><span class="vi">Gói</span><span class="en" style="display:none">Tier</span></th>
+        <th><span class="vi">Phí / CN / tháng</span><span class="en" style="display:none">Fee / branch / mo</span></th>
+        <th><span class="vi">Quota / tháng (lượt)</span><span class="en" style="display:none">Quota / mo (units)</span></th>
+        <th><span class="vi">Quy mô tham chiếu</span><span class="en" style="display:none">Typical size</span></th>
+        <th><span class="vi">Tính năng chính</span><span class="en" style="display:none">Key features</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong><span class="vi">Cơ bản</span><span class="en" style="display:none">Basic</span></strong></td>
+          <td><strong>680.000đ</strong></td>
+          <td><strong>1.200</strong> <span class="vi">(~30 lượt/bàn/ngày)</span><span class="en" style="display:none">(~30 units/table/day)</span></td>
+          <td><span class="vi">&lt;10 bàn</span><span class="en" style="display:none">&lt;10 tables</span></td>
+          <td><span class="vi">QR + bếp + phục vụ · 1 TK CK · bảng kê cơ bản</span><span class="en" style="display:none">QR + kitchen + waiters · 1 bank acct · basic ledger</span></td>
+        </tr>
+        <tr style="background:var(--green-light)">
+          <td><strong><span class="vi">Tiêu chuẩn</span><span class="en" style="display:none">Standard</span></strong> ★</td>
+          <td><strong>999.000đ</strong></td>
+          <td><strong>2.500</strong> <span class="vi">(~80 lượt/bàn/ngày)</span><span class="en" style="display:none">(~80 units/table/day)</span></td>
+          <td><span class="vi">10–20 bàn</span><span class="en" style="display:none">10–20 tables</span></td>
+          <td><span class="vi">Feedback NV · thống kê món · upload CK · combo/addon</span><span class="en" style="display:none">Staff feedback · menu stats · proof upload · combos</span></td>
+        </tr>
+        <tr>
+          <td><strong><span class="vi">Mở rộng</span><span class="en" style="display:none">Scale</span></strong></td>
+          <td><strong>1.999.000đ</strong></td>
+          <td><strong>5.000</strong> <span class="vi">(~165 lượt/bàn/ngày)</span><span class="en" style="display:none">(~165 units/table/day)</span></td>
+          <td><span class="vi">20+ bàn · chuỗi · 2 ca</span><span class="en" style="display:none">20+ tables · chain · 2 shifts</span></td>
+          <td><span class="vi">Đa TK CK · Momo · dashboard đa CN · ưu tiên hỗ trợ</span><span class="en" style="display:none">Multi-account · Momo · chain dashboard · priority support</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p style="font-size:.88rem;color:var(--txt2);margin-top:1rem;line-height:1.55"><span class="vi">★ <strong>Đề xuất pilot Lẩu Gà Ngon:</strong> khảo sát số bàn — <strong>10–20 bàn</strong> → Tiêu chuẩn 999k (2.500 lượt order xác nhận/tháng, ~80 lượt/bàn/ngày); <strong>&lt;10 bàn</strong> → Cơ bản 680k (1.200 lượt, ~30 lượt/bàn/ngày); <strong>trên 20 bàn</strong> → Mở rộng 1,999k (~165 lượt/bàn/ngày) hoặc liên hệ.</span><span class="en" style="display:none">★ <strong>Lau Ga Ngon pilot:</strong> <strong>10–20 tables</strong> → Standard 999k (2,500 confirmed orders/mo, ~80 units/table/day); <strong>&lt;10 tables</strong> → Basic 680k (1,200 units, ~30 units/table/day); <strong>over 20 tables</strong> → Scale 1,999k (~165 units/table/day) or contact us.</span></p>
+
+    <div class="pricing-note" style="margin-top:1rem">
+      <span class="vi">📊 <strong>Vượt quota:</strong> Nếu số lượt order xác nhận vượt mức gói trong tháng, Linm thông báo trên dashboard và đề xuất <strong>nâng gói</strong> hoặc <strong>phụ thu vượt mức</strong> theo hợp đồng. <strong>Phí khai thuế</strong> (mục 2) tính riêng theo chứng từ/kỳ — không trộn quota order F&amp;B.</span>
+      <span class="en" style="display:none">📊 <strong>Over quota:</strong> If confirmed orders exceed your tier in a month, Linm notifies you on the dashboard and may suggest an <strong>upgrade</strong> or <strong>contract overage</strong>. <strong>Tax filing</strong> (§2) is billed separately — not mixed with F&amp;B order quota.</span>
+    </div>
+
+    <div class="pricing-note green">
+      <span class="vi">☁️ Áp dụng <strong>mô hình A · Thuê Linm</strong> (§ Hình thức triển khai). Mô hình B (trọn gói, server khách) — không thu phí tháng/quota tại Linm.</span>
+      <span class="en" style="display:none">☁️ Applies to <strong>Model A · Linm hosted</strong> (see Deployment). Model B (buyout, your server) — no Linm monthly fee or bill quota.</span>
+    </div>
+  </div>
+</section>
+
+<!-- Deployment models -->
+<section id="deploy">
+  <div class="section-block deploy">
+    <h2><span class="vi">Hình thức triển khai &amp; sở hữu hệ thống</span><span class="en" style="display:none">Deployment &amp; ownership models</span></h2>
+    <p class="section-sub"><span class="vi">Chọn mô hình phù hợp quy mô và năng lực vận hành CNTT. <strong>A · Thuê Linm:</strong> triển khai ~20 triệu/CN đầu (mục 1). <strong>B · Trọn gói:</strong> mua ứng dụng + triển khai trên hạ tầng khách — <strong>từ 50 triệu</strong>, liên hệ báo giá.</span><span class="en" style="display:none">Choose the model that fits your scale and IT capacity. <strong>A · Hosted:</strong> ~20M setup first branch (§1). <strong>B · Buyout:</strong> on your infra — <strong>from 50M</strong>, contact for quote.</span></p>
+
+    <div class="pricing-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+      <div class="price-card highlight" style="background:#eef2ff;border-color:#a5b4fc">
+        <span class="deploy-badge saas"><span class="vi">Mô hình A · Thuê</span><span class="en" style="display:none">Model A · Subscription</span></span>
+        <h3><span class="vi">Triển khai + thuê theo tháng</span><span class="en" style="display:none">Setup + monthly subscription</span></h3>
+        <p class="amount" style="font-size:1.35rem;margin:.25rem 0 .75rem">~20 triệu <span style="font-size:.85rem;font-weight:600;color:var(--txt2)"><span class="vi">triển khai CN đầu</span><span class="en" style="display:none">setup · first branch</span></span></p>
+        <ul>
+          <li><span class="vi"><strong>Server Linm</strong> — Linm vận hành hạ tầng, bảo mật, sao lưu</span><span class="en" style="display:none"><strong>Linm-hosted</strong> — infra, security, backups</span></li>
+          <li><span class="vi"><strong>Subdomain</strong> theo đơn vị / chi nhánh (vd. <code>lau-ga-ngon.linm.vn</code>, <code>order.{tenant}.linm.vn</code>)</span><span class="en" style="display:none"><strong>Subdomain</strong> per unit/branch (e.g. <code>lau-ga-ngon.linm.vn</code>)</span></li>
+          <li><span class="vi">Phí duy trì: <strong>680k – 1,999k/tháng/CN</strong> — mỗi gói kèm <strong>quota order</strong> (<a href="#quota">chi tiết</a>)</span><span class="en" style="display:none">Ops fee: <strong>680k–1,999k/month/branch</strong> — each tier includes an <strong>order quota</strong> (<a href="#quota">details</a>)</span></li>
+          <li><span class="vi">Gói thanh toán <strong>tối thiểu 3 tháng</strong></span><span class="en" style="display:none"><strong>Minimum 3-month</strong> billing cycle</span></li>
+          <li><span class="vi">Thanh toán trước <strong>12 tháng → tặng 1 tháng</strong> (13 tháng sử dụng)</span><span class="en" style="display:none">Prepay <strong>12 months → 1 month free</strong> (13 months of service)</span></li>
+          <li><span class="vi"><strong>3 tháng đầu miễn phí</strong> duy trì sau go-live (pilot)</span><span class="en" style="display:none"><strong>First 3 months free</strong> after go-live (pilot)</span></li>
+        </ul>
+      </div>
+      <div class="price-card" style="background:#f0fdf4;border-color:#86efac">
+        <span class="deploy-badge buyout"><span class="vi">Mô hình B · Trọn gói</span><span class="en" style="display:none">Model B · Buyout</span></span>
+        <h3><span class="vi">Triển khai + mua trọn gói ứng dụng</span><span class="en" style="display:none">Setup + perpetual app license</span></h3>
+        <p class="amount" style="font-size:1.5rem;color:#047857;margin:.25rem 0 .15rem"><span class="vi">Từ 50 triệu</span><span class="en" style="display:none">From 50M VND</span></p>
+        <p style="font-size:.88rem;font-weight:600;color:var(--navy);margin-bottom:.75rem"><span class="vi">Liên hệ báo giá theo quy mô &amp; hạ tầng</span><span class="en" style="display:none">Contact us for a tailored quote</span></p>
+        <ul>
+          <li><span class="vi"><strong>Server &amp; dữ liệu</strong> do khách tự quản lý (on-prem / cloud riêng)</span><span class="en" style="display:none"><strong>Server &amp; data</strong> managed by customer</span></li>
+          <li><span class="vi"><strong>Domain</strong> do khách cung cấp &amp; trỏ DNS</span><span class="en" style="display:none"><strong>Domain</strong> supplied by customer</span></li>
+          <li><span class="vi">Bản quyền / thiết lập ứng dụng <strong>một lần</strong> (triển khai + bàn giao)</span><span class="en" style="display:none"><strong>One-time</strong> app license + deployment handover</span></li>
+          <li><span class="vi">Không bao gồm phí hosting / server hàng tháng tại Linm</span><span class="en" style="display:none">No Linm monthly hosting fee</span></li>
+          <li><span class="vi">Hỗ trợ bảo trì &amp; nâng cấp: báo giá riêng theo gói (tuỳ chọn)</span><span class="en" style="display:none">Maintenance &amp; upgrades: optional separate quote</span></li>
+        </ul>
+        <p style="margin-top:1rem"><a href="https://zalo.me/0775909978" class="btn btn-primary" style="font-size:.88rem;padding:.5rem 1rem;width:100%;text-align:center" target="_blank" rel="noopener noreferrer"><span class="vi">💬 Liên hệ báo giá — Zalo</span><span class="en" style="display:none">💬 Get a quote — Zalo</span></a></p>
+      </div>
+    </div>
+
+    <div class="pricing-note">
+      <span class="vi">⚙️ <strong>Phí phát sinh (cả hai mô hình):</strong> Đổi domain, đổi tên thương hiệu/tenant, bổ sung nghiệp vụ hoặc tích hợp ngoài phạm vi hợp đồng ban đầu — Linm báo giá tại thời điểm yêu cầu, trước khi thực hiện.</span>
+      <span class="en" style="display:none">⚙️ <strong>Extra fees (both models):</strong> Domain change, rebrand/tenant rename, extra business features or integrations beyond the original scope — quoted at time of request, before work starts.</span>
+    </div>
+
+    <div class="table-scroll">
+    <table class="pricing-table" style="margin-top:0;background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+      <thead><tr>
+        <th><span class="vi">Tiêu chí</span><span class="en" style="display:none">Criteria</span></th>
+        <th><span class="vi">A · Thuê Linm</span><span class="en" style="display:none">A · Linm hosted</span></th>
+        <th><span class="vi">B · Trọn gói</span><span class="en" style="display:none">B · Buyout</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="vi">Hạ tầng</span><span class="en" style="display:none">Infrastructure</span></td>
+          <td>Linm</td>
+          <td><span class="vi">Khách hàng</span><span class="en" style="display:none">Customer</span></td>
+        </tr>
+        <tr>
+          <td><span class="vi">Tên miền</span><span class="en" style="display:none">Domain</span></td>
+          <td><span class="vi">Subdomain Linm</span><span class="en" style="display:none">Linm subdomain</span></td>
+          <td><span class="vi">Domain khách</span><span class="en" style="display:none">Customer domain</span></td>
+        </tr>
+        <tr>
+          <td><span class="vi">Phí hàng tháng</span><span class="en" style="display:none">Monthly fee</span></td>
+          <td>680k–1,999k/CN · <a href="#quota"><span class="vi">quota order</span><span class="en" style="display:none">order quota</span></a> · min 3 tháng · trả 12 tặng 1</td>
+          <td><span class="vi">Không (hosting khách)</span><span class="en" style="display:none">None (customer hosts)</span></td>
+        </tr>
+        <tr>
+          <td><span class="vi">Quota order</span><span class="en" style="display:none">Order quota</span></td>
+          <td><span class="vi">1.200 / 2.500 / 5.000 lượt/tháng/CN</span> · <a href="#quota"><span class="vi">chi tiết</span><span class="en" style="display:none">details</span></a></td>
+          <td><span class="vi">Không áp dụng</span><span class="en" style="display:none">N/A</span></td>
+        </tr>
+        <tr>
+          <td><span class="vi">Phí triển khai / mua app</span><span class="en" style="display:none">Setup / license</span></td>
+          <td><strong>~20 triệu</strong> <span class="vi">CN đầu · CN thêm giảm 30–50%</span><span class="en" style="display:none">first branch · 30–50% off extras</span></td>
+          <td><strong><span class="vi">Từ 50 triệu</span><span class="en" style="display:none">From 50M</span></strong> · <span class="vi">liên hệ báo giá</span><span class="en" style="display:none">contact for quote</span></td>
+        </tr>
+        <tr>
+          <td><span class="vi">Ảnh biên lai CK</span><span class="en" style="display:none">Transfer proof photos</span></td>
+          <td colspan="2"><span class="vi">Lưu <strong>tối đa 30 ngày</strong> · khi xác nhận app <strong>tự trích mã giao dịch</strong> lưu lâu dài</span><span class="en" style="display:none">Stored <strong>up to 30 days</strong> · on confirm app <strong>extracts transaction ref</strong> for permanent lookup</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- Admin / Tax -->
+<section id="admin">
+  <div class="section-block admin">
+    <h2><span class="vi">2. Hành chính — Hỗ trợ khai thuế theo kỳ</span><span class="en" style="display:none">2. Admin — Periodic tax filing support</span></h2>
+    <p class="section-sub"><span class="vi"><strong>Slogan:</strong> Hỗ trợ cá nhân / hộ kinh doanh — giảm gánh nặng và nỗi lo về thuế. Linm tổng hợp số liệu từ quán, đối chiếu HĐ đầu vào hợp lệ và hỗ trợ nộp tờ khai theo kỳ (tháng / quý).</span><span class="en" style="display:none"><strong>Our promise:</strong> Support for individuals and household businesses — less burden, less tax worry. Linm aggregates data, matches valid input invoices, and assists periodic filing.</span></p>
+
+    <div class="pricing-hero amber">
+      <div class="price-main">500k – 1tr</div>
+      <div class="price-sub"><span class="vi">/ kỳ khai thuế · tùy số lượng chứng từ &amp; hóa đơn đầu vào hợp lệ</span><span class="en" style="display:none">/ filing period · by valid vouchers &amp; input invoices</span></div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card amber-hl">
+        <h3><span class="vi">📋 Linm hỗ trợ</span><span class="en" style="display:none">📋 Linm assists with</span></h3>
+        <ul>
+          <li><span class="vi">Tổng hợp doanh thu, chi phí từ hệ thống F&amp;B</span><span class="en" style="display:none">Revenue &amp; expense rollup from F&amp;B</span></li>
+          <li><span class="vi">Đối chiếu hóa đơn đầu vào hợp lệ (HĐĐT)</span><span class="en" style="display:none">Valid e-invoice matching</span></li>
+          <li><span class="vi">Lập số liệu khai thuế theo kỳ</span><span class="en" style="display:none">Periodic tax data prep</span></li>
+          <li><span class="vi">Hỗ trợ nộp tờ khai (GTGT, TNCN… theo loại hình)</span><span class="en" style="display:none">Filing support (VAT, PIT per entity type)</span></li>
+          <li><span class="vi">Lưu trữ chứng từ &amp; báo cáo đối chiếu</span><span class="en" style="display:none">Document storage &amp; reconciliation</span></li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3><span class="vi">💰 Cách tính phí</span><span class="en" style="display:none">💰 Fee calculation</span></h3>
+        <ul>
+          <li><span class="vi">Báo giá <strong>theo kỳ</strong> (tháng / quý), không tính từng đồng</span><span class="en" style="display:none">Quoted <strong>per period</strong> (month/quarter)</span></li>
+          <li><span class="vi">Khung giá: <strong>500.000 – 1.000.000đ/kỳ</strong></span><span class="en" style="display:none">Range: <strong>500k–1M VND/period</strong></span></li>
+          <li><span class="vi">Ít chứng từ, HĐ đầu vào → gần <strong>500k</strong></span><span class="en" style="display:none">Few documents → ~<strong>500k</strong></span></li>
+          <li><span class="vi">Nhiều chứng từ, nhiều HĐ hợp lệ → tới <strong>1tr</strong></span><span class="en" style="display:none">High volume → up to <strong>1M</strong></span></li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3><span class="vi">📌 Lưu ý</span><span class="en" style="display:none">📌 Notes</span></h3>
+        <ul>
+          <li><span class="vi">Chỉ tính HĐ/chứng từ <strong>hợp lệ</strong>, đủ thông tin kê khai</span><span class="en" style="display:none">Valid documents only</span></li>
+          <li><span class="vi">Dùng chung Linm F&amp;B → số liệu đồng bộ, giảm nhập tay</span><span class="en" style="display:none">Integrated with Linm F&amp;B</span></li>
+          <li><span class="vi">Phí khai thuế <strong>tách</strong> phí phần mềm hàng tháng</span><span class="en" style="display:none">Tax fee separate from software</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+    <table class="pricing-table">
+      <thead><tr>
+        <th><span class="vi">Quy mô kỳ khai (ví dụ)</span><span class="en" style="display:none">Example period volume</span></th>
+        <th><span class="vi">Chứng từ + HĐ đầu vào</span><span class="en" style="display:none">Vouchers + input invoices</span></th>
+        <th><span class="vi">Phí/kỳ</span><span class="en" style="display:none">Fee/period</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="vi">Quán nhỏ</span><span class="en" style="display:none">Small</span></td>
+          <td>~30</td><td><strong>~500.000đ</strong></td>
+        </tr>
+        <tr>
+          <td><span class="vi">Quán vừa</span><span class="en" style="display:none">Medium</span></td>
+          <td>~80</td><td><strong>~700.000đ</strong></td>
+        </tr>
+        <tr>
+          <td><span class="vi">Quán lớn</span><span class="en" style="display:none">Large</span></td>
+          <td>~150+</td><td><strong>~1.000.000đ</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="calc-box">
+      <p style="font-weight:600;margin-bottom:.75rem;color:var(--navy)"><span class="vi">Ví dụ: Lẩu Gà Ngon — kỳ tháng</span><span class="en" style="display:none">Example: Lau Ga Ngon — monthly period</span></p>
+      <div class="calc-row"><span><span class="vi">Doanh thu bán hàng (từ F&amp;B)</span><span class="en" style="display:none">Sales (from F&amp;B)</span></span><span>127 phiếu</span></div>
+      <div class="calc-row"><span><span class="vi">Hóa đơn mua nguyên liệu (đầu vào hợp lệ)</span><span class="en" style="display:none">Valid purchase invoices</span></span><span>45 HĐ</span></div>
+      <div class="calc-row"><span><span class="vi">Tổng chứng từ + HĐ hợp lệ</span><span class="en" style="display:none">Total valid entries</span></span><span>~172</span></div>
+      <div class="calc-row"><span><span class="vi">Phí hỗ trợ khai thuế kỳ này</span><span class="en" style="display:none">Tax support fee this period</span></span><span style="color:var(--amber)">≈ 800.000đ</span></div>
+    </div>
+
+    <div class="pricing-note">
+      <span class="vi">⚠️ Báo giá khai thuế mang tính <strong>tham khảo</strong> — Linm báo chính xác sau khi rà số chứng từ thực tế từng kỳ. Khách hàng chịu trách nhiệm nội dung kê khai; Linm hỗ trợ hành chính &amp; số liệu. Thuế/phạt (nếu có) không nằm trong phí dịch vụ.</span>
+      <span class="en" style="display:none">⚠️ Tax pricing is indicative — final quote after document review each period.</span>
+    </div>
+  </div>
+</section>
+
+<!-- Marketing -->
+<section id="marketing">
+  <div class="section-block marketing">
+    <h2><span class="vi">3. Marketing — Landing page &amp; quảng cáo thu hút khách</span><span class="en" style="display:none">3. Marketing — Landing page &amp; customer acquisition ads</span></h2>
+    <p class="section-sub"><span class="vi">Dịch vụ <strong>tuỳ chọn</strong> — tách phí F&amp;B và khai thuế. Linm hỗ trợ quán <strong>có thêm khách mới</strong> ngoài khách tại chỗ: trang giới thiệu trên web và chiến dịch quảng cáo theo nhu cầu.</span><span class="en" style="display:none">Optional add-on — separate from F&amp;B and tax fees. Linm helps venues <strong>attract new guests</strong> beyond walk-ins: web landing pages and ad campaigns on request.</span></p>
+
+    <div class="pricing-hero violet">
+      <div class="price-main"><span class="vi">Báo giá theo yêu cầu · theo chương trình</span><span class="en" style="display:none">Quoted by scope · by campaign</span></div>
+      <div class="price-sub"><span class="vi">Landing page: theo scope trang · Quảng cáo: theo kênh + thời gian + ngân sách media</span><span class="en" style="display:none">Landing: by page scope · Ads: by channel + duration + media budget</span></div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card marketing-hl">
+        <h3><span class="vi">🌐 Landing page quán</span><span class="en" style="display:none">🌐 Venue landing page</span></h3>
+        <ul>
+          <li><span class="vi">Trang giới thiệu: menu nổi bật, địa chỉ, giờ mở cửa</span><span class="en" style="display:none">Intro page: highlights, address, hours</span></li>
+          <li><span class="vi">CTA: Zalo · gọi · đặt bàn · link order</span><span class="en" style="display:none">CTA: Zalo · call · booking · order link</span></li>
+          <li><span class="vi">Responsive · hosting subdomain Linm hoặc domain khách</span><span class="en" style="display:none">Responsive · Linm subdomain or custom domain</span></li>
+          <li><span class="vi"><strong>Báo giá theo yêu cầu</strong> (section, ảnh, đa CN, đa ngôn ngữ)</span><span class="en" style="display:none"><strong>Quote by scope</strong> (sections, photos, branches, languages)</span></li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3><span class="vi">📣 Quảng cáo thu hút khách</span><span class="en" style="display:none">📣 Customer acquisition ads</span></h3>
+        <ul>
+          <li><span class="vi">Tư vấn kênh: Facebook · Instagram · TikTok · Google Maps…</span><span class="en" style="display:none">Channel advice: Meta · TikTok · Google Maps…</span></li>
+          <li><span class="vi">Setup chiến dịch · creative cơ bản · UTM tracking</span><span class="en" style="display:none">Campaign setup · basic creative · UTM tracking</span></li>
+          <li><span class="vi"><strong>Báo giá theo chương trình</strong> — kênh + thời gian + creative</span><span class="en" style="display:none"><strong>Quoted per program</strong> — channel + duration + creative</span></li>
+          <li><span class="vi">Ngân sách ads nền tảng <strong>tách minh bạch</strong> khỏi phí Linm</span><span class="en" style="display:none">Platform ad spend <strong>separate</strong> from Linm fees</span></li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3><span class="vi">📌 Lưu ý</span><span class="en" style="display:none">📌 Notes</span></h3>
+        <ul>
+          <li><span class="vi">Không nằm trong phí triển khai F&amp;B ~20 triệu</span><span class="en" style="display:none">Not included in ~20M F&amp;B setup</span></li>
+          <li><span class="vi">Không nằm trong phí duy trì 680k–1,999k/tháng</span><span class="en" style="display:none">Not included in 680k–1,999k/mo hosting</span></li>
+          <li><span class="vi">Linm báo dự trù <strong>trước khi chạy</strong>; chỉnh/dừng theo thỏa thuận</span><span class="en" style="display:none">Linm quotes <strong>before launch</strong>; adjust/stop by agreement</span></li>
+          <li><span class="vi">Cam kết minh bạch chi tiêu — không cam kết doanh thu cố định</span><span class="en" style="display:none">Transparent spend reporting — no fixed revenue guarantee</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+    <table class="pricing-table">
+      <thead><tr>
+        <th><span class="vi">Dịch vụ</span><span class="en" style="display:none">Service</span></th>
+        <th><span class="vi">Cách báo giá</span><span class="en" style="display:none">Pricing</span></th>
+        <th><span class="vi">Ví dụ phạm vi</span><span class="en" style="display:none">Example scope</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="vi">Landing page 1 CN</span><span class="en" style="display:none">Single-branch landing</span></td>
+          <td><strong><span class="vi">Theo yêu cầu</span><span class="en" style="display:none">By request</span></strong></td>
+          <td><span class="vi">Hero + menu + địa chỉ + CTA Zalo</span><span class="en" style="display:none">Hero + menu + address + Zalo CTA</span></td>
+        </tr>
+        <tr>
+          <td><span class="vi">Landing chuỗi / đa ngôn ngữ</span><span class="en" style="display:none">Chain / multilingual</span></td>
+          <td><strong><span class="vi">Theo yêu cầu</span><span class="en" style="display:none">By request</span></strong></td>
+          <td><span class="vi">Nhiều CN · VI/EN · form đặt bàn</span><span class="en" style="display:none">Multi-branch · VI/EN · booking form</span></td>
+        </tr>
+        <tr>
+          <td><span class="vi">QC khai trương / combo mới</span><span class="en" style="display:none">Launch / new combo ads</span></td>
+          <td><strong><span class="vi">Theo chương trình</span><span class="en" style="display:none">Per program</span></strong></td>
+          <td><span class="vi">Meta 2 tuần · creative + setup + báo cáo</span><span class="en" style="display:none">Meta 2 weeks · creative + setup + report</span></td>
+        </tr>
+        <tr>
+          <td><span class="vi">QC theo mùa / sự kiện</span><span class="en" style="display:none">Seasonal / event ads</span></td>
+          <td><strong><span class="vi">Theo chương trình</span><span class="en" style="display:none">Per program</span></strong></td>
+          <td><span class="vi">Tết · 8/3 · cuối tuần — ngân sách media riêng</span><span class="en" style="display:none">Holiday promos — separate media budget</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="pricing-note">
+      <span class="vi">💬 Trao đổi mục tiêu (khu vực, khách mục tiêu, ngân sách dự kiến) — Linm gửi <strong>đề xuất chương trình + dự trù</strong> trước khi triển khai. Zalo Linm-Soft · 0775 909 978.</span>
+      <span class="en" style="display:none">💬 Share goals (area, audience, budget) — Linm sends a <strong>program proposal + estimate</strong> before launch. Zalo Linm-Soft · 0775 909 978.</span>
+    </div>
+  </div>
+</section>
+
+<!-- Linm ERP Accounting -->
+<section id="erp">
+  <div class="section-block erp">
+    <h2><span class="vi">4. Linm ERP — Kế toán &amp; quản trị bán lẻ</span><span class="en" style="display:none">4. Linm ERP — Accounting &amp; retail management</span></h2>
+    <p class="section-sub"><span class="vi">Phân hệ riêng trên nền tảng Linm MFE-ERP — dành cho <strong>Doanh nghiệp</strong> và <strong>Hộ kinh doanh có góp vốn nhà đầu tư</strong> cần sổ sách kế toán đầy đủ, kiểm soát kho — bán lẻ và chuỗi cửa hàng.</span><span class="en" style="display:none">Separate Linm MFE-ERP suite — for <strong>companies</strong> and <strong>household businesses with investor capital</strong> needing full books, inventory control, and retail/chain operations.</span></p>
+
+    <div class="erp-audience">
+      <span class="vi">🏢 <strong>Phù hợp khi:</strong> có nhà đầu tư / cổ đông, cần báo cáo tài chính theo chuẩn, quản lý nhiều chi nhánh, tồn kho hàng hóa, mua — bán — thu — chi có hạch toán và ghi sổ. <strong>Báo giá triển khai theo quy mô</strong> — liên hệ Linm để khảo sát.</span>
+      <span class="en" style="display:none">🏢 <strong>When you need:</strong> investor reporting, standard financial books, multi-branch ops, inventory, purchase–sales–cash with GL posting. <strong>Custom deployment quote</strong> — contact Linm for assessment.</span>
+    </div>
+
+    <div class="pricing-hero" style="background:linear-gradient(135deg,#eff6ff 0%,#fff 100%);border-color:var(--navy)">
+      <div class="price-main" style="color:var(--navy);font-size:clamp(1.35rem,4vw,1.85rem)"><span class="vi">Báo giá theo quy mô · Liên hệ tư vấn</span><span class="en" style="display:none">Quote by scale · Contact us</span></div>
+      <div class="price-sub"><span class="vi">Zalo <strong>Linm-Soft</strong> · <strong>0775 909 978</strong> · Demo ERP &amp; lộ trình triển khai</span><span class="en" style="display:none">Zalo <strong>Linm-Soft</strong> · <strong>0775 909 978</strong> · ERP demo &amp; rollout plan</span></div>
+      <p style="margin-top:1rem"><a href="https://zalo.me/0775909978" class="btn btn-primary" target="_blank" rel="noopener noreferrer">💬 <span class="vi">Quan tâm — nhắn Zalo</span><span class="en" style="display:none">Interested — chat on Zalo</span></a></p>
+    </div>
+
+    <h3 style="font-size:1.05rem;color:var(--navy);margin:1.5rem 0 .75rem"><span class="vi">Tính năng tiêu chuẩn (MFE-ERP)</span><span class="en" style="display:none">Standard features (MFE-ERP)</span></h3>
+    <p style="font-size:.88rem;color:var(--txt2);margin-bottom:.5rem"><span class="vi">Kiến trúc microfrontend — Finance · Master · Supply · Sales · nền tảng đa đơn vị cơ sở, phân quyền theo chứng từ.</span><span class="en" style="display:none">Microfrontend architecture — Finance · Master · Supply · Sales · multi-company platform with document-level permissions.</span></p>
+
+    <div class="feature-modules">
+      <div class="feature-module">
+        <h4>📒 <span class="vi">Kế toán (Finance)</span><span class="en" style="display:none">Accounting (Finance)</span></h4>
+        <ul>
+          <li><span class="vi">Phiếu thu · phiếu chi · tạm ứng</span><span class="en" style="display:none">Cash receipt · payment · advance</span></li>
+          <li><span class="vi">Phiếu điều chỉnh · bút toán kế toán</span><span class="en" style="display:none">Adjusting entries · journal</span></li>
+          <li><span class="vi">Phiếu nhập mua · HĐ mua dịch vụ</span><span class="en" style="display:none">Purchase invoice · service invoice</span></li>
+          <li><span class="vi">Số dư đầu kỳ · kỳ kế toán · đóng sổ</span><span class="en" style="display:none">Opening balance · period · close</span></li>
+          <li><span class="vi">Cuối kỳ: kết chuyển · phân bổ · tính giá vốn</span><span class="en" style="display:none">Period-end: transfer · allocate · COGS</span></li>
+          <li><span class="vi">Báo cáo: sổ cái · chi tiết · công nợ · CDPS</span><span class="en" style="display:none">GL · detail · AR/AP · trial balance</span></li>
+          <li><span class="vi">TSCĐ · khấu hao · CCDC</span><span class="en" style="display:none">Fixed assets · depreciation</span></li>
+          <li><span class="vi">HTTK Thông tư 200 / 99</span><span class="en" style="display:none">Chart of accounts TT200 / TT99</span></li>
+        </ul>
+      </div>
+      <div class="feature-module">
+        <h4>📦 <span class="vi">Kho &amp; mua hàng (Supply)</span><span class="en" style="display:none">Warehouse &amp; purchasing (Supply)</span></h4>
+        <ul>
+          <li><span class="vi">Yêu cầu mua · đơn đặt hàng · phiếu nhận hàng</span><span class="en" style="display:none">PR · PO · goods receipt note</span></li>
+          <li><span class="vi">Phiếu nhập kho · phiếu xuất kho</span><span class="en" style="display:none">Goods receipt · issue</span></li>
+          <li><span class="vi">Kiểm kho · điều chuyển · tồn kho · thẻ kho</span><span class="en" style="display:none">Stock count · transfer · balance · card</span></li>
+          <li><span class="vi">Đối soát HĐĐT đầu vào</span><span class="en" style="display:none">Input e-invoice sync</span></li>
+          <li><span class="vi">Luồng duyệt mua hàng</span><span class="en" style="display:none">Purchase approval flow</span></li>
+          <li><span class="vi">Khóa sổ kho theo kỳ</span><span class="en" style="display:none">WMS period lock</span></li>
+        </ul>
+      </div>
+      <div class="feature-module">
+        <h4>🛒 <span class="vi">Bán hàng (Sales)</span><span class="en" style="display:none">Sales</span></h4>
+        <ul>
+          <li><span class="vi">Đơn hàng · hóa đơn bán</span><span class="en" style="display:none">Sales order · invoice</span></li>
+          <li><span class="vi">Xuất hàng · trả hàng bán</span><span class="en" style="display:none">Delivery · sales return</span></li>
+          <li><span class="vi">Hợp đồng · công nợ khách</span><span class="en" style="display:none">Contract · customer AR</span></li>
+          <li><span class="vi">Liên kết xuất kho — hạch toán doanh thu</span><span class="en" style="display:none">Stock issue — revenue posting</span></li>
+        </ul>
+      </div>
+      <div class="feature-module">
+        <h4>🗂️ <span class="vi">Danh mục (Master)</span><span class="en" style="display:none">Master data</span></h4>
+        <ul>
+          <li><span class="vi">Vật tư / hàng hóa · nhóm · ĐVT</span><span class="en" style="display:none">Materials · groups · UoM</span></li>
+          <li><span class="vi">Khách · NCC · nhóm đối tượng</span><span class="en" style="display:none">Customers · vendors · groups</span></li>
+          <li><span class="vi">Hệ thống tài khoản kế toán</span><span class="en" style="display:none">Account chart</span></li>
+          <li><span class="vi">Kho · phòng ban · chi phí</span><span class="en" style="display:none">Warehouses · departments · costs</span></li>
+          <li><span class="vi">Ngoại tệ · tỷ giá</span><span class="en" style="display:none">Currency · exchange rate</span></li>
+          <li><span class="vi">Đa đơn vị cơ sở (chi nhánh / công ty)</span><span class="en" style="display:none">Multi company / branch</span></li>
+        </ul>
+      </div>
+      <div class="feature-module">
+        <h4>⚙️ <span class="vi">Nền tảng &amp; quy trình</span><span class="en" style="display:none">Platform &amp; workflow</span></h4>
+        <ul>
+          <li><span class="vi">Thiết lập chứng từ · mức xử lý · phê duyệt</span><span class="en" style="display:none">Voucher setup · levels · approval</span></li>
+          <li><span class="vi">Ghi sổ tự động (GL / sổ kho)</span><span class="en" style="display:none">Auto GL / warehouse posting</span></li>
+          <li><span class="vi">Lịch sử chứng từ · audit trail</span><span class="en" style="display:none">Document history · audit</span></li>
+          <li><span class="vi">Phân quyền theo vai trò &amp; loại CT</span><span class="en" style="display:none">Role &amp; form-type permissions</span></li>
+          <li><span class="vi">Shell Linm — web &amp; mobile-friendly</span><span class="en" style="display:none">Linm shell — web &amp; mobile-friendly</span></li>
+          <li><span class="vi">Tích hợp mở rộng (POS · F&amp;B · HĐĐT)</span><span class="en" style="display:none">Extensible (POS · F&amp;B · e-invoice)</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pricing-note green" style="margin-top:1.25rem">
+      <span class="vi">🔗 <strong>Liên quan F&amp;B:</strong> Chuỗi quán có thể dùng Linm F&amp;B cho vận hành bàn — bếp — thu ngân, đồng bộ doanh thu/chi phí sang Linm ERP khi cần báo cáo nhà đầu tư và sổ sách đầy đủ.</span>
+      <span class="en" style="display:none">🔗 <strong>With F&amp;B:</strong> Restaurant chains can run Linm F&amp;B for floor ops and sync revenue/expense to Linm ERP for investor reporting and full accounting.</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <h2 style="text-align:center"><span class="vi">Tổng hợp nhanh</span><span class="en" style="display:none">Quick summary</span></h2>
+  <div class="table-scroll">
+  <table class="pricing-table" style="background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+    <thead><tr>
+      <th><span class="vi">Dịch vụ</span><span class="en" style="display:none">Service</span></th>
+      <th><span class="vi">Chi phí</span><span class="en" style="display:none">Cost</span></th>
+      <th><span class="vi">Chu kỳ</span><span class="en" style="display:none">Cycle</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Linm F&amp;B — triển khai (A · thuê)</td><td><strong>~20.000.000đ</strong></td><td><span class="vi">Một lần · CN đầu</span><span class="en" style="display:none">One-time · first branch</span></td></tr>
+      <tr><td>Linm F&amp;B — trọn gói (B · mua app)</td><td><strong><span class="vi">Từ 50.000.000đ</span><span class="en" style="display:none">From 50M VND</span></strong></td><td><span class="vi">Liên hệ báo giá · domain &amp; server khách</span><span class="en" style="display:none">Contact quote · customer domain/server</span></td></tr>
+      <tr><td>Linm F&amp;B — triển khai CN thêm</td><td><strong>~10–14 triệu</strong> <span class="vi">(giảm 30–50%)</span><span class="en" style="display:none">(30–50% off)</span></td><td><span class="vi">Cùng NG &amp; quy mô · tùy đào tạo</span><span class="en" style="display:none">Same model · by training</span></td></tr>
+      <tr><td>Linm F&amp;B — vận hành</td><td><strong>Miễn phí</strong></td><td><span class="vi">3 tháng đầu</span><span class="en" style="display:none">First 3 months</span></td></tr>
+      <tr><td>Linm F&amp;B — duy trì (mô hình A)</td><td><strong>680.000 – 1.999.000đ</strong></td><td><span class="vi">/ tháng / CN · min <strong>3 tháng</strong> · trả 12 tặng 1</span><span class="en" style="display:none">/ month / branch · min <strong>3 mo</strong> · 12 prepay +1 free</span></td></tr>
+      <tr><td><span class="vi">Triển khai — hình thức</span><span class="en" style="display:none">Deployment</span></td><td colspan="2"><a href="#deploy"><span class="vi">A Thuê Linm (subdomain) · B Trọn gói (domain khách)</span><span class="en" style="display:none">A Hosted · B Buyout</span></a></td></tr>
+      <tr><td>Hành chính — khai thuế</td><td><strong>500.000 – 1.000.000đ</strong></td><td><span class="vi">/ kỳ · theo CT &amp; HĐ đầu vào</span><span class="en" style="display:none">/ period · by document volume</span></td></tr>
+      <tr><td><span class="vi">Marketing — landing page</span><span class="en" style="display:none">Marketing — landing page</span></td><td><strong><span class="vi">Theo yêu cầu</span><span class="en" style="display:none">By request</span></strong></td><td><span class="vi">Tuỳ chọn · <a href="#marketing">chi tiết</a></span><span class="en" style="display:none">Optional · <a href="#marketing">details</a></span></td></tr>
+      <tr><td><span class="vi">Marketing — quảng cáo</span><span class="en" style="display:none">Marketing — ads</span></td><td><strong><span class="vi">Theo chương trình</span><span class="en" style="display:none">Per program</span></strong></td><td><span class="vi">Media budget tách riêng · <a href="#marketing">chi tiết</a></span><span class="en" style="display:none">Media budget separate · <a href="#marketing">details</a></span></td></tr>
+      <tr><td>Linm ERP — kế toán &amp; bán lẻ</td><td><strong><span class="vi">Liên hệ báo giá</span><span class="en" style="display:none">Contact for quote</span></strong></td><td><span class="vi">DN / HKD góp vốn NĐT · <a href="#erp">tính năng</a></span><span class="en" style="display:none">Company / HKD with investors · <a href="#erp">features</a></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<div class="cta-bar">
+  <p><span class="vi">Trao đổi báo giá chi tiết · Zalo <strong>Linm-Soft</strong> · 0775 909 978</span><span class="en" style="display:none">Detailed quote · Zalo <strong>Linm-Soft</strong> · 0775 909 978</span></p>
+  <a href="https://zalo.me/0775909978" class="btn btn-primary" target="_blank" rel="noopener noreferrer">💬 <span class="vi">Nhắn Zalo ngay</span><span class="en" style="display:none">Chat on Zalo</span></a>
+  <a href="app-demo.html" class="btn btn-outline" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)">📱 Demo UI</a>
+</div>
+
+<footer>
+  <p>Linm-Soft · <a data-seo-href="/" href="/"><span class="vi">Landing SEO</span><span class="en" style="display:none">SEO landing</span></a> · <a href="app-demo.html"><span class="vi">Demo UI</span><span class="en" style="display:none">UI demo</span></a> · <a href="docs/context/09-PRICING-PROPOSAL.md"><span class="vi">Tài liệu báo giá</span><span class="en" style="display:none">Pricing doc</span></a> · <a href="docs/context/08-QR-PAYMENT.md"><span class="vi">QR thanh toán</span><span class="en" style="display:none">Payment QR</span></a> · <a href="docs/context/08b-MOMO-PAYMENT.md"><span class="vi">MoMo</span><span class="en" style="display:none">MoMo</span></a></p>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+  document.querySelectorAll('.vi').forEach(el =>
+    el.style.display = lang === 'vi' ? '' : 'none');
+  document.querySelectorAll('.en').forEach(el =>
+    el.style.display = lang === 'en' ? '' : 'none');
+  document.documentElement.lang = lang;
+}
+document.querySelectorAll('.tab-nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.tab-nav a').forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

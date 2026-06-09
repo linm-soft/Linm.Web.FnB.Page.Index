@@ -15,3 +15,21 @@
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+/demo/*
+  Cache-Control: public, max-age=3600
+
+/demo/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/demo/pricing.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/demo/app-demo.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/demo/workflow-demo.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/demo/assets/*
+  Cache-Control: public, max-age=31536000, immutable
