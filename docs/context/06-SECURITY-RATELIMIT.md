@@ -47,7 +47,7 @@ Cấu hình `GuestRateLimit` trong `appsettings.json` · policy trên `FnbGuestC
 | `GuestDefault` | GET menu, session, bill, config | 120 req | 1 min |
 | `GuestOrderMutate` | POST order / service / feedback | 30 req | 1 min |
 | `GuestProofUpload` | POST payment proof | 5 req | 10 min |
-| `GuestQrDownload` | GET payment QR (VietQR / MoMo / Zalo) | 20 req | 1 min |
+| `GuestQrDownload` | GET payment QR (VietQR / MoMo) | 20 req | 1 min |
 
 ## 4. Payment Security
 

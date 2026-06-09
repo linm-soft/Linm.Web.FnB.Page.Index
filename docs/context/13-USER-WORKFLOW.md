@@ -1,6 +1,6 @@
 # Linm F&B — Workflow người dùng & Tổng kết giao diện Quản lý
 
-> Pilot: **Lẩu Gà Ngon** · MFE: `@linm/fnb-guest` · `@linm/fnb` · API: `Linm.Web.FnB.WebService`  
+> Pilot: **Lẩu Gà Ngon** · MFE: `@linm/fnb-guest` · `@linm/fnb-waiter` · `@linm/fnb-kitchen` · `@linm/fnb-admin` · `@linm/fnb-reports` · API: `Linm.Web.FnB.WebService`  
 > Liên quan: `07-STAFF-SERVICE.md` · `08-QR-PAYMENT.md` · `08b-MOMO-PAYMENT.md` · `05-DASHBOARD.md`
 
 ---
@@ -10,10 +10,10 @@
 | Persona | Đăng nhập | MFE / route (pilot dev) | Mục tiêu chính |
 |---------|-----------|-------------------------|----------------|
 | **Khách (Guest)** | Không — session bàn QR | `Linm.Web.FnB.Guest` · `/g/{tableCode}/…` | Gọi món, gọi phục vụ, thanh toán, đánh giá |
-| **Phục vụ (Waiter)** | JWT staff | `Linm.Web.FnB` · `/waiter/*` | Xác nhận order, phục vụ request, sơ đồ bàn |
-| **Bếp (Kitchen)** | JWT kitchen | `/kitchen` | Nhận đơn, chế biến, hoàn thành món |
-| **Thu ngân (Cashier)** | JWT cashier | `/cashier` | Duyệt ảnh CK / xác nhận thanh toán |
-| **Quản lý (Manager)** | JWT manager | `/admin/*` · `/reports/*` | Cấu hình vận hành, xem báo cáo, đánh giá NV |
+| **Phục vụ (Waiter)** | JWT staff | `Linm.Web.FnB.Waiter` · `/waiter/*` | Xác nhận order, phục vụ request, sơ đồ bàn |
+| **Bếp (Kitchen)** | JWT kitchen | `Linm.Web.FnB.Kitchen` · `/kitchen` | Nhận đơn, chế biến, hoàn thành món |
+| **Thu ngân (Cashier)** | JWT cashier | `Linm.Web.FnB.Admin` · `/cashier` | Duyệt ảnh CK / xác nhận thanh toán |
+| **Quản lý (Manager)** | JWT manager | `Linm.Web.FnB.Admin` · `Linm.Web.FnB.Reports` · `/admin/*` · `/reports/*` | Cấu hình vận hành, xem báo cáo, đánh giá NV |
 
 Khách **không** dùng JWT. Nhân viên và quản lý **bắt buộc** đăng nhập (production). Pilot dev: `yarn start:std` từng MFE.
 
@@ -181,7 +181,7 @@ Quản lý **không** tham gia từng bước phục vụ tại bàn — mà **c
 | **NV** | `/admin/staff` | Manager | Đánh giá · điểm ca 60/40 |
 | **Báo cáo** | `/reports/*` | Manager | Doanh thu · CK · món bán chạy |
 
-**Dev:** `Linm.Web.FnB` · `yarn start:std` → `/admin/dashboard`.
+**Dev:** `Linm.Web.FnB.Admin` · `yarn start:std` → `/admin/dashboard`.
 
 ### 6.2 `/admin/payment-setup` — Cấu hình → Hành vi khách/NV
 
