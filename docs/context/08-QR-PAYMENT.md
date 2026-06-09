@@ -29,7 +29,7 @@
 
 Khách: mở app ngân hàng → Quét QR / chọn ảnh QR → số tiền và nội dung được điền sẵn.
 
-**Phase 1 pilot:** TK ngân hàng truyền thống (Big4 + TMCP). MoMo/ví điện tử = kênh riêng, không dùng cùng luồng QR CK này.
+**Phase 1 pilot:** TK ngân hàng truyền thống (Big4 + TMCP). **MoMo/ví điện tử = kênh riêng** — xem **`08b-MOMO-PAYMENT.md`** (deeplink + QR MoMo, không VietQR).
 
 ---
 
@@ -81,7 +81,7 @@ Danh sách **BIN ngân hàng** (6 chữ số): seed bảng `bank_bins` — có t
 | `62.01` | Mã bill: `LG240607-B12` |
 | `62.08` | Nội dung hiển thị app NH (≤25 ký tự, không dấu) |
 
-Gợi ý: `LGN B12 001` — quản lý đối chiếu với sao kê / app NH.
+**SSOT pilot:** `{Name} B{table} {MaGD}` — vd. `MINHANH B12 482917` (`MaGD` = mã đối soát 6 số). ≤25 ký tự ASCII, không dấu; cắt `Name` nếu vượt giới hạn. Rule: `common/rule/fnb-qr-payment.md` §3.
 
 ---
 
@@ -102,7 +102,11 @@ Gợi ý: `LGN B12 001` — quản lý đối chiếu với sao kê / app NH.
 | HDBank | HDB | 970437 |
 | MSB | MSB | 970426 |
 
-Ẩn NH không hỗ trợ chuyển liên ngân hàng khỏi dropdown cấu hình quán.
+**SSOT backend:** `VietQrBankCatalog.cs` (seed 12 NH trên) · API `GET /fnb/admin/payment-setup/banks` + `.../banks/search?search=&page=`.
+
+**Admin UI (`/admin/payment-setup`):** lưới dòng TK nhận CK · cột **Ngân hàng** = `SearchInput` (mã + tên + BIN) · **Kích hoạt** — nhiều TK active cùng lúc (`isActive`) · guest VietQR dùng TK active đầu tiên.
+
+Ẩn NH không hỗ trợ chuyển liên ngân hàng khỏi lookup cấu hình quán.
 
 ---
 
@@ -212,3 +216,4 @@ Webhook đối soát (Casso/Sepay) · tinh chỉnh OCR mã FT/ref đa ngân hàn
 
 - `02-SYSTEM-ARCHITECTURE.md` — Linm.FnB.Payment / Admin
 - `06-SECURITY-RATELIMIT.md` — server-gen, upload limit
+- **Linm rules (AI):** `common/rule/fnb-qr-payment.md` · skill `/fnb-rule` — `common/skill/fnb-rule/fnb-rule.md`

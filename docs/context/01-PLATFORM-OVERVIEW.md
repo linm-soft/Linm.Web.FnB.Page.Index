@@ -15,7 +15,7 @@ Linm F&B là nền tảng quản lý nhà hàng / quán ăn đa chi nhánh (demo
 | 1 | Guest-first ordering | Session bàn qua QR token; chỉ cần tên + SĐT (optional); không JWT khách |
 | 2 | Table-centric session | Một bàn = một hoặc nhiều session; scan mới hoặc join session đang mở |
 | 3 | Realtime kitchen | SignalR push ticket bếp; xác nhận theo đơn / theo bàn |
-| 4 | Payment with proof | QR CK tự gen (chuẩn NAPAS/EMV) preset amount + nội dung; upload biên lai (**lưu ảnh ≤30 ngày**); xác nhận → trích **mã giao dịch** lưu lâu dài; quản lý **đối soát tay** — xem `08-QR-PAYMENT.md` |
+| 4 | Payment with proof | **CK:** QR VietQR tự gen + đối soát tay + proof (`08-QR-PAYMENT.md`) · **MoMo:** deeplink/QR ví + IPN (`08b-MOMO-PAYMENT.md`) |
 | 5 | Multi-branch tenancy | `companyId` / `branchId` trên mọi entity; menu và QR thanh toán theo chi nhánh |
 | 6 | MFE modular UI | Shell `@linm/nav` + MFE: guest-order, **waiter**, kitchen, cashier, admin, reports |
 | 7 | Event-driven side effects | Order placed → kitchen ticket; payment confirmed → feedback prompt |
@@ -23,6 +23,7 @@ Linm F&B là nền tảng quản lý nhà hàng / quán ăn đa chi nhánh (demo
 | 9 | Staff service & feedback | NV login · xác nhận order/phục vụ/dọn bàn · điểm ca 60% join / 40% full |
 
 Chi tiết NV: `docs/context/07-STAFF-SERVICE.md`  
+Workflow user + tổng kết giao diện Quản lý: `docs/context/13-USER-WORKFLOW.md`  
 Branding app (logo Linm, tên `LINM F&B — {tenant}`): `docs/context/10-APP-BRANDING.md`
 
 ## 3. Domain Map

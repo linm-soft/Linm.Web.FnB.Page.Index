@@ -39,7 +39,7 @@
 | **Linm.FnB.Bff** | 9080 | BFF proxy guest + staff; guest session header; file upload payment proof |
 | **Linm.FnB.Order** | 5081 | Table QR, sessions, cart, combos, addons, call waiter, request bill |
 | **Linm.FnB.Kitchen** | 5082 | Kitchen tickets, confirm prep, status by table/order |
-| **Linm.FnB.Payment** | 5083 | QR CK **tự gen** chuẩn NAPAS/EMV (preset amount), proof upload, **đối soát tay** — **không API NH phase 1** · xem `08-QR-PAYMENT.md` |
+| **Linm.FnB.Payment** | 5083 | QR CK VietQR tự gen · proof · đối soát tay (`08-QR-PAYMENT.md`) · **MoMo** `captureMoMoWallet` + IPN (`08b-MOMO-PAYMENT.md`) |
 | **Linm.FnB.Admin** | 5084 | Branches, tables, menu CRUD, payment account config, QR preview |
 | **Linm.Authentication** | 5001 | Staff login, roles (waiter, kitchen, manager, owner) |
 | **Linm.Notification** | 5002 | SignalR: `TableSessionHub`, `KitchenHub`, payment status |

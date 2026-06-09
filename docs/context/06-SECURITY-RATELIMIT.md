@@ -26,17 +26,28 @@
 | **Table QR token** | FnB Admin | Signed URL param `t=` — binds `tableId` + `branchId` | Rotatable per table |
 | **Embed report token** | Admin (phase 2) | `branchId`, `reportScope` | 24h |
 
-Guest **không** có JWT — chỉ `X-Guest-Session` + signed table token từ QR.
+Guest **không** có JWT staff login — `[AllowAnonymous]` trên API/BFF guest; bảo vệ bằng **rate limit theo IP** (và session bàn qua header `X-FnB-Guest-*`, không phải đăng nhập ERP).
 
-## 3. Rate Limits (per IP / per table token)
+| Header | Mục đích |
+|--------|----------|
+| **`X-Company-Id`** | **Mã đơn vị cơ sở** (company code `LINM`, `FM06`) — QR mỗi chi nhánh embed `?company=`; BE resolve tenant cho payment/DB |
+| **`X-Order-Id`** | **Mã share bàn (JoinCode)** — SSOT tracking + xác thực session |
+| `X-FnB-Guest-Participant-Token` | Token người tham gia (payment, feedback theo tên khách) |
+| `X-Branch-Id` | Chi nhánh (optional) — từ `?branch=` hoặc `?h_X-Branch-Id=` |
+| `X-FnB-Guest-Session-Id` | Legacy pilot — optional fallback dev |
 
-| Endpoint group | Limit | Window |
-|----------------|-------|--------|
-| Guest menu read | 120 req | 1 min |
-| Add order line | 30 req | 1 min |
-| Payment proof upload | 5 req | 10 min |
-| Staff login | 10 req | 5 min |
-| QR image download | 20 req | 1 min |
+**QR multi-branch (Guest MFE):** `/g/{tableCode}?company=LINM&branch=Q1&code={joinCode}` · env `VITE_GUEST_DEFAULT_COMPANY_ID` · `VITE_GUEST_EXTRA_HEADERS` JSON · arbitrary `?h_{Header-Name}=value`.
+
+## 3. Rate Limits (per IP — pilot implement)
+
+Cấu hình `GuestRateLimit` trong `appsettings.json` · policy trên `FnbGuestController` + `FnbGuestBffController` · BFF forward `X-Forwarded-For` khi loopback API.
+
+| Policy | Endpoint group | Limit | Window |
+|--------|----------------|-------|--------|
+| `GuestDefault` | GET menu, session, bill, config | 120 req | 1 min |
+| `GuestOrderMutate` | POST order / service / feedback | 30 req | 1 min |
+| `GuestProofUpload` | POST payment proof | 5 req | 10 min |
+| `GuestQrDownload` | GET payment QR (VietQR / MoMo / Zalo) | 20 req | 1 min |
 
 ## 4. Payment Security
 

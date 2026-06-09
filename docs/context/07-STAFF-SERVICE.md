@@ -1,6 +1,7 @@
 # Linm F&B — Staff Service & Feedback
 
-> Pilot: **Lẩu Gà Ngon** · MFE package: `@linm/fnb-waiter` · Auth: JWT staff/manager
+> Pilot: **Lẩu Gà Ngon** · MFE package: `@linm/fnb-waiter` · Auth: JWT staff/manager  
+> Workflow đầy đủ (Guest · NV · Quản lý): `docs/context/13-USER-WORKFLOW.md`
 
 ## 1. Roles & login
 
