@@ -1,35 +1,20 @@
-/*
-  Cache-Control: public, max-age=3600
+/_manifest.json
+  Cache-Control: no-cache, no-store, must-revalidate
 
 /index.html
   Cache-Control: no-cache, no-store, must-revalidate
 
-/pricing.html
-  Cache-Control: no-cache, no-store, must-revalidate
-
-/app-demo.html
-  Cache-Control: no-cache, no-store, must-revalidate
-
-/workflow-demo.html
-  Cache-Control: no-cache, no-store, must-revalidate
-
-/assets/*
+/icons/*
   Cache-Control: public, max-age=31536000, immutable
 
-/demo/*
-  Cache-Control: public, max-age=3600
+/*.js
+  Cache-Control: no-cache, must-revalidate
 
-/demo/index.html
-  Cache-Control: no-cache, no-store, must-revalidate
+/*.js.map
+  Cache-Control: no-cache, must-revalidate
 
-/demo/pricing.html
-  Cache-Control: no-cache, no-store, must-revalidate
+/*.*.js
+  Cache-Control: public, max-age=31536000, immutable
 
-/demo/app-demo.html
-  Cache-Control: no-cache, no-store, must-revalidate
-
-/demo/workflow-demo.html
-  Cache-Control: no-cache, no-store, must-revalidate
-
-/demo/assets/*
+/*.*.js.map
   Cache-Control: public, max-age=31536000, immutable
